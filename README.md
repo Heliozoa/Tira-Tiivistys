@@ -1,2 +1,2 @@
 # Tira-Tiivistys
-Tiran harjoitus työ loppukesä 2016
+Tiran harjoitustyö loppukesä 2016
