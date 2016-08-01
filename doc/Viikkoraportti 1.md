@@ -1,0 +1,1 @@
+Suurin osa 1. viikosta meni aiheen päättämiseen. Aiheen päättämisen jälkeen katsoin videoita tiedon tiivistämisestä ja erityisesti Lempel-Ziv-algoritmeista.
