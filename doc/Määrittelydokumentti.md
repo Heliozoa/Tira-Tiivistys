@@ -5,7 +5,7 @@ Suunnitelmana on toteuttaa ainakin Lempel-Ziv-Welch algoritmi. Jos aika riittä�
 LZW vaatii hajautustaulun. Huffman käyttää binääripuuta ja kekoa tai jotain järjestettyä listaa.
 
 ####Ongelma
-Ongelmana on saada tiedosto pakattua noin puoleen sen alkuperäisestä koosta. Valitsin ongelman koska en tiennyt tiedon tiivistämisestä mitään ja olen joskus ohimennen miettinyt, miten se toimii.
+Ongelmana on saada tiedosto pakattua noin puoleen sen alkuperäisestä koosta. Valitsin ongelman koska en tiennyt tiedon tiivistämisestä mitään ja olen joskus ohimennen miettinyt, miten se toimii. Algoritmit oli mainittu aiheissa ja ovat ilmeisen toimivia perustason algoritmeja aihealueeseen liittyen.
 
 ####Syöte
 Ohjelma saa syötteenä tiedoston, joka halutaan tiivistää tai avata, jos kyseessä on jo pakattu tiedosto.
