@@ -1,3 +1,4 @@
+#Määrittelydokumentti
 ####Algoritmi
 Suunnitelmana on toteuttaa ainakin Lempel-Ziv-Welch algoritmi. Jos aika riittää (tai yksittäinen algoritmi ei ole tarpeeksi laaja) aion kokeilla myös muita tiivistämisalgoritmeja, esim. aiheissa mainittua Huffmania.
 
