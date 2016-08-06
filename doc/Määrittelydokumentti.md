@@ -18,4 +18,5 @@ https://www.youtube.com/playlist?list=PLOU2XLYxmsIJGErt5rrCqaSGTMyyqNt2H
 https://www.youtube.com/playlist?list=PLzH6n4zXuckpKAj1_88VS-8Z6yn9zX_P6  
 https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch  
 https://en.wikipedia.org/wiki/Huffman_coding  
-http://marknelson.us/2011/11/08/lzw-revisited/  
+http://marknelson.us/2011/11/08/lzw-revisited/
+http://commandlinefanatic.com/cgi-bin/showarticle.cgi?article=art010  

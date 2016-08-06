@@ -1,24 +1,23 @@
 
 package pakkaus;
 
-import java.io.File;
-
+import pakkaus.Tiedosto;
+import java.util.HashMap;
 
 public class Pakkaaja {
-    private FileInputStream stream;
+    private Tiedosto t;
+    private HashMap<Integer,Integer> sanakirja;
     
-    public Pakkaaja(String polku) {
-        tiedosto = new File(polku);
-        if(tiedosto.isFile()){
-            stream = new FileInputStreaM(tiedosto);
+    public Pakkaaja(Tiedosto tiedosto) {
+        t = tiedosto;
+        sanakirja = new HashMap<>();
+    }
+    
+    public void lue(){
+        while(!t.loppu()){
+            System.out.println(t.lue());
         }
-    }
-    
-    public boolean luettava(){
-        return stream == null;
-    }
-    
-    public void print(){
-        System.out.println("mem");
+        
+        t.sulje();
     }
 }
