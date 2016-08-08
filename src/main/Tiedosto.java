@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 /**
  * Tiedosto-luokka hoitaa itse tiedoston käsittelyn.
  * Siltä voi kysyä käsiteltävän tiedoston seuraavan tavun.
- * Poikkeusten käsittely on tarkoitus korjata siistimmäksi myöhemmin.
+ * Poikkeusten ja tiedoston käsittely yleensämuutenkin on tarkoitus korjata siistimmäksi seuraavalla viikolla.
  */
 public class Tiedosto {
     private FileInputStream tiedosto;

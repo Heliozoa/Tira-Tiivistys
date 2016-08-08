@@ -5,24 +5,21 @@ import pakkaus.Sanakirja;
 
 public class SanakirjaTest {
   
-  Sanakirja sa = new Sanakirja(true);
-  Sanakirja sp = new Sanakirja(false);
+  Sanakirja s = new Sanakirja();
   
   @Test
-  public void alustustesti() {
+  public void alustus() {
     for(int i = 0; i <= 255; i++){
-      assertTrue(sa.sisaltaaAvaimen(i));
-      assertEquals(sa.hae(i),i);
+      assertTrue(s.sisaltaaAvaimen(i));
+      assertEquals(s.hae(i),i);
     }
   }
   
   @Test
-  public void lisaystesti(){
-    sa.lisaa(1010);
-    sp.lisaa(1010);
-    assertTrue(sa.sisaltaaAvaimen(256));
+  public void lisays(){
+    s.lisaa(1010);
     assertTrue(sp.sisaltaaAvaimen(1010));
-    assertEquals(sa.hae(256), 1010);
+    assertEquals(sa.hae(1010), 256);
   }
   
   

@@ -17,6 +17,19 @@ public class Pakkaaja {
         s = sanakirja;
     }
     
+    /**
+     *  pakkaa-metodi muuntaa tiedoston pienempään muotoon.
+     *  WIP
+     */
+    public void pakkaa(){
+        int nykyinenJono;
+        int seuraava;
+        while(!t.loppu()){
+            seuraava = t.lue();
+            if(s.sisaltaaAvaimen())
+        }
+    }
+    
     public void lue(){
         while(!t.loppu()){
             int tavu = t.lue();
