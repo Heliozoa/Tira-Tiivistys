@@ -1,17 +1,22 @@
 
-/*
- * Tiedosto-luokka hoitaa itse tiedoston käsittelyn.
- * Siltä voi kysyä käsiteltävän tiedoston seuraavan tavun.
- */
+
 
 package pakkaus;
 
 import java.io.File;
 import java.io.FileInputStream;
 
+/**
+ * Tiedosto-luokka hoitaa itse tiedoston käsittelyn.
+ * Siltä voi kysyä käsiteltävän tiedoston seuraavan tavun.
+ * Poikkeusten käsittely on tarkoitus korjata siistimmäksi myöhemmin.
+ */
 public class Tiedosto {
     private FileInputStream tiedosto;
     
+    /**
+     *  @param polku Polku tiedostolle, jota halutaan lukea.
+     */
     public Tiedosto(String polku){
         File t = new File(polku);
         if(!t.isFile() || !t.canRead()){
@@ -25,11 +30,12 @@ public class Tiedosto {
     }
     
     public int lue(){
-        int ret = 0;
+        int ret;
         try{
             ret = tiedosto.read();
         } catch (Exception e){
             System.out.println("Virhe: "+e);
+            return -1;
         }
         return ret;
     }
