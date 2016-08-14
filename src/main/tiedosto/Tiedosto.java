@@ -1,23 +1,19 @@
 
-
-
-package pakkaus;
+package tiedosto;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
-/**
- * Tiedosto-luokka hoitaa itse tiedoston käsittelyn.
- * Siltä voi kysyä käsiteltävän tiedoston seuraavan tavun.
- * Poikkeusten ja tiedoston käsittely yleensämuutenkin on tarkoitus korjata siistimmäksi seuraavalla viikolla.
- */
 public class Tiedosto {
     private FileInputStream tiedosto;
+    private String polku;
     
-    /**
-     *  @param polku Polku tiedostolle, jota halutaan lukea.
-     */
     public Tiedosto(String polku){
+        this.polku = polku;
         File t = new File(polku);
         if(!t.isFile() || !t.canRead()){
             throw new IllegalArgumentException("Lukukelpoista tiedostoa ei löytynyt kohteesta "+polku);
@@ -35,7 +31,7 @@ public class Tiedosto {
             ret = tiedosto.read();
         } catch (Exception e){
             System.out.println("Virhe: "+e);
-            return -1;
+            ret = -1;
         }
         return ret;
     }
@@ -52,7 +48,25 @@ public class Tiedosto {
         try{
             tiedosto.close();
         } catch(Exception e){
-            
+            System.out.println("Virhe: "+e);
         }
+    }
+    
+    public void kirjoita(byte[] bytearray) throws Exception{
+        String kohde = polku;
+        if(!kohde.contains(".tt")){
+            kohde += ".tt";
+        } else {
+            kohde += "t";
+        }
+        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(kohde), "UTF8"));
+
+        try {
+            out.write(new String(bytearray, "UTF-8"));
+        } catch (Exception e){
+            System.out.println("error "+e);
+        } finally {
+            out.close();
+        } 
     }
 }
