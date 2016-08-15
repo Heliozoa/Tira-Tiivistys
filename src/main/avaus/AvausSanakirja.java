@@ -4,6 +4,9 @@ package avaus;
 import util.*;
 import java.util.HashMap;
 
+/**
+ *  Sanakirja, jota hyödynnetään pakatun tiedoston avaamisessa.
+ */
 public class AvausSanakirja {
     private HashMap<Integer,String> sanakirja;
     private HashMap<String,Integer> jonot;
@@ -22,6 +25,9 @@ public class AvausSanakirja {
         raja = 4096;
     }
     
+    /**
+     *  Lisää jonon sanakirjaan.
+     */
     public void lisaa(String jono){
         if(koodi < raja){
             sanakirja.put(koodi, jono);

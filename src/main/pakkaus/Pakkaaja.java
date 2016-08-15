@@ -27,7 +27,8 @@ public class Pakkaaja {
      *  Koodaa Tiedoston t sisällön byte-tyypin taulukkoon, jonka se antaa tiedostolle kirjoitettavaksi muistiin.
      */
     public void pakkaa() {
-        List<Integer> tavut = koodaaListaan(new ArrayList<Integer>());
+        List<Integer> tavut = new ArrayList<>();
+        koodaaListaan(tavut);
         int[] taulu = tavutTauluksi(tavut);
         byte[] tavutaulu = kaannaTavuiksi(taulu);
         try{
@@ -43,7 +44,7 @@ public class Pakkaaja {
      *  
      *  @param  tavut   Lista johon tavut lisätään.
      */
-    private List<Integer> koodaaListaan(List<Integer> tavut){
+    private void koodaaListaan(List<Integer> tavut){
         String nykyinen = lue();
         String seuraava = "";
         
@@ -57,7 +58,6 @@ public class Pakkaaja {
                 nykyinen = seuraava;
             }
         }
-        return tavut;
     }
     
     /**

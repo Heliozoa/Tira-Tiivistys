@@ -8,10 +8,16 @@ import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+/**
+ *  Hoitaa itse tiedoston käsittelyn.
+ */
 public class Tiedosto {
     private FileInputStream tiedosto;
     private String polku;
     
+    /**
+     *  @param polku    Polku, jossa tiedosto on.
+     */
     public Tiedosto(String polku){
         this.polku = polku;
         File t = new File(polku);
@@ -25,6 +31,9 @@ public class Tiedosto {
         }
     }
     
+    /**
+     *  Lukee tiedostosta yhden tavun.
+     */
     public int lue(){
         int ret;
         try{
@@ -52,6 +61,9 @@ public class Tiedosto {
         }
     }
     
+    /**
+     *  Kirjoittaa byte-taulukossa olevat tavut.
+     */
     public void kirjoita(byte[] bytearray) throws Exception{
         String kohde = polku;
         if(!kohde.contains(".tt")){
