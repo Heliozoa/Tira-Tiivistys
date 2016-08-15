@@ -27,6 +27,7 @@ public class Main {
         Tiedosto t = new Tiedosto(polku);
         AvausSanakirja s = new AvausSanakirja();
         Avaaja a = new Avaaja(t, s);
-        a.avaa();
+        //t.dump();
+        //a.avaa();
     }
 }

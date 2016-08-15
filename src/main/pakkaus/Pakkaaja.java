@@ -31,6 +31,9 @@ public class Pakkaaja {
         koodaaListaan(tavut);
         int[] taulu = tavutTauluksi(tavut);
         byte[] tavutaulu = kaannaTavuiksi(taulu);
+        for(int i = 0; i < tavutaulu.length; i++){
+            System.out.println(tavutaulu[i]);
+        }
         try{
             t.kirjoita(tavutaulu);
         } catch (Exception e){
@@ -45,17 +48,20 @@ public class Pakkaaja {
      *  @param  tavut   Lista johon tavut lisätään.
      */
     private void koodaaListaan(List<Integer> tavut){
-        String nykyinen = lue();
-        String seuraava = "";
+        String edellinen = lue();
+        String jono = lue();
+        tavut.add(s.hae(edellinen));
+        tavut.add(s.hae(jono));
+        s.lisaa(edellinen+jono);
         
         while(!t.loppu()){
-            seuraava = lue();
-            if(s.sisaltaa(nykyinen+seuraava)){
-                nykyinen += seuraava;
+            jono = lue();
+            if(s.sisaltaa(edellinen+jono)){
+                edellinen += jono;
             } else {
-                s.lisaa(nykyinen+seuraava);
-                tavut.add(s.hae(nykyinen));
-                nykyinen = seuraava;
+                s.lisaa(edellinen+jono);
+                tavut.add(s.hae(jono));
+                edellinen = jono;
             }
         }
     }

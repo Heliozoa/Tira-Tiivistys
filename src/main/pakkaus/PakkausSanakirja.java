@@ -4,6 +4,9 @@ package pakkaus;
 import util.*;
 import java.util.HashMap;
 
+/**
+ *  Sanakirja, jota käytetään tiedon pakkaamiseen.
+ */
 public class PakkausSanakirja {
     private HashMap<String,Integer> sanakirja;
     private int koodi;

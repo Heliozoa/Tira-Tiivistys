@@ -51,4 +51,8 @@ public class AvausSanakirja {
     public int haeKoodi(String jono){
         return jonot.get(jono);
     }
+    
+    public int koodi(){
+        return koodi;
+    }
 }

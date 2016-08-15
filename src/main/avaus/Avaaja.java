@@ -59,11 +59,19 @@ public class Avaaja {
         
         while(!t.loppu()){
             jono = lue();
+            if(jono == null){
+                System.out.println(edellinen);
+                s.lisaa(edellinen+edellinen);
+                tavut.add(edellinen+edellinen);
+                continue;
+            }
             if(!s.sisaltaaJonon(edellinen+jono)){
                 s.lisaa(edellinen+jono);
+                edellinen = jono;
+            }else{
+                edellinen += jono;
             }
             tavut.add(jono);
-            edellinen = jono;
         }
     }
     
@@ -101,6 +109,7 @@ public class Avaaja {
         int eka = t.lue();
         eka *= 256;
         int toka = t.lue();
+        if(s.hae(eka+toka) == null) System.out.println("null "+eka+toka);
         return s.hae(eka+toka);
     }
 }

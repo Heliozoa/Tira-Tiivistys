@@ -81,4 +81,10 @@ public class Tiedosto {
             out.close();
         } 
     }
+    
+    public void dump() {
+        while(!loppu()){
+            System.out.println(lue());
+        }
+    }
 }
