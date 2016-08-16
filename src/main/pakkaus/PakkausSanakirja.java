@@ -19,9 +19,12 @@ public class PakkausSanakirja {
         }
         
         koodi = 256;
-        raja = 4096;
+        raja = 65536;
     }
     
+    /**
+     *  Lisää uuden jonon sanakirjaan, paitsi jos raja on jo saavutettu.
+     */
     public void lisaa(String jono){
         if(koodi < raja){
             sanakirja.put(jono,koodi);
@@ -29,10 +32,16 @@ public class PakkausSanakirja {
         }
     }
     
+    /**
+     *  @return Sisältääkö sanakirja jonon.
+     */
     public boolean sisaltaa(String avain){
         return sanakirja.containsKey(avain);
     }
     
+    /**
+     *  @return Avainta vastaava koodi.
+     */
     public int hae(String avain){
         return sanakirja.get(avain);
     }

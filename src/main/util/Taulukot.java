@@ -23,4 +23,15 @@ public class Taulukot {
         
         return taulukko;
     }
+    
+    /**
+     *  Kääntää int[]-tyyppisen taulukon byte[]-tyyppiseksi taulukoksi.
+     */
+    public static byte[] kaannaTavuiksi(int[] taulu){
+        byte[] t = new byte[taulu.length];
+        for(int i = 0; i < taulu.length; i++){
+            t[i] = (byte) taulu[i];
+        }
+        return t;
+    }
 }

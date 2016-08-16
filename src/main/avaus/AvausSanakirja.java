@@ -22,7 +22,7 @@ public class AvausSanakirja {
         }
         
         koodi = 256;
-        raja = 4096;
+        raja = 65536;
     }
     
     /**

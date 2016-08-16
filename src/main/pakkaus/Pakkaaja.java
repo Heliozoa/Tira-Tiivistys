@@ -19,7 +19,7 @@ import java.io.IOException;
  *      Jos tavujonoa ei löydy sanakirjasta, se lisätään sanakirjaan ja algoritmi kirjoittaa muistiin sanakirjan koodin,
  *      joka vastaa tavujonoa ilman uusinta tavua.
  *      Koodit tallennetaan kahden tavun pituisina. Tällöin pakattu tiedosto koostuu tavupareista, joista jokainen on koodi jota vastaa jokin tavujono.
- *      Näin lopputuloksena on tiedosto, jossa esim 2 tavua pitkä koodi 389 voi merkitä 30 tavua pitkää tavujonoa.
+ *      Näin lopputuloksena on tiedosto, jossa esim 2 tavua pitkä koodi 897 voi merkitä 30 tavua pitkää tavujonoa.
  *      Avausalgoritmi osaa muodostaa samalla periaatteella sanakirjan lennosta avatessa, siis sanakirjaa ei tarvitse mitenkään
  *      tallentaa muistiin ja tuloksena on pakattu tiedosto jossa on vähemmän tavuja.
  */
@@ -43,10 +43,7 @@ public class Pakkaaja {
         List<Integer> tavut = new ArrayList<>();
         koodaaListaan(tavut);
         int[] taulu = tavutTauluksi(tavut);
-        byte[] tavutaulu = kaannaTavuiksi(taulu);
-        for(int i = 0; i < tavutaulu.length; i++){
-            System.out.println(tavutaulu[i]);
-        }
+        byte[] tavutaulu = Taulukot.kaannaTavuiksi(taulu);
         
         Tiedostokasittelija.kirjoita(tavutaulu, t.polku()+".tt");
     }
@@ -59,10 +56,7 @@ public class Pakkaaja {
      */
     private void koodaaListaan(List<Integer> tavut) throws IOException{
         String edellinen = lue();
-        String jono = lue();
-        tavut.add(s.hae(edellinen));
-        tavut.add(s.hae(jono));
-        s.lisaa(edellinen+jono);
+        String jono = "";
         
         while(!t.loppu()){
             jono = lue();
@@ -87,24 +81,11 @@ public class Pakkaaja {
         int n = 0;
         for(Integer i : tavut){
             int k = i.intValue();
-            taulu[n+1] = k & 0xFF;
-            taulu[n] = (k >> 8) & 0xFF;
+            taulu[n+1] = (k & 0xFF);
+            taulu[n] = ((k >> 8) & 0xFF);
             n += 2;
         }
         return taulu;
-    }
-    
-    /**
-     *  Kääntää int[]-tyyppisen taulukon byte[]-tyyppiseksi taulukoksi.
-     *
-     *  @params taulu   Taulukko joka käännetään.
-     */
-    private byte[] kaannaTavuiksi(int[] taulu){
-        byte[] t = new byte[taulu.length];
-        for(int i = 0; i < taulu.length; i++){
-            t[i] = (byte) taulu[i];
-        }
-        return t;
     }
     
     /**

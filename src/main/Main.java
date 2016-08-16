@@ -12,9 +12,9 @@ public class Main {
     
     public static void main(String[] args){
         try {
-            pakkaus();
-            dump("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto.tt");
+            dump("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto");
             System.exit(0);
+            pakkaus();
             avaus();
         } catch (Exception e){
             e.printStackTrace();
