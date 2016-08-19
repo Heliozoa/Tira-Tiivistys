@@ -31,18 +31,12 @@ public class Avaaja {
     public void avaa() throws IOException{
         List<String> tavut = new ArrayList<>();
         lueTavutListaan(tavut);
-        
         List<Integer> oikeatTavut = new ArrayList<>();
         pilkoJonotListaan(tavut, oikeatTavut);
         
         int[] taulukko = Taulukot.lukulistaTaulukkoon(oikeatTavut);
         byte[] tavutaulu = kaannaTavuiksi(taulukko);
-        
-        try{
-            Tiedostokasittelija.kirjoita(tavutaulu, t.polku()+"t");
-        } catch(Exception e){
-            System.out.println("Virhe: "+e);
-        }
+        Tiedostokasittelija.kirjoita(tavutaulu, t.polku()+"t");
     }
     
     /**
@@ -61,10 +55,10 @@ public class Avaaja {
             }else{
                 s.lisaa(edellinen+jono);
                 edellinen = jono;
+                tavut.add(edellinen);
             }
             i++;
         }
-        tavut.add(jono);
     }
     
     /**
@@ -75,9 +69,7 @@ public class Avaaja {
      */
     private void pilkoJonotListaan(List<String> tavut, List<Integer> pilkotut){
         for(String s : tavut){
-            if(s == null) continue;
-            if(s.contains("nul")) continue;
-            for(int i = 0; i+3 < s.length(); i += 3){
+            for(int i = 0; i < s.length(); i += 3){
                 pilkotut.add(Integer.parseInt(s.substring(i,i+3)));
             }
         }
@@ -103,6 +95,10 @@ public class Avaaja {
         int eka = t.lue();
         eka *= 256;
         int toka = t.lue();
+        if(s.hae(eka+toka) == null){
+            System.out.println("null"+(eka+toka));
+            return "119119";
+        }
         return s.hae(eka+toka);
     }
 }

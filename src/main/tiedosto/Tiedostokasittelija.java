@@ -13,12 +13,11 @@ public class Tiedostokasittelija {
      *  Kirjoittaa byte-taulukossa olevat tavut.
      */
     public static void kirjoita(byte[] tavut, String polku) throws IOException{
-        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(polku), "UTF8"));
-
+        FileOutputStream fos = new FileOutputStream(polku);
         try {
-            out.write(new String(tavut, "UTF-8"));
+            fos.write(tavut);
         } finally {
-            out.close();
+            fos.close();
         } 
     }
 }

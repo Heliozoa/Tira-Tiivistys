@@ -12,17 +12,16 @@ public class Main {
     
     public static void main(String[] args){
         try {
-            dump("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto");
-            System.exit(0);
             pakkaus();
             avaus();
+            dump("/home/authority/Dev/github/Tira-Tiivistys/minitesti.tt");
         } catch (Exception e){
             e.printStackTrace();
         }
     }
     
     public static void pakkaus() throws IOException{
-        String polku = "/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto";
+        String polku = "/home/authority/Dev/github/Tira-Tiivistys/minitesti";
         Tiedosto t = new Tiedosto(polku);
         PakkausSanakirja s = new PakkausSanakirja();
         Pakkaaja p = new Pakkaaja(t, s);
@@ -30,7 +29,7 @@ public class Main {
     }
     
     public static void avaus() throws IOException{
-        String polku = "/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto.tt";
+        String polku = "/home/authority/Dev/github/Tira-Tiivistys/minitesti.tt";
         Tiedosto t = new Tiedosto(polku);
         AvausSanakirja s = new AvausSanakirja();
         Avaaja a = new Avaaja(t, s);

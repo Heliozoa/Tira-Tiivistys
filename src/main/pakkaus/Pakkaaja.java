@@ -44,7 +44,6 @@ public class Pakkaaja {
         koodaaListaan(tavut);
         int[] taulu = tavutTauluksi(tavut);
         byte[] tavutaulu = Taulukot.kaannaTavuiksi(taulu);
-        
         Tiedostokasittelija.kirjoita(tavutaulu, t.polku()+".tt");
     }
     
