@@ -60,23 +60,23 @@ public class Pakkaaja {
         String edellinen = lue();
         String jono = "";
         
-        boolean vika = false;
+        boolean edellinenLoytyySanakirjasta = false;
         while(!t.loppu()){
             jono = lue();
             if(s.sisaltaa(edellinen+jono)){
                 edellinen += jono;
-                vika = false;
+                edellinenLoytyySanakirjasta = false;
             } else {
-                s.lisaa(edellinen+jono);
                 tavut.add(s.hae(edellinen));
+                s.lisaa(edellinen+jono);
                 edellinen = jono;
-                vika = true;
+                edellinenLoytyySanakirjasta = true;
             }
         }
-        if(!vika){
+        if(edellinenLoytyySanakirjasta){
             tavut.add(s.hae(edellinen));
         } else {
-            tavut.add(s.hae(jono));
+            tavut.add(s.hae(edellinen.substring(0, edellinen.length()-3)));
         }
     }
     

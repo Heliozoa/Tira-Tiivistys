@@ -22,11 +22,11 @@ public class SanakirjaTest {
     PakkausSanakirja ps = new PakkausSanakirja();
     AvausSanakirja as = new AvausSanakirja();
   
-    Tiedosto t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/minitesti");
+    Tiedosto t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto");
     Pakkaaja p = new Pakkaaja(t, ps);
     p.pakkaa();
     
-    t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/minitesti.tt");
+    t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto.tt");
     Avaaja a = new Avaaja(t, as);
     a.avaa();
     
