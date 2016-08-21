@@ -11,8 +11,8 @@ HashMapia korvaamaan tarvitaan tietorakenne, jolla voi nopeasti...
 3. hakea koodilla (käytännössä indeksillä) sitä vastaavan tavujonon
 Koska koko jonoa ei oikeastaan tarvitse tallentaa, vaan riittää uusi tavu ja viite jonoon johon tavu on lisätty, pelkän jonojen hajautuksen sijaan voisi miettiä jotain muuta. Ehkä taulukko, jonka indekseissä on "jakautuvat" linkitetyt listat? Esim. indeksissä 255 on tavut 234 ja 189, ja 234:n listassa on 111, jolloin jonot ovat 255, 255234, 255189, 255234111. 234 on siis erityisesti 255 jälkeen tuleva 234 eikä "samalla tasolla" oleva tavu kuin 255. Kohtaan 3 riittää taulukko joka sisältää joko yllä kuvattuja listoja, tai alla kuvattuja jonoja.
 
-ArrayListin tilalle käy oikeastaan yksinkertainen tavujono, jolla voidaan ehkä myös korvata kokonaan kömpelöt String-muuttujat, hitaat substringit ja katenaatio.
+ArrayListin tilalle käy oikeastaan yksinkertainen tavujono, jolla voidaan ehkä myös korvata kokonaan kömpelöt String-muuttujat, hitaat substringit ja katenaatio. Aloitin jonosta, koska sen toteutus tuntui melko suoraviivaiselta verrattuna sanakirjaan.
 
 Kirjoitin koodikatselmoinnin.
 
-Käytetty tuntimäärä: 13
+Käytetty tuntimäärä: 16
