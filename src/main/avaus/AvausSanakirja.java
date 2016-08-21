@@ -1,7 +1,9 @@
 
 package avaus;
 
-import util.*;
+import util.Muotoilu;
+import static util.Vakiot.DEBUG;
+
 import java.util.HashMap;
 
 /**
@@ -54,5 +56,17 @@ public class AvausSanakirja {
     
     public int koodi(){
         return koodi;
+    }
+    
+    public HashMap<Integer,String> sanakirja(){
+        return sanakirja;
+    }
+    
+    public void dump(){
+        for(int avain : sanakirja.keySet()){
+            if(avain > 255){
+                System.out.println(avain+":"+sanakirja.get(avain));
+            }
+        }
     }
 }

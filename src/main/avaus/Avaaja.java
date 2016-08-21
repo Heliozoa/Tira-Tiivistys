@@ -1,9 +1,12 @@
 
 package avaus;
 
-import tiedosto.*;
-import util.*;
 import avaus.AvausSanakirja;
+import tiedosto.Tiedosto;
+import tiedosto.Tiedostokasittelija;
+import util.Taulukot;
+import static util.Vakiot.DEBUG;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -50,6 +53,12 @@ public class Avaaja {
         int i = 0;
         while(!t.loppu()){
             jono = lue();
+            if(jono.isEmpty()) {
+                jono = edellinen+edellinen.substring(edellinen.length()-3,edellinen.length());
+                s.lisaa(jono);
+                tavut.add(jono);
+            }
+            
             if(s.sisaltaaJonon(edellinen+jono)){
                 edellinen += jono;
             }else{
@@ -96,8 +105,7 @@ public class Avaaja {
         eka *= 256;
         int toka = t.lue();
         if(s.hae(eka+toka) == null){
-            System.out.println("null"+(eka+toka));
-            return "119119";
+            return "";
         }
         return s.hae(eka+toka);
     }

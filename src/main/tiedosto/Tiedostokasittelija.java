@@ -1,6 +1,8 @@
 
 package tiedosto;
 
+import static util.Vakiot.DEBUG;
+
 import java.io.FileOutputStream;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;

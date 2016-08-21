@@ -1,7 +1,9 @@
 
 package pakkaus;
 
-import util.*;
+import util.Muotoilu;
+import static util.Vakiot.DEBUG;
+
 import java.util.HashMap;
 
 /**
@@ -44,5 +46,22 @@ public class PakkausSanakirja {
      */
     public int hae(String avain){
         return sanakirja.get(avain);
+    }
+    
+    public HashMap<Integer, String> kaanna(){
+        HashMap<Integer,String> temp = new HashMap<>();
+        for(String avain : sanakirja.keySet()){
+            temp.put(sanakirja.get(avain),avain);
+        }
+        return temp;
+    }
+    
+    public void dump(){
+        HashMap<Integer,String> temp = kaanna();
+        for(int avain : temp.keySet()){
+            if(avain > 255){
+                System.out.println(avain+":"+temp.get(avain));
+            }
+        }
     }
 }

@@ -1,10 +1,13 @@
 
 package pakkaus;
 
+import pakkaus.PakkausSanakirja;
 import tiedosto.Tiedosto;
 import tiedosto.Tiedostokasittelija;
-import pakkaus.PakkausSanakirja;
-import util.*;
+import util.Muotoilu;
+import util.Taulukot;
+import static util.Vakiot.DEBUG;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -57,17 +60,24 @@ public class Pakkaaja {
         String edellinen = lue();
         String jono = "";
         
+        boolean vika = false;
         while(!t.loppu()){
             jono = lue();
             if(s.sisaltaa(edellinen+jono)){
                 edellinen += jono;
+                vika = false;
             } else {
                 s.lisaa(edellinen+jono);
                 tavut.add(s.hae(edellinen));
                 edellinen = jono;
+                vika = true;
             }
         }
-        tavut.add(s.hae(jono));
+        if(!vika){
+            tavut.add(s.hae(edellinen));
+        } else {
+            tavut.add(s.hae(jono));
+        }
     }
     
     /**

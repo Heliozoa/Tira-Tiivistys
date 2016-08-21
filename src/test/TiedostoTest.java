@@ -6,12 +6,6 @@ public class TiedostoTest {
   
   @Test
   public void lukukelpoinenTiedosto() {  
-    Tiedosto t = new Tiedosto("/home/sasami-san/Dev/git/github/Tira-Tiivistys/testitiedosto");
+    Tiedosto t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto");
   }
-  
-  @Test
-  public void olematonTiedosto() {
-    Tiedosto t = new Tiedosto("/home/sasami-san/Dev/git/github/Tira-Tiivistys/olematontiedosto");
-  }
-  
 }

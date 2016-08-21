@@ -1,6 +1,8 @@
 
 package tiedosto;
 
+import static util.Vakiot.DEBUG;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.io.FileNotFoundException;
 public class Tiedosto {
     private FileInputStream tiedosto;
     private String polku;
+    private int kohta;
     
     /**
      *  @param polku    Polku, jossa tiedosto on.
@@ -23,6 +26,8 @@ public class Tiedosto {
             throw new FileNotFoundException("Lukukelpoista tiedostoa ei löytynyt kohteesta "+polku);
         }
         tiedosto = new FileInputStream(t);
+        
+        kohta = 0;
     }
     
     /**
@@ -30,6 +35,7 @@ public class Tiedosto {
      */
     public int lue() throws IOException {
         int tavu = tiedosto.read();
+        kohta++;
         return tavu;
     }
     
@@ -56,7 +62,22 @@ public class Tiedosto {
         }
     }
     
+    /**
+     *  Tulostaa tiedoston 2 tavua kerrallaan.
+     */
+    public void dump2() throws IOException {
+        while(!loppu()){
+            int eka = lue();
+            eka *= 256;
+            System.out.println(eka+lue());
+        }
+    }
+    
     public String polku(){
         return polku;
+    }
+    
+    public int kohta(){
+        return kohta;
     }
 }
