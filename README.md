@@ -11,9 +11,9 @@ Testit: ant test
 Pakkaajan bugi aiheuttaa ongelmia pitkään toistuvissa saman tavun jonoissa. Normaalissa tekstissä tämä ei aiheuta ongelmia, mutta esim. kuvia pakatessa voi aiheuttaa.
 
 ####Dokumentaatio
-[Määrittelydokumentti](doc/Määrittelydokumentti.md)
-[Testausdokumentti](doc/Testausdokumentti.md)
-[Toteutusdokumentti](doc/Toteutusdokumentti.md)
+[Määrittelydokumentti](doc/Määrittelydokumentti.md)  
+[Testausdokumentti](doc/Testausdokumentti.md)  
+[Toteutusdokumentti](doc/Toteutusdokumentti.md)  
 
 ####Viikkoraportit
 [Viikkoraportti 1](doc/Viikkoraportti 1.md)  
