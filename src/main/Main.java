@@ -11,9 +11,14 @@ import tiedosto.Tiedosto;
 import java.io.IOException;
 
 public class Main {
-    static String alku = "/home/sasami-san/Dev/github/Tira-Tiivistys/minitesti";
+    static String alku;
     
     public static void main(String[] args){
+        if(args.length == 0 || args[0].contains("$")){
+            alku = "./testitiedosto";
+        }else{
+            alku = args[0];
+        }
         try {
             pakkaus();
             avaus();

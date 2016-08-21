@@ -1,6 +1,12 @@
 # Tira-Tiivistys
 Tiran harjoitustyö loppukesä 2016
 
+####Ohjeet
+Komennot suoritettava projektin juuressa, vaativat Apache Ant-kirjaston.
+Kääntäminen: ant
+Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku")
+Testit: ant test
+
 ####Dokumentaatio
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)
 
