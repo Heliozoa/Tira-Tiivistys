@@ -12,6 +12,8 @@ Pakkaajan bugi aiheuttaa ongelmia pitkään toistuvissa saman tavun jonoissa. No
 
 ####Dokumentaatio
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)
+[Testausdokumentti](doc/Testausdokumentti.md)
+[Toteutusdokumentti](doc/Toteutusdokumentti.md)
 
 ####Viikkoraportit
 [Viikkoraportti 1](doc/Viikkoraportti 1.md)  
