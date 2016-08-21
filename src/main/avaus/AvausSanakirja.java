@@ -38,24 +38,32 @@ public class AvausSanakirja {
         }
     }
     
+    /**
+     *  Sisältääkö avaimen.
+     */
     public boolean sisaltaa(int avain){
         return sanakirja.containsKey(avain);
     }
     
+    /**
+     *  Sisältääkö jonon.
+     */
     public boolean sisaltaaJonon(String jono){
         return jonot.containsKey(jono);
     }
     
+    /**
+     *  @return avainta vastaava jono
+     */
     public String hae(int avain){
         return sanakirja.get(avain);
     }
     
+    /**
+     *  @return jonoa vastaava avain
+     */
     public int haeKoodi(String jono){
         return jonot.get(jono);
-    }
-    
-    public int koodi(){
-        return koodi;
     }
     
     public HashMap<Integer,String> sanakirja(){

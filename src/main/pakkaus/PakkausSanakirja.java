@@ -56,10 +56,6 @@ public class PakkausSanakirja {
         return temp;
     }
     
-    public int koodi(){
-        return koodi;
-    }
-    
     public void dump(){
         HashMap<Integer,String> temp = kaanna();
         for(int avain : temp.keySet()){

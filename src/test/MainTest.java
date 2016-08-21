@@ -14,6 +14,8 @@ import tiedosto.Tiedosto;
 
 public class MainTest {
   
+  String tiedostonimi = "kalevala";
+  
   /**
    *  Testaa onko avattu tiedosto tasan sama kuin alkuperäinen.
    */
@@ -22,19 +24,19 @@ public class MainTest {
     PakkausSanakirja ps = new PakkausSanakirja();
     AvausSanakirja as = new AvausSanakirja();
   
-    Tiedosto t1 = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/minitesti");
+    Tiedosto t1 = new Tiedosto("./etc/"+tiedostonimi);
     Pakkaaja p = new Pakkaaja(t1, ps);
     p.pakkaa();
     
-    Tiedosto t2 = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/minitesti.tt");
+    Tiedosto t2 = new Tiedosto("./etc/"+tiedostonimi+".tt");
     Avaaja a = new Avaaja(t2, as);
     a.avaa();
     
-    t1 = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/minitesti");
-    Tiedosto t3 = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/minitesti.ttt");
+    t1 = new Tiedosto("./etc/"+tiedostonimi);
+    Tiedosto t3 = new Tiedosto("./etc/"+tiedostonimi+".ttt");
     while(!t1.loppu()){
       assertFalse("Avattu tiedosto on lyhyempi kuin alkuperäinen.", t3.loppu());
       assertEquals("Tiedostot eroavat kohdassa "+t1.kohta(), t1.lue(), t3.lue());
     }
-  }  
+  }
 }

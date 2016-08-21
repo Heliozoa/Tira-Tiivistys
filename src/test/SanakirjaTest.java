@@ -14,19 +14,21 @@ import tiedosto.Tiedosto;
 
 public class SanakirjaTest {
   
+  String tiedostonimi = "kalevala";
+  
   /**
-   *  Testaa, ovatko pakkaus- ja avaussanakirjojen sisältävät sanakirjat tasan samat, niinkuin pitäisi olla.
+   *  Testaa, ovatko pakkaus- ja avaussanakitestitestirjojen sisältävät sanakirjat tasan samat, niinkuin pitäisi olla.
    */
   @Test
   public void sanakirjatRakentuvatSamoin() throws IOException{
     PakkausSanakirja ps = new PakkausSanakirja();
     AvausSanakirja as = new AvausSanakirja();
   
-    Tiedosto t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto");
+    Tiedosto t = new Tiedosto("./etc/"+tiedostonimi);
     Pakkaaja p = new Pakkaaja(t, ps);
     p.pakkaa();
     
-    t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto.tt");
+    t = new Tiedosto("./etc/"+tiedostonimi+".tt");
     Avaaja a = new Avaaja(t, as);
     a.avaa();
     

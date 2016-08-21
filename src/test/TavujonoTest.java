@@ -80,6 +80,7 @@ public class TavujonoTest {
         }
     }
     
+    
     private void assertTyhja(Tavujono t){
         assertTrue("Tavujonon pitäisi olla tyhjä, muttei ole.", t.tyhja());
     }

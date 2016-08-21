@@ -15,4 +15,6 @@ ArrayListin tilalle käy oikeastaan yksinkertainen tavujono, jolla voidaan ehkä
 
 Kirjoitin koodikatselmoinnin.
 
-Käytetty tuntimäärä: 16
+Aloitin toteutus- ja testausdokumentteja. Testasin algoritmia kuvalla ja huomasin, että pitkät toistuvat tavut aiheuttavat ongelmia.
+
+Käytetty tuntimäärä: 18

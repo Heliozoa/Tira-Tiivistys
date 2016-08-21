@@ -4,8 +4,10 @@ import pakkaus.Tiedosto;
 
 public class TiedostoTest {
   
+  String tiedostonimi = "kalevala";
+  
   @Test
   public void lukukelpoinenTiedosto() {  
-    Tiedosto t = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/testitiedosto");
+    Tiedosto t = new Tiedosto("./etc/"+tiedostonimi);
   }
 }
