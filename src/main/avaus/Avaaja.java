@@ -79,9 +79,6 @@ public class Avaaja {
         for(int i = 0; i < s.length(); i += 3){
             byte b = Tavukasittelija.stringTavuksi(s.substring(i,i+3));
             t.lisaa(b);
-            if(t.tyhja()){
-                System.out.println(b+"keme"+s.substring(i,i+3));
-            }
         }
     }
     
@@ -98,9 +95,6 @@ public class Avaaja {
                 return "";
             }
             merkkijonoTavujonoon(s.hae(eka+toka), puskuri);
-            if(puskuri.tyhja()){
-                System.out.println("??????"+s.hae(eka+toka));
-            }
         }
         r = Tavukasittelija.kaannaString(puskuri.poista());
         return r;
