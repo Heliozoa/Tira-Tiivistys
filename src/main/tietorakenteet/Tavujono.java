@@ -11,12 +11,13 @@ import java.lang.IndexOutOfBoundsException;
  */
 public class Tavujono {
     
-    byte[] tavut;
-    int alku;
-    int loppu;
+    private byte[] tavut;
+    private int alku;
+    private int loppu;
+    private final int alkukoko = 16;
     
     public Tavujono() {
-        tavut = new byte[16];
+        tavut = new byte[alkukoko];
         alku = 0;
         loppu = 0;
     }
@@ -27,7 +28,7 @@ public class Tavujono {
      *  @see    tarkistaKoko
      */
     public void lisaa(byte b){
-        tarkistaKoko();
+        kasvataTarvittaessa();
         if(loppu == tavut.length){
             loppu = 0;
         }
@@ -46,7 +47,7 @@ public class Tavujono {
         if(tyhja()){
             throw new NoSuchElementException("Tavujono on tyhjä.");
         }
-        tarkistaKoko();
+        kutistaTarvittaessa();
         
         if(alku == tavut.length){
             alku = 0;
@@ -63,10 +64,8 @@ public class Tavujono {
      *  Laskee jonon koon.
      */
     public int koko(){
-        if(tyhja()){
-            return 0;
-        } else if(loppu < alku){
-            return tavut.length - alku - loppu;
+        if(loppu < alku){
+            return tavut.length - alku + loppu;
         } else {
             return loppu - alku;
         }
@@ -76,64 +75,74 @@ public class Tavujono {
      *  Tarkistaa onko jono tyhjä.
      */
     public boolean tyhja(){
-        return loppu == alku;
+        return koko() == 0;
     }
     
     /**
-     *  Vain testaamiseen.
+     *  Tyhjentää tavujonon.
      */
-    public byte hae(int i){
-        if(i >= loppu || i < alku){
-            throw new IndexOutOfBoundsException("Tavujono ei sisällä indeksiä "+i);
+    public void tyhjenna(){
+        tavut = new byte[alkukoko];
+    }
+    
+    /**
+     *  Palauttaa jonon taulukkona.
+     */
+    public byte[] taulukoksi(){
+        byte[] taulukko = new byte[koko()];
+        int indeksi = alku;
+        for(int i = 0; i < taulukko.length; i++){
+            taulukko[i] = tavut[indeksi];
+            indeksi++;
+            if(indeksi == taulukko.length){
+                indeksi = 0;
+            }
         }
-        return tavut[i];
+        return taulukko;
     }
     
     /**
-     *  Vain testaamiseen.
+     *  Tuplaa taulukon koon, jos se on täynnä.
      */
-    public int len(){
-        return tavut.length;
-    }
-    
-    /**
-     *  Kasvattaa taulukon koon kaksinkertaiseksi, jos jono on täynnä.
-     *  Puolittaa taulukon koon, jos jono on vain 1/4 täynnä.
-     */
-    private void tarkistaKoko(){
+    private void kasvataTarvittaessa(){
         int koko = koko();
-        
-        if(koko == tavut.length){
-            kasvata();
-        } else if(koko <= tavut.length / 4 && koko > 16){
-            kutista();
+        if(koko() == tavut.length - 1){
+            vaihdaTaulukkoa(new byte[tavut.length * 2]);
         }
     }
     
-    private void kasvata(){
+    /**
+     *  Puolittaa taulukon koon, jos se on enintään neljäsosan täytetty.
+     */
+    private void kutistaTarvittaessa(){
         int koko = koko();
-        byte[] uusi = new byte[tavut.length * 2];
-        kopioiTaulukkoon(uusi);
-        tavut = uusi;
-        alku = 0;
-        loppu = koko;
+        if(koko <= tavut.length / 4 && koko > 16){
+            vaihdaTaulukkoa(new byte[tavut.length / 2]);
+        }
     }
     
-    private void kutista(){
-        int koko = koko();
-        byte[] uusi = new byte[tavut.length / 2];
-        kopioiTaulukkoon(uusi);
-        tavut = uusi;
-        alku = 0;
-        loppu = koko;
-    }
-    
-    private void kopioiTaulukkoon(byte[] taulukko){
+    /**
+     *  Vaihtaa taulukon uuteen. Kopioi ensin vanhan alkiot ja korjaa sitten osoittimet oikeiksi.
+     */
+    private void vaihdaTaulukkoa(byte[] taulukko){
         int koko = koko();
         int osoitin = alku;
         for(int i = 0; i < koko; i++){
             taulukko[i] = tavut[osoitin];
             osoitin++;
+            if(osoitin == tavut.length){
+                osoitin = 0;
+            }
         }
+        tavut = taulukko;
+        alku = 0;
+        loppu = koko;
+    }
+    
+    /**
+     *  Vain testejä varten
+     */
+    public int len(){
+        return tavut.length;
     }
 }
