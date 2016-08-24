@@ -2,7 +2,6 @@
 package avaus;
 
 import util.Muotoilu;
-import static util.Vakiot.DEBUG;
 
 import java.util.HashMap;
 

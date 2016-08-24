@@ -1,15 +1,14 @@
 
 package pakkaus;
 
+import tietorakenteet.Tavujono;
 import pakkaus.PakkausSanakirja;
 import tiedosto.Tiedosto;
 import tiedosto.Tiedostokasittelija;
 import util.Muotoilu;
 import util.Taulukot;
-import static util.Vakiot.DEBUG;
+import util.Tavukasittelija;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.io.IOException;
 
 /**
@@ -43,20 +42,17 @@ public class Pakkaaja {
      *  Koodaa Tiedoston t sisällön byte-tyypin taulukkoon, jonka se antaa tiedostolle kirjoitettavaksi muistiin.
      */
     public void pakkaa() throws IOException{
-        List<Integer> tavut = new ArrayList<>();
-        koodaaListaan(tavut);
-        int[] taulu = tavutTauluksi(tavut);
-        byte[] tavutaulu = Taulukot.kaannaTavuiksi(taulu);
-        Tiedostokasittelija.kirjoita(tavutaulu, t.polku()+".tt");
+        Tavujono tavut = new Tavujono();
+        koodaaJonoon(tavut);
+        Tiedostokasittelija.kirjoita(tavut.taulukoksi(), t.polku()+".tt");
     }
     
-    
     /**
-     *  Koodaa Tiedoston t sisällön listaan ja muodostaa samalla sanakirjan.
+     *  Koodaa Tiedoston t sisällön jonoon ja muodostaa samalla sanakirjan.
      *  
-     *  @param  tavut   Lista johon tavut lisätään.
+     *  @param  tavut   Jono johon tavut lisätään.
      */
-    private void koodaaListaan(List<Integer> tavut) throws IOException{
+    private void koodaaJonoon(Tavujono tavut) throws IOException{
         String edellinen = lue();
         String jono = "";
         
@@ -67,34 +63,17 @@ public class Pakkaaja {
                 edellinen += jono;
                 edellinenLoytyySanakirjasta = false;
             } else {
-                tavut.add(s.hae(edellinen));
+                tavut.lisaaInt(s.hae(edellinen));
                 s.lisaa(edellinen+jono);
                 edellinen = jono;
                 edellinenLoytyySanakirjasta = true;
             }
         }
         if(edellinenLoytyySanakirjasta){
-            tavut.add(s.hae(edellinen));
+            tavut.lisaaInt(s.hae(edellinen));
         } else {
-            tavut.add(s.hae(edellinen.substring(0, edellinen.length()-3)));
+            tavut.lisaaInt(s.hae(edellinen.substring(0, edellinen.length()-3)));
         }
-    }
-    
-    /**
-     *  Muuttaa listan joka sisältää pakatut tavut taulukoksi.
-     *
-     *  @param  tavut   Lista joka sisältää tiedoston tavut.
-     */
-    private int[] tavutTauluksi(List<Integer> tavut){
-        int[] taulu = new int[tavut.size()*2];
-        int n = 0;
-        for(Integer i : tavut){
-            int k = i.intValue();
-            taulu[n+1] = (k & 0xFF);
-            taulu[n] = ((k >> 8) & 0xFF);
-            n += 2;
-        }
-        return taulu;
     }
     
     /**

@@ -7,10 +7,7 @@ import tiedosto.Tiedosto;
 import tiedosto.Tiedostokasittelija;
 import util.Taulukot;
 import util.Tavukasittelija;
-import static util.Vakiot.DEBUG;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.io.IOException;
 
 
@@ -21,8 +18,6 @@ public class Avaaja {
     private Tiedosto t;
     private AvausSanakirja s;
     
-    String buffer;
-    
     Tavujono puskuri;
     
     /**
@@ -32,7 +27,6 @@ public class Avaaja {
     public Avaaja (Tiedosto tiedosto, AvausSanakirja sanakirja){
         t = tiedosto;
         s = sanakirja;
-        buffer = "";
         
         puskuri = new Tavujono();
     }

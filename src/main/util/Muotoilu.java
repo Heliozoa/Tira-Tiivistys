@@ -1,8 +1,6 @@
 
 package util;
 
-import static util.Vakiot.DEBUG;
-
 import java.io.FileOutputStream;
 
 /**

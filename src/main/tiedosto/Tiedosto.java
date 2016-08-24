@@ -1,8 +1,6 @@
 
 package tiedosto;
 
-import static util.Vakiot.DEBUG;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

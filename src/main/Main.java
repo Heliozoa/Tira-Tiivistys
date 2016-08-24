@@ -1,8 +1,6 @@
 
 package main;
 
-import static util.Vakiot.DEBUG;
-
 import pakkaus.Pakkaaja;
 import pakkaus.PakkausSanakirja;
 import avaus.Avaaja;

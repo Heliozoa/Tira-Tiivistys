@@ -25,7 +25,7 @@ public class Tavujono {
     /**
      *  Lisää alkion jonon perälle.
      *
-     *  @see    tarkistaKoko
+     *  @see    kasvataTarvittaessa
      */
     public void lisaa(byte b){
         kasvataTarvittaessa();
@@ -34,13 +34,20 @@ public class Tavujono {
         }
         tavut[loppu] = b;
         loppu++;
-        
+    }
+    
+    /**
+     *  Lisää kokonaisluvun kaksi ensimmäistä tavua jonoon.
+     */
+    public void lisaaInt(int i){
+        lisaa((byte) ((i >> 8) & 0xFF));
+        lisaa((byte) (i & 0xFF));
     }
     
     /**
      *  Poistaa ensiksi lisätyn alkion jonosta
      *
-     *  @see    tarkistaKoko
+     *  @see    kutistaTarvittaessa
      *  @return poistettu alkio
      */
     public byte poista(){
@@ -130,9 +137,7 @@ public class Tavujono {
         for(int i = 0; i < koko; i++){
             taulukko[i] = tavut[osoitin];
             osoitin++;
-            if(osoitin == tavut.length){
-                osoitin = 0;
-            }
+            if(osoitin == tavut.length) osoitin = 0;
         }
         tavut = taulukko;
         alku = 0;
@@ -144,5 +149,20 @@ public class Tavujono {
      */
     public int len(){
         return tavut.length;
+    }
+    
+    @Override
+    public String toString(){
+        String r = "{";
+        int osoitin = alku;
+        for(int i = 0; i <  1; i++){
+            r += tavut[osoitin];
+            r += ",";
+            osoitin++;
+            if(osoitin == tavut.length) osoitin = 0;
+        }
+        r += tavut[osoitin];
+        r += "}";
+        return r;
     }
 }
