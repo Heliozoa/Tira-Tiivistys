@@ -5,7 +5,6 @@ import tietorakenteet.Tavujono;
 import avaus.AvausSanakirja;
 import tiedosto.Tiedosto;
 import tiedosto.Tiedostokasittelija;
-import util.Taulukot;
 import util.Tavukasittelija;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class Avaaja {
     private Tiedosto t;
     private AvausSanakirja s;
     
-    Tavujono puskuri;
+    private Tavujono puskuri;
     
     /**
      *  @params tiedosto    Pakattu tiedosto joka halutaan avata.

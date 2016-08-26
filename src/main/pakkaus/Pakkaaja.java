@@ -2,11 +2,11 @@
 package pakkaus;
 
 import tietorakenteet.Tavujono;
+import tietorakenteet.Sanakirja;
 import pakkaus.PakkausSanakirja;
 import tiedosto.Tiedosto;
 import tiedosto.Tiedostokasittelija;
 import util.Muotoilu;
-import util.Taulukot;
 import util.Tavukasittelija;
 
 import java.io.IOException;
@@ -28,6 +28,7 @@ import java.io.IOException;
 public class Pakkaaja {
     private Tiedosto t;
     private PakkausSanakirja s;
+    private Sanakirja sk;
     
     /**
      *  @params tiedosto    Tiedostosta saadaan tieto joka halutaan pakata.
@@ -36,6 +37,7 @@ public class Pakkaaja {
     public Pakkaaja(Tiedosto tiedosto, PakkausSanakirja sanakirja) {
         t = tiedosto;
         s = sanakirja;
+        sk = new Sanakirja();
     }
     
     /**
@@ -52,6 +54,43 @@ public class Pakkaaja {
      *  
      *  @param  tavut   Jono johon tavut lisätään.
      */
+    private void koodaaJonoon(Tavujono tavut) throws IOException{
+        Tavujono jono = new Tavujono();
+        jono.lisaa(lue());
+        boolean edellinenLoytyySanakirjasta = false;
+        while(!t.loppu()){
+            byte seuraava = lue();
+            if(sk.sisaltaa(jono, seuraava)){
+                jono.lisaa(seuraava);
+                edellinenLoytyySanakirjasta = false;
+            } else {
+                tavut.lisaaInt(sk.hae(jono));
+                sk.lisaa(jono, seuraava);
+                jono.tyhjenna();
+                jono.lisaa(seuraava);
+                edellinenLoytyySanakirjasta = true;
+            }
+        }
+        
+        if(edellinenLoytyySanakirjasta){
+            tavut.lisaaInt(sk.hae(jono));
+        } else {
+            byte vika = jono.poistaLopusta();
+            tavut.lisaaInt(sk.hae(jono));
+            tavut.lisaaInt(vika);
+        }
+    }
+    
+    /*
+     *  Lukee tavun Tiedostosta t.
+     */
+    private byte lue() throws IOException{
+        return (byte) t.lue();
+    }
+    
+    /*
+     *  Vanhat metodi malliksi
+     *
     private void koodaaJonoon(Tavujono tavut) throws IOException{
         String edellinen = lue();
         String jono = "";
@@ -74,12 +113,5 @@ public class Pakkaaja {
         } else {
             tavut.lisaaInt(s.hae(edellinen.substring(0, edellinen.length()-3)));
         }
-    }
-    
-    /**
-     *  Lukee tavun Tiedostosta t ja muuntaa sen String-tyyppiseksi lisäten siihen samalla etunollat. 
-     */
-    private String lue() throws IOException{
-        return Muotoilu.etunollat(t.lue());
-    }
+    }*/
 }

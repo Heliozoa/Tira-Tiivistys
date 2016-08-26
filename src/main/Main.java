@@ -5,6 +5,7 @@ import pakkaus.Pakkaaja;
 import pakkaus.PakkausSanakirja;
 import avaus.Avaaja;
 import avaus.AvausSanakirja;
+import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
 import java.io.IOException;
 
@@ -12,6 +13,8 @@ public class Main {
     static String alku;
     
     public static void main(String[] args){
+        //testi();
+        
         long aika = System.nanoTime();
         
         if(args.length == 0 || args[0].contains("$")){
@@ -51,6 +54,14 @@ public class Main {
         AvausSanakirja s = new AvausSanakirja();
         Avaaja a = new Avaaja(t, s);
         a.avaa();
+    }
+    
+    /**
+     *  Testaamista varten.
+     */
+    public static void testi(){
+        Sanakirja sk = new Sanakirja();
+        System.exit(0);
     }
     
     /**

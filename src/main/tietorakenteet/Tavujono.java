@@ -68,6 +68,26 @@ public class Tavujono {
     }
     
     /**
+     *  Poistaa tavun lopusta.
+     */
+    public byte poistaLopusta(){
+        if(tyhja()){
+            throw new NoSuchElementException("Tavujono on tyhjä.");
+        }
+        kutistaTarvittaessa();
+        
+        if(loppu == 0){
+            loppu = tavut.length;
+        }
+        
+        byte b = tavut[loppu-1];
+        loppu--;
+        
+        
+        return b;
+    }
+    
+    /**
      *  Laskee jonon koon.
      */
     public int koko(){
@@ -90,6 +110,8 @@ public class Tavujono {
      */
     public void tyhjenna(){
         tavut = new byte[alkukoko];
+        alku = 0;
+        loppu = 0;
     }
     
     /**
@@ -106,6 +128,31 @@ public class Tavujono {
             }
         }
         return taulukko;
+    }
+    
+    /**
+     *  Palauttaa tavujonon jossa on alkiot päinvastaisessa järjestyksessä.
+     */
+    public Tavujono kaanna(){
+        byte[] taulukko = taulukoksi();
+        Tavujono kaannetty = new Tavujono();
+        for(int i = taulukko.length-1; i >= 0; i--){
+            kaannetty.lisaa(taulukko[i]);
+        }
+        return kaannetty;
+    }
+    
+    /**
+     *  Luo kopion tavujonosta.
+     */
+    @Override
+    public Tavujono clone(){
+        byte[] taulukko = taulukoksi();
+        Tavujono klooni = new Tavujono();
+        for(int i = 0; i < taulukko.length; i++){
+            klooni.lisaa(taulukko[i]);
+        }
+        return klooni;
     }
     
     /**
