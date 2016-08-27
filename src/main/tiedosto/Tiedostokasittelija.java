@@ -2,9 +2,6 @@
 package tiedosto;
 
 import java.io.FileOutputStream;
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.io.IOException;
 
 public class Tiedostokasittelija {

@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.io.IOException;
 
 import avaus.Avaaja;
-import avaus.AvausSanakirja;
 import pakkaus.Pakkaaja;
 import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
@@ -22,14 +21,14 @@ public class MainTest {
   @Test
   public void pakkausJaAvausToimii() throws IOException{
     Sanakirja sk = new Sanakirja();
-    AvausSanakirja as = new AvausSanakirja();
   
     Tiedosto t1 = new Tiedosto("./etc/"+tiedostonimi);
     Pakkaaja p = new Pakkaaja(t1, sk);
     p.pakkaa();
     
+    sk = new Sanakirja();
     Tiedosto t2 = new Tiedosto("./etc/"+tiedostonimi+".tt");
-    Avaaja a = new Avaaja(t2, as);
+    Avaaja a = new Avaaja(t2, sk);
     a.avaa();
     
     t1 = new Tiedosto("./etc/"+tiedostonimi);

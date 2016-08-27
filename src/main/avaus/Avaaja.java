@@ -2,10 +2,9 @@
 package avaus;
 
 import tietorakenteet.Tavujono;
-import avaus.AvausSanakirja;
+import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
 import tiedosto.Tiedostokasittelija;
-import util.Tavukasittelija;
 
 import java.io.IOException;
 
@@ -15,7 +14,8 @@ import java.io.IOException;
  */
 public class Avaaja {
     private Tiedosto t;
-    private AvausSanakirja s;
+    private Sanakirja sk;
+    private byte edellinen;
     
     private Tavujono puskuri;
     
@@ -23,10 +23,9 @@ public class Avaaja {
      *  @params tiedosto    Pakattu tiedosto joka halutaan avata.
      *  @params sanakirja   Sanakirja jota käytetään tiedon avaamiseen.
      */
-    public Avaaja (Tiedosto tiedosto, AvausSanakirja sanakirja){
+    public Avaaja (Tiedosto tiedosto, Sanakirja sanakirja){
         t = tiedosto;
-        s = sanakirja;
-        
+        sk = sanakirja;
         puskuri = new Tavujono();
     }
     
@@ -44,52 +43,42 @@ public class Avaaja {
      *  Lukee kaikki koodit tiedostosta ja lisää ne tavujonoon.
      */
     private void lueTavutJonoon(Tavujono tavujono) throws IOException{
-        String edellinen = lueTavu();
-        String jono = "";
+        Tavujono jono = new Tavujono();
+        jono.lisaa(lue());
+        byte seuraava;
         
         while(!t.loppu()){
-            jono = lueTavu();
-            if(jono.isEmpty()) {
-                jono = edellinen.substring(edellinen.length()-3,edellinen.length());
-                s.lisaa(edellinen+jono);
-                merkkijonoTavujonoon(jono, tavujono);
-            }
-            if(s.sisaltaaJonon(edellinen+jono)){
-                edellinen += jono;
+            seuraava = lue();
+            if(sk.sisaltaa(jono, seuraava)){
+                jono.lisaa(seuraava);
             }else{
-                s.lisaa(edellinen+jono);
-                merkkijonoTavujonoon(edellinen, tavujono);
-                edellinen = jono;
+                sk.lisaa(jono, seuraava);
+                while(!jono.tyhja()){
+                    tavujono.lisaa(jono.poista());
+                }
+                jono.lisaa(seuraava);
             }
         }
-        merkkijonoTavujonoon(edellinen, tavujono);
-    }
-    
-    /**
-     *  Pätkii merkkijonon 3-pituisiksi osiksi ja lisää niitä vastaavat tavut tavujonoon.
-     */
-    private void merkkijonoTavujonoon(String s, Tavujono t){
-        for(int i = 0; i < s.length(); i += 3){
-            byte b = Tavukasittelija.stringTavuksi(s.substring(i,i+3));
-            t.lisaa(b);
+        while(!jono.tyhja()){
+            tavujono.lisaa(jono.poista());
         }
     }
     
-    /**
-     *  Lukee kahden tavun pituisen koodin tiedostosta ja hakee sitä vastaavan tavujonon.
-     */
-    private String lueTavu() throws IOException{
-        String r;
+    private byte lue() throws IOException{
         if(puskuri.tyhja()){
             int eka = t.lue();
             eka *= 256;
             int toka = t.lue();
-            if(s.hae(eka+toka) == null){
-                return "";
+            int koodi = eka+toka;
+            if(!sk.sisaltaa(koodi)){
+                puskuri.lisaa(edellinen);
+                puskuri.lisaa(edellinen);
+            }else{
+                puskuri = sk.hae(koodi);
             }
-            merkkijonoTavujonoon(s.hae(eka+toka), puskuri);
         }
-        r = Tavukasittelija.kaannaString(puskuri.poista());
-        return r;
+        byte b = puskuri.poista();
+        edellinen = b;
+        return b;
     }
 }

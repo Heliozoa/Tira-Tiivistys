@@ -50,8 +50,8 @@ public class Main {
     public static void avaus() throws IOException{
         String polku = alku+".tt";
         Tiedosto t = new Tiedosto(polku);
-        AvausSanakirja s = new AvausSanakirja();
-        Avaaja a = new Avaaja(t, s);
+        Sanakirja sk = new Sanakirja();
+        Avaaja a = new Avaaja(t, sk);
         a.avaa();
     }
     
@@ -59,7 +59,11 @@ public class Main {
      *  Testaamista varten.
      */
     public static void testi(){
-        Sanakirja sk = new Sanakirja();
+        byte b = (byte) 100;
+        int i = b + b;
+        b += b;
+        System.out.println(i);
+        System.out.println(b);
         System.exit(0);
     }
     

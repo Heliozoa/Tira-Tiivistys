@@ -84,31 +84,4 @@ public class Pakkaaja {
     private byte lue() throws IOException{
         return (byte) t.lue();
     }
-    
-    /*
-     *  Vanhat metodi malliksi
-     *
-    private void koodaaJonoon(Tavujono tavut) throws IOException{
-        String edellinen = lue();
-        String jono = "";
-        
-        boolean edellinenLoytyySanakirjasta = false;
-        while(!t.loppu()){
-            jono = lue();
-            if(s.sisaltaa(edellinen+jono)){
-                edellinen += jono;
-                edellinenLoytyySanakirjasta = false;
-            } else {
-                tavut.lisaaInt(s.hae(edellinen));
-                s.lisaa(edellinen+jono);
-                edellinen = jono;
-                edellinenLoytyySanakirjasta = true;
-            }
-        }
-        if(edellinenLoytyySanakirjasta){
-            tavut.lisaaInt(s.hae(edellinen));
-        } else {
-            tavut.lisaaInt(s.hae(edellinen.substring(0, edellinen.length()-3)));
-        }
-    }*/
 }

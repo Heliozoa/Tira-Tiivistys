@@ -120,10 +120,11 @@ public class Tavujono {
     public byte[] taulukoksi(){
         byte[] taulukko = new byte[koko()];
         int indeksi = alku;
+        if(indeksi == tavut.length) indeksi = 0;
         for(int i = 0; i < taulukko.length; i++){
             taulukko[i] = tavut[indeksi];
             indeksi++;
-            if(indeksi == taulukko.length){
+            if(indeksi == tavut.length){
                 indeksi = 0;
             }
         }
