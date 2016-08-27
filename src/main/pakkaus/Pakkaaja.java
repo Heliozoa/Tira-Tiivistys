@@ -41,7 +41,7 @@ public class Pakkaaja {
     public void pakkaa() throws IOException{
         Tavujono tavut = new Tavujono();
         koodaaJonoon(tavut);
-        Tiedostokasittelija.kirjoita(tavut.taulukoksi(), t.polku()+".tt");
+        Tiedostokasittelija.kirjoita(tavut, t.polku()+".tt");
     }
     
     /**
@@ -79,7 +79,7 @@ public class Pakkaaja {
     }
     
     /*
-     *  Lukee tavun Tiedostosta t.
+     *  Lukee seuraavan tavun Tiedostosta t.
      */
     private byte lue() throws IOException{
         return (byte) t.lue();

@@ -30,16 +30,17 @@ public class Sanakirja {
     
     /**
      *  Lisää tavu sanakirjaan jonon perään.
+     *
+     *  @params tavujono    Tavujono, jonka perään halutaan lisätä tavu. Oletus on, että tavujono löytyy jo sanakirjasta
      */
     public void lisaa(Tavujono tavujono, byte vika){
-        if(koodi == raja){
-            return;
+        if(koodi <= raja){
+            Tavusolmu solmu = haeViimeinenSolmu(tavujono);
+            Tavusolmu uusi = new Tavusolmu(vika, koodi, solmu);
+            solmu.lisaaSolmu(uusi);
+            koodit.lisaa(uusi);
+            koodi++;
         }
-        Tavusolmu solmu = haeViimeinenSolmu(tavujono);
-        Tavusolmu uusi = new Tavusolmu(vika, koodi, solmu);
-        solmu.lisaaSolmu(uusi);
-        koodit.lisaa(uusi);
-        koodi++;
     }
     
     /**

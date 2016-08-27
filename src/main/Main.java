@@ -11,6 +11,9 @@ import java.io.IOException;
 public class Main {
     static String alku;
     
+    /**
+     *  Pakkaa ja avaa tiedoston ja ajastaa algoritmin.
+     */
     public static void main(String[] args){
         //testi();
         

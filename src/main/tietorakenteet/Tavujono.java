@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.lang.IndexOutOfBoundsException;
 
 /**
- *  Järjestyksessä oleva tavujono, josta voi pyytää ensimmäisen tavun.
+ *  Järjestyksessä oleva tavujono, josta voi pyytää ensimmäisen tai viimeisen tavun.
  *  Sisäisesti tavut ovat taulukossa, jonka kokoa muutetaan tarvittaessa, ja jossa alku- ja loppu-osoittimet merkitsevät välin, jolla on jonoon kuuluvat alkiot.
  *  Alku ja loppu voivat kiertää taulukon ympäri jolloin useat lisäykset ja poistot eivät turhaan kasvata taulukkoa.
  */
@@ -37,7 +37,7 @@ public class Tavujono {
     }
     
     /**
-     *  Lisää kokonaisluvun kaksi ensimmäistä tavua jonoon.
+     *  Lisää kokonaisluvun kaksi vähäisintä tavua jonoon.
      */
     public void lisaaInt(int i){
         lisaa((byte) ((i >> 8) & 0xFF));
@@ -69,6 +69,9 @@ public class Tavujono {
     
     /**
      *  Poistaa tavun lopusta.
+     *
+     *  @see    
+     *  @return poistettu alkio
      */
     public byte poistaLopusta(){
         if(tyhja()){

@@ -31,18 +31,20 @@ public class Avaaja {
     
     
     /**
-     *  Avaa koodatun tiedoston muodostamalla sanakirjan samalla tavalla kuin koodatessa.
+     *  Avaa koodatun tiedoston muodostamalla sanakirjan samalla tavalla kuin koodatessa. Kirjoittaa tavut tiedostoon.
      */
     public void avaa() throws IOException{
         Tavujono tavut = new Tavujono();
         lueTavutJonoon(tavut);
-        Tiedostokasittelija.kirjoita(tavut.taulukoksi(), t.polku()+"t");
+        Tiedostokasittelija.kirjoita(tavut, t.polku()+"t");
     }
     
     /**
-     *  Lukee kaikki koodit tiedostosta ja lisää ne tavujonoon.
+     *  Lukee kaikki koodit tiedostosta, muuttaa ne oikeiksi tavujonoiksi ja lisää ne tavut-jonoon.
+     *
+     *  @param  tavut   jono, johon tavut lisätään
      */
-    private void lueTavutJonoon(Tavujono tavujono) throws IOException{
+    private void lueTavutJonoon(Tavujono tavut) throws IOException{
         Tavujono jono = new Tavujono();
         jono.lisaa(lue());
         byte seuraava;
@@ -54,16 +56,23 @@ public class Avaaja {
             }else{
                 sk.lisaa(jono, seuraava);
                 while(!jono.tyhja()){
-                    tavujono.lisaa(jono.poista());
+                    tavut.lisaa(jono.poista());
                 }
                 jono.lisaa(seuraava);
             }
         }
         while(!jono.tyhja()){
-            tavujono.lisaa(jono.poista());
+            tavut.lisaa(jono.poista());
         }
     }
     
+    /**
+     *  Lukee tiedostosta yhden tavun.
+     *  Pakatut tiedostot ovat kahden tavun pituisia koodeja, joista jokainen vastaa jotakin tavujonoa.
+     *  Jos puskurista löytyy jotain, voidaan suoraan poistaa sieltä yksi tavu.
+     *  Muuten luetaan kaksi tavua itse tiedostosta ja yhdistetään ne koodiksi jota vastaava tavujono haetaan sanakirjaksi. Tämä tavujono tallennetaan sitten puskuriin.
+     *  Jos koodia vastaavaa tavujonoa ei löydy, tällöin on kyseessä erityistapaus jossa sama tavu toistuu useasti. Tämän takia pidetään muistissa edellistä tavua.
+     */
     private byte lue() throws IOException{
         if(puskuri.tyhja()){
             int eka = t.lue();

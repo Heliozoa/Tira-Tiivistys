@@ -1,25 +1,45 @@
 
 package tietorakenteet;
 
+/**
+ *  Hajautustaulu koostuu taulukosta ja Tavusolmuista.
+ *  Tavusolmut hajautetaan tavun arvon perusteella taulukkoon joka kasvaa tarvittaessa. Pienentämistä ei ole toteutettu, koska kyseisessä algoritmissa taulusta ei koskaan poisteta mitään.
+ *  Yhteentörmäykset on hoidettu ylivuotolistalla.
+ *
+ *  @see    Tavusolmu
+ */
 public class Hajautustaulu {
-    int koko;
     int alkioita;
     Tavusolmu[] taulukko;
     
+    /**
+     *  Taulukon koko on aluksi 16.
+     */
     public Hajautustaulu() {
-        koko = 16;
         alkioita = 0;
-        taulukko = new Tavusolmu[koko];
+        taulukko = new Tavusolmu[16];
     }
     
+    /**
+     *  Luo parametreista tavusolmun ja lisää sen tauluun.
+     *
+     *  @see    lisaa(Tavusolmu)
+     */
     public void lisaa(byte b, int koodi){
         Tavusolmu uusi = new Tavusolmu(b, koodi);
         lisaa(uusi);
     }
     
+    /**
+     *  Lisää tavusolmun tauluun. Kasvattaa taulukkoa tarvittaessa ja uudelleenhajauttaa alkiot.
+     *  Jos huomataan yhteentörmäys, lisätään tavusolmu ylivuotolistaan
+     *  
+     *  @see uudelleenHajauta(int)
+     *  @see Tavusolmu#lisaaYlivuotoon(Tavusolmu)
+     */
     public void lisaa(Tavusolmu solmu){
-        if(alkioita > koko * 2){
-            uudelleenHajauta(koko * 2);
+        if(alkioita > taulukko.length * 2){
+            uudelleenHajauta(taulukko.length * 2);
         }
         
         int hash = hash(solmu);
@@ -32,10 +52,12 @@ public class Hajautustaulu {
         alkioita++;
     }
     
+    /**
+     *  Uudelleenhajauttaa taulukon alkiot ja niiden ylivuotolistat halutun kokoiseen taulukkoon.
+     */
     public void uudelleenHajauta(int uusiKoko){
-        koko = uusiKoko;
         Tavusolmu[] temp = taulukko;
-        taulukko = new Tavusolmu[koko];
+        taulukko = new Tavusolmu[uusiKoko];
         for(int i = 0; i < temp.length; i++){
             if(temp[i] != null){
                 Tavusolmu ylivuoto = temp[i].ylivuoto();
@@ -51,10 +73,20 @@ public class Hajautustaulu {
         }
     }
     
+    /**
+     *  Luo uuden tavusolmun ja hakee sen taulusta.
+     *
+     *  @see hae(Tavusolmu)
+     */
     public Tavusolmu hae(byte b){
         return hae(new Tavusolmu(b));
     }
     
+    /**
+     *  Hakee taulusta haettavaa vastaavan tavusolmun, jolla on sama arvo.
+     *
+     *  @return Taulussa oleva vastaava tavusolmu. Null jos sellaista ei löydy
+     */
     public Tavusolmu hae(Tavusolmu haettava){
         int hash = hash(haettava);
         Tavusolmu solmu = taulukko[hash];
@@ -66,7 +98,10 @@ public class Hajautustaulu {
         return null;
     }
     
+    /**
+     *  Hajautusarvo solmulle
+     */
     public int hash(Tavusolmu solmu){
-        return solmu.hashCode() % koko;
+        return solmu.hashCode() % taulukko.length;
     }
 }

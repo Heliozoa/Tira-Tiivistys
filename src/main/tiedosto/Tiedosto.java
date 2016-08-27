@@ -12,10 +12,11 @@ import java.io.FileNotFoundException;
 public class Tiedosto {
     private FileInputStream tiedosto;
     private String polku;
+    
     private int kohta;
     
     /**
-     *  @param polku    Polku, jossa tiedosto on.
+     *  @param polku    Polku, jossa käsiteltävä tiedosto on.
      */
     public Tiedosto(String polku) throws IOException{
         this.polku = polku;
@@ -29,11 +30,13 @@ public class Tiedosto {
     }
     
     /**
-     *  Lukee tiedostosta yhden tavun.
+     *  Lukee tiedostosta seuraavan tavun.
      */
     public int lue() throws IOException {
         int tavu = tiedosto.read();
+        
         kohta++;
+        
         return tavu;
     }
     
@@ -61,7 +64,7 @@ public class Tiedosto {
     }
     
     /**
-     *  Tulostaa tiedoston 2 tavua kerrallaan.
+     *  Tulostaa tiedoston kaksi tavua kerrallaan.
      */
     public void dump2() throws IOException {
         while(!loppu()){
@@ -75,6 +78,9 @@ public class Tiedosto {
         return polku;
     }
     
+    /**
+     *  Vain testejä varten
+     */
     public int kohta(){
         return kohta;
     }
