@@ -3,16 +3,13 @@ package pakkaus;
 
 import tietorakenteet.Tavujono;
 import tietorakenteet.Sanakirja;
-import pakkaus.PakkausSanakirja;
 import tiedosto.Tiedosto;
 import tiedosto.Tiedostokasittelija;
-import util.Muotoilu;
-import util.Tavukasittelija;
 
 import java.io.IOException;
 
 /**
- *  Hoitaa tiedon pakkaamisen. Vastaanottaa Tiedosto- ja PakkausSanakirja-luokkien oliot joiden avulla pakkaus hoidetaan.
+ *  Hoitaa tiedon pakkaamisen. Vastaanottaa Tiedosto- ja Sanakirja-luokkien oliot joiden avulla pakkaus hoidetaan.
  *  
  *  Toimintaperiaate lyhyesti:
  *      Algoritmilla on aluksi sanakirja joka sisältää kaikki mahdolliset 256 tavua.
@@ -27,17 +24,15 @@ import java.io.IOException;
  */
 public class Pakkaaja {
     private Tiedosto t;
-    private PakkausSanakirja s;
     private Sanakirja sk;
     
     /**
      *  @params tiedosto    Tiedostosta saadaan tieto joka halutaan pakata.
      *  @params sanakirja   Sanakirja jota käytetään tiedon koodaamiseen.
      */
-    public Pakkaaja(Tiedosto tiedosto, PakkausSanakirja sanakirja) {
+    public Pakkaaja(Tiedosto tiedosto, Sanakirja sanakirja) {
         t = tiedosto;
-        s = sanakirja;
-        sk = new Sanakirja();
+        sk = sanakirja;
     }
     
     /**
@@ -57,9 +52,11 @@ public class Pakkaaja {
     private void koodaaJonoon(Tavujono tavut) throws IOException{
         Tavujono jono = new Tavujono();
         jono.lisaa(lue());
+        byte seuraava;
+        
         boolean edellinenLoytyySanakirjasta = false;
         while(!t.loppu()){
-            byte seuraava = lue();
+            seuraava = lue();
             if(sk.sisaltaa(jono, seuraava)){
                 jono.lisaa(seuraava);
                 edellinenLoytyySanakirjasta = false;

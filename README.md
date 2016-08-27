@@ -9,7 +9,6 @@ Testit: ant test
 
 ####Tunnetut ongelmat
 Pakkaajan bugi aiheuttaa ongelmia pitkään toistuvissa saman tavun jonoissa. Normaalissa tekstissä tämä ei aiheuta ongelmia, mutta esim. kuvia pakatessa voi aiheuttaa.
-Oma Sanakirja-luokka toi uuden bugin, mutta pakkaus toimii kuitenkin "suunnilleen" oikein.
 
 ####Dokumentaatio
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)  

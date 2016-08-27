@@ -9,7 +9,7 @@ import java.io.IOException;
 import avaus.Avaaja;
 import avaus.AvausSanakirja;
 import pakkaus.Pakkaaja;
-import pakkaus.PakkausSanakirja;
+import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
 
 public class MainTest {
@@ -21,11 +21,11 @@ public class MainTest {
    */
   @Test
   public void pakkausJaAvausToimii() throws IOException{
-    PakkausSanakirja ps = new PakkausSanakirja();
+    Sanakirja sk = new Sanakirja();
     AvausSanakirja as = new AvausSanakirja();
   
     Tiedosto t1 = new Tiedosto("./etc/"+tiedostonimi);
-    Pakkaaja p = new Pakkaaja(t1, ps);
+    Pakkaaja p = new Pakkaaja(t1, sk);
     p.pakkaa();
     
     Tiedosto t2 = new Tiedosto("./etc/"+tiedostonimi+".tt");

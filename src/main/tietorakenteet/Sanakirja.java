@@ -9,14 +9,16 @@ public class Sanakirja {
     private Hajautustaulu sanasto;
     private Taulukko<Tavusolmu> koodit;
     int koodi;
+    int raja;
     
     /**
-     *  Alustaa sanakirjan ensimmäiset 255 paria.
+     *  Alustaa sanakirjan ensimmäiset 255 paria. Raja on suurin luku, mitä kahteen tavuun voi koodata. Koska koodaus tapahtuu kahteen tavuun, rajan ylitys aiheuttaa ylivuodon ja sotkee asioita.
      */
     public Sanakirja(){
         sanasto = new Hajautustaulu();
         koodit = new Taulukko<>();
         koodi = 0;
+        raja = 65536;
         for(int i = 0; i < 256; i++){
             byte b = (byte) i;
             Tavusolmu uusi = new Tavusolmu(b, koodi);
@@ -30,6 +32,9 @@ public class Sanakirja {
      *  Lisää tavu sanakirjaan jonon perään.
      */
     public void lisaa(Tavujono tavujono, byte vika){
+        if(koodi == raja){
+            return;
+        }
         Tavusolmu solmu = haeViimeinenSolmu(tavujono);
         Tavusolmu uusi = new Tavusolmu(vika, koodi, solmu);
         solmu.lisaaSolmu(uusi);

@@ -1,11 +1,10 @@
 
 package main;
 
+import tietorakenteet.Sanakirja;
 import pakkaus.Pakkaaja;
-import pakkaus.PakkausSanakirja;
 import avaus.Avaaja;
 import avaus.AvausSanakirja;
-import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
 import java.io.IOException;
 
@@ -40,8 +39,8 @@ public class Main {
     public static void pakkaus() throws IOException{
         String polku = alku;
         Tiedosto t = new Tiedosto(polku);
-        PakkausSanakirja s = new PakkausSanakirja();
-        Pakkaaja p = new Pakkaaja(t, s);
+        Sanakirja sk = new Sanakirja();
+        Pakkaaja p = new Pakkaaja(t, sk);
         p.pakkaa();
     }
     
