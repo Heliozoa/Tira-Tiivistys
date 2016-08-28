@@ -4,7 +4,6 @@ package pakkaus;
 import tietorakenteet.Tavujono;
 import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
-import tiedosto.Tiedostokasittelija;
 
 import java.io.IOException;
 
@@ -41,7 +40,7 @@ public class Pakkaaja {
     public void pakkaa() throws IOException{
         Tavujono tavut = new Tavujono();
         koodaaJonoon(tavut);
-        Tiedostokasittelija.kirjoita(tavut, t.polku()+".tt");
+        Tiedosto.kirjoita(tavut, t.polku()+".tt");
     }
     
     /**

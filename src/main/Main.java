@@ -20,7 +20,7 @@ public class Main {
         long aika = System.nanoTime();
         
         if(args.length == 0 || args[0].contains("$")){
-            alku = "./etc/kalevala";
+            alku = "./etc/triplakalevala";
         }else{
             alku = args[0];
         }

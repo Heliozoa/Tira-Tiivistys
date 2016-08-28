@@ -13,6 +13,9 @@ public class SanakirjaTest {
     Random random = new Random();
     int raja = 1000;
     
+    /**
+     *  Sanakirjan testaaminen vaikutti vähän hankalalta. Tämä testi varmistaa vain, ettei sen peruskäyttö aiheuta virheitä.
+     */
     @Test
     public void lisaysJaHakuToimii(){
         Sanakirja sk = new Sanakirja();

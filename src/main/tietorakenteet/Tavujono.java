@@ -203,6 +203,19 @@ public class Tavujono {
     }
     
     @Override
+    public boolean equals(Object obj){
+        if(!(obj instanceof Tavujono)) return false;
+        Tavujono jono = (Tavujono) obj;
+        byte[] tama = taulukoksi();
+        byte[] toinen = jono.taulukoksi();
+        if(tama.length != toinen.length) return false;
+        for(int i = 0; i < tama.length; i++){
+            if(tama[i] != toinen[i]) return false;
+        }
+        return true;
+    }
+    
+    @Override
     public String toString(){
         String r = "{";
         int osoitin = alku;

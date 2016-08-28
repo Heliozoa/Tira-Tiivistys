@@ -4,7 +4,6 @@ package avaus;
 import tietorakenteet.Tavujono;
 import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
-import tiedosto.Tiedostokasittelija;
 
 import java.io.IOException;
 
@@ -15,8 +14,8 @@ import java.io.IOException;
 public class Avaaja {
     private Tiedosto t;
     private Sanakirja sk;
-    private byte edellinen;
     
+    private byte edellinen;
     private Tavujono puskuri;
     
     /**
@@ -36,7 +35,7 @@ public class Avaaja {
     public void avaa() throws IOException{
         Tavujono tavut = new Tavujono();
         lueTavutJonoon(tavut);
-        Tiedostokasittelija.kirjoita(tavut, t.polku()+"t");
+        Tiedosto.kirjoita(tavut, t.polku()+"t");
     }
     
     /**

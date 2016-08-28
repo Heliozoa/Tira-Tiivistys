@@ -14,7 +14,7 @@ public class HajautustauluTest {
     int raja = 1000;
     
     /**
-     *  Lisää solmuja ja hakee ne. Testaa samalla uudelleenhajautusta.
+     *  Lisää solmuja ja hakee ne.
      */
     @Test
     public void lisaaminenJaHakuToimii(){
