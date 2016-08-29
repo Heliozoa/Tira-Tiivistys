@@ -20,7 +20,7 @@ public class Main {
         long aika = System.nanoTime();
         
         if(args.length == 0 || args[0].contains("$")){
-            alku = "./etc/testi";
+            alku = "etc/triplakalevala";
         }else{
             alku = args[0];
         }
@@ -44,6 +44,7 @@ public class Main {
         Tiedosto t = new Tiedosto(polku);
         Sanakirja sk = new Sanakirja();
         Pakkaaja p = new Pakkaaja(t, sk);
+        System.out.println(sk);
         p.pakkaa();
     }
     

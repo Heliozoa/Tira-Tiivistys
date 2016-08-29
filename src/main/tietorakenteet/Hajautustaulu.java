@@ -104,4 +104,14 @@ public class Hajautustaulu {
     public int hash(Tavusolmu solmu){
         return solmu.hashCode() % taulukko.length;
     }
+    
+    @Override
+    public String toString(){
+        String r = "{";
+        for(int i = 0; i < taulukko.length-1; i++){
+            r += taulukko[i]+",";
+        }
+        r += taulukko[taulukko.length-1]+"}";
+        return r;
+    }
 }

@@ -83,8 +83,8 @@ public class Tavujono {
             loppu = tavut.length;
         }
         
-        byte b = tavut[loppu-1];
         loppu--;
+        byte b = tavut[loppu];
         
         
         return b;

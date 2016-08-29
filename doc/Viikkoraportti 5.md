@@ -6,5 +6,6 @@ Pieni bugi korjautui helposti, sanakirjalta puuttui kahden tavun raja jota ei sa
 Sain korvattua HashMapia käyttävät sanakirjat kokonaan omalla luokalla. Omalla toteutuksella vaikuttaisi olevan pienemmät vakiokertoimet, mutta hitaampi suuremmilla syötteillä.
 Koodin ei pitäisi enää tiedostonkäsittelyn ja ajastuksen lisäksi käyttää mitään Javan valmiita luokkia tai metodeja. Ohjelman nopeuttamista, siistimistä ja bugikorjausta seuraavaksi.
 Bugi korjattu.
+Aika- ja tilavaativuuksien tarkempaan analyysiin aion hakea apua keskiviikkona.
 
 Käytetty tuntimäärä: 15

@@ -89,9 +89,14 @@ public class Sanakirja {
      *  Tarkistaa, löytyykö tavujono sanakirjasta.
      */
     public boolean sisaltaa(Tavujono tavujono, byte seuraava){
-        Tavujono jono = tavujono.clone();
-        jono.lisaa(seuraava);
-        Tavusolmu solmu = haeViimeinenSolmu(jono);
+        tavujono.lisaa(seuraava);
+        Tavusolmu solmu = haeViimeinenSolmu(tavujono);
+        tavujono.poistaLopusta();
         return solmu != null;
+    }
+    
+    @Override
+    public String toString(){
+        return sanasto.toString();
     }
 }

@@ -8,7 +8,7 @@ Pakkaaja käy tiedoston tavu kerrallaan läpi, ja avaaja pakatun tiedoston. Parh
 
 
 ###Tilavaativuus
-Tiedosto kirjoitetaan tällä hetkellä "kerralla", eli muistissa on kaikki kirjoitettavan tiedoston tavut. Siis tilavaativuus on vähintäänkin O(n) missä n on pakatessa pakatun tiedoston koko ja avatessa avatun. Sanakirjan tilavaativuus lienee monimutkaisempi juttu. Tavoitteena sille on vähintään O(n).
+Tiedosto kirjoitetaan tällä hetkellä "kerralla", eli muistissa on kaikki kirjoitettavan tiedoston tavut. Siis tilavaativuus on vähintäänkin O(n) missä n on pakatessa pakatun tiedoston koko ja avatessa avatun. Sanakirjaan talletetaan jokainen kohdattu tavujono, ja se "uudelleenkäyttää" solmuja. Esim. jonot {100,200,300}, {100,200,400}, ja {100,200,300,400} tarvitsevat 5 solmua. Pahimmassa tapauksessa tiedostossa solmuja ei päästä uudelleenkäyttämään paljoa, jolloin sanakirja kasvaa tiedoston mukana. 
 
 
 ###Puutteet
