@@ -15,7 +15,7 @@ public class Avaaja {
     private Tiedosto t;
     private Sanakirja sk;
     
-    private byte edellinen;
+    private Tavujono edellinen;
     private Tavujono puskuri;
     
     /**
@@ -25,6 +25,7 @@ public class Avaaja {
     public Avaaja (Tiedosto tiedosto, Sanakirja sanakirja){
         t = tiedosto;
         sk = sanakirja;
+        edellinen = new Tavujono();
         puskuri = new Tavujono();
     }
     
@@ -79,14 +80,19 @@ public class Avaaja {
             int toka = t.lue();
             int koodi = eka+toka;
             if(!sk.sisaltaa(koodi)){
-                puskuri.lisaa(edellinen);
-                puskuri.lisaa(edellinen);
+                byte vika = edellinen.poistaLopusta();
+                while(!edellinen.tyhja()){
+                    puskuri.lisaa(edellinen.poista());
+                }
+                puskuri.lisaa(vika);
+                puskuri.lisaa(vika);
+                edellinen = puskuri.clone();
             }else{
                 puskuri = sk.hae(koodi);
+                edellinen = puskuri.clone();
             }
         }
         byte b = puskuri.poista();
-        edellinen = b;
         return b;
     }
 }

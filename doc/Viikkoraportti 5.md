@@ -5,5 +5,6 @@ Sanakirja oli monimutkaisempi projekti. Toimii näillä näkymin pakkausessa yll
 Pieni bugi korjautui helposti, sanakirjalta puuttui kahden tavun raja jota ei saa ylittää, kun koodataan kahteen tavuun.
 Sain korvattua HashMapia käyttävät sanakirjat kokonaan omalla luokalla. Omalla toteutuksella vaikuttaisi olevan pienemmät vakiokertoimet, mutta hitaampi suuremmilla syötteillä.
 Koodin ei pitäisi enää tiedostonkäsittelyn ja ajastuksen lisäksi käyttää mitään Javan valmiita luokkia tai metodeja. Ohjelman nopeuttamista, siistimistä ja bugikorjausta seuraavaksi.
+Bugi korjattu.
 
-Käytetty tuntimäärä: 12
+Käytetty tuntimäärä: 15

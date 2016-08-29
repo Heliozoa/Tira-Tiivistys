@@ -8,7 +8,6 @@ Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku
 Testit: ant test
 
 ####Tunnetut ongelmat
-Pakkaajan bugi aiheuttaa ongelmia pitkään toistuvissa saman tavun jonoissa. Normaalissa tekstissä tämä ei aiheuta ongelmia, mutta esim. kuvia pakatessa voi aiheuttaa.
 
 ####Dokumentaatio
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)  

@@ -11,9 +11,9 @@ import java.lang.IndexOutOfBoundsException;
  */
 public class Tavujono {
     
-    private byte[] tavut;
-    private int alku;
-    private int loppu;
+    byte[] tavut;
+    int alku;
+    int loppu;
     private final int alkukoko = 16;
     
     public Tavujono() {
@@ -219,13 +219,15 @@ public class Tavujono {
     public String toString(){
         String r = "{";
         int osoitin = alku;
-        for(int i = 0; i <  1; i++){
+        for(int i = 0; i <  koko()-1; i++){
             r += tavut[osoitin];
             r += ",";
             osoitin++;
             if(osoitin == tavut.length) osoitin = 0;
         }
-        r += tavut[osoitin];
+        if(!tyhja()){
+            r += tavut[osoitin];
+        }
         r += "}";
         return r;
     }

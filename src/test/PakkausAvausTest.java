@@ -14,7 +14,7 @@ import pakkaus.Pakkaaja;
 
 public class PakkausAvausTest {
     
-    String polku = "etc/kalevala";
+    String polku = "etc/testi";
   
   /**
    *  Testaa onko avattu tiedosto tasan sama kuin alkuperäinen.
