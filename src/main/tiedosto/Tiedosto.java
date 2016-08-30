@@ -16,8 +16,6 @@ public class Tiedosto {
     private FileInputStream tiedosto;
     private String polku;
     
-    private int kohta;
-    
     /**
      *  @param polku    Polku, jossa käsiteltävä tiedosto on.
      */
@@ -28,19 +26,13 @@ public class Tiedosto {
             throw new FileNotFoundException("Lukukelpoista tiedostoa ei löytynyt kohteesta "+polku);
         }
         tiedosto = new FileInputStream(t);
-        
-        kohta = 0;
     }
     
     /**
      *  Lukee tiedostosta seuraavan tavun.
      */
     public int lue() throws IOException {
-        int tavu = tiedosto.read();
-        
-        kohta++;
-        
-        return tavu;
+        return tiedosto.read();
     }
     
     /**
@@ -82,21 +74,17 @@ public class Tiedosto {
     }
     
     /**
-     *  Vain testejä varten
-     */
-    public int kohta(){
-        return kohta;
-    }
-    
-    /**
      *  Kirjoittaa Tavujonossa olevat tavut tiedostoon.
      *
      *  @params jono    Tavujono, jossa olevat tavut kirjoitetaan
      *  @params polku   Tiedostopolku, jonne tavut kirjoitetaan
      */
     public static void kirjoita(Tavujono jono, String polku) throws IOException{
+        kirjoita(jono.taulukoksi(), polku);
+    }
+    
+    public static void kirjoita(byte[] tavut, String polku) throws IOException{
         FileOutputStream fos = new FileOutputStream(polku);
-        byte[] tavut = jono.taulukoksi();
         try {
             fos.write(tavut);
         } finally {

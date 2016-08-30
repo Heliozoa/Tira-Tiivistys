@@ -1,5 +1,5 @@
 
-package avaus;
+package lzw;
 
 import tietorakenteet.Tavujono;
 import tietorakenteet.Sanakirja;
@@ -34,6 +34,7 @@ public class Avaaja {
      *  Avaa koodatun tiedoston muodostamalla sanakirjan samalla tavalla kuin koodatessa. Kirjoittaa tavut tiedostoon.
      */
     public void avaa() throws IOException{
+        if(t.loppu()) return;
         Tavujono tavut = new Tavujono();
         lueTavutJonoon(tavut);
         Tiedosto.kirjoita(tavut, t.polku()+"t");
@@ -62,7 +63,8 @@ public class Avaaja {
             }
         }
         while(!jono.tyhja()){
-            tavut.lisaa(jono.poista());
+            byte b = jono.poista();
+            tavut.lisaa(b);
         }
     }
     
@@ -72,6 +74,8 @@ public class Avaaja {
      *  Jos puskurista löytyy jotain, voidaan suoraan poistaa sieltä yksi tavu.
      *  Muuten luetaan kaksi tavua itse tiedostosta ja yhdistetään ne koodiksi jota vastaava tavujono haetaan sanakirjaksi. Tämä tavujono tallennetaan sitten puskuriin.
      *  Jos koodia vastaavaa tavujonoa ei löydy, tällöin on kyseessä erityistapaus jossa sama tavu toistuu useasti. Tämän takia pidetään muistissa edellistä tavua.
+     *
+     *  @return Seuraava tavu, joka halutaan kirjoittaa avattuun tiedostoon.
      */
     private byte lue() throws IOException{
         if(puskuri.tyhja()){

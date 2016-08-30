@@ -185,6 +185,10 @@ public class Tavujono {
     private void vaihdaTaulukkoa(byte[] taulukko){
         int koko = koko();
         int osoitin = alku;
+        
+        if(osoitin == tavut.length){
+            osoitin = 0;
+        }
         for(int i = 0; i < koko; i++){
             taulukko[i] = tavut[osoitin];
             osoitin++;
@@ -219,6 +223,10 @@ public class Tavujono {
     public String toString(){
         String r = "{";
         int osoitin = alku;
+        
+        if(osoitin == tavut.length){
+            osoitin = 0;
+        }
         for(int i = 0; i <  koko()-1; i++){
             r += tavut[osoitin];
             r += ",";

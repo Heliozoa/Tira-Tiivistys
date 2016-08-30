@@ -1,15 +1,15 @@
 
 package main;
 
+import static vakiot.Vakiot.TIEDOSTOPOLKU;
 import tietorakenteet.Sanakirja;
-import pakkaus.Pakkaaja;
-import avaus.Avaaja;
-import avaus.AvausSanakirja;
+import lzw.Pakkaaja;
+import lzw.Avaaja;
 import tiedosto.Tiedosto;
 import java.io.IOException;
 
 public class Main {
-    static String alku;
+    static String polku;
     
     /**
      *  Pakkaa ja avaa tiedoston ja ajastaa algoritmin.
@@ -20,9 +20,9 @@ public class Main {
         long aika = System.nanoTime();
         
         if(args.length == 0 || args[0].contains("$")){
-            alku = "etc/triplakalevala";
+            polku = TIEDOSTOPOLKU;
         }else{
-            alku = args[0];
+            polku = args[0];
         }
         try {
             pakkaus();
@@ -40,11 +40,9 @@ public class Main {
      *  Pakkaa tiedoston.
      */
     public static void pakkaus() throws IOException{
-        String polku = alku;
         Tiedosto t = new Tiedosto(polku);
         Sanakirja sk = new Sanakirja();
         Pakkaaja p = new Pakkaaja(t, sk);
-        System.out.println(sk);
         p.pakkaa();
     }
     
@@ -52,8 +50,8 @@ public class Main {
      *  Avaa tiedoston.
      */
     public static void avaus() throws IOException{
-        String polku = alku+".tt";
-        Tiedosto t = new Tiedosto(polku);
+        String pakattu = polku+".tt";
+        Tiedosto t = new Tiedosto(pakattu);
         Sanakirja sk = new Sanakirja();
         Avaaja a = new Avaaja(t, sk);
         a.avaa();
@@ -63,11 +61,11 @@ public class Main {
      *  Testaamista varten.
      */
     public static void testi(){
-        byte b = (byte) 100;
-        int i = b + b;
-        b += b;
-        System.out.println(i);
+        int i = -1;
+        byte b = (byte) ((i >> 8) & 0xFF);
+        byte y = (byte) (i & 0xFF);
         System.out.println(b);
+        System.out.println(y);
         System.exit(0);
     }
     

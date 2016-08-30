@@ -1,5 +1,5 @@
 
-package pakkaus;
+package lzw;
 
 import tietorakenteet.Tavujono;
 import tietorakenteet.Sanakirja;
@@ -38,6 +38,7 @@ public class Pakkaaja {
      *  Koodaa Tiedoston t sisällön byte-tyypin taulukkoon, jonka se antaa tiedostolle kirjoitettavaksi muistiin.
      */
     public void pakkaa() throws IOException{
+        if(t.loppu()) return;
         Tavujono tavut = new Tavujono();
         koodaaJonoon(tavut);
         Tiedosto.kirjoita(tavut, t.polku()+".tt");
@@ -72,8 +73,10 @@ public class Pakkaaja {
             tavut.lisaaInt(sk.hae(jono));
         } else {
             byte vika = jono.poistaLopusta();
+            Tavujono temp = new Tavujono();
+            temp.lisaa(vika);
             tavut.lisaaInt(sk.hae(jono));
-            tavut.lisaaInt(vika);
+            tavut.lisaaInt(sk.hae(temp));
         }
     }
     
