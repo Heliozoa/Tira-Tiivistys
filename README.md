@@ -8,7 +8,7 @@ Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku
 Testit: ant test
 
 ####Tunnetut ongelmat
-Algoritmissa on bugi joka ilmenee <10% mahdollisuudella testatessa tiedostolla, joka on täytetty satunnaisilla tavuilla. Osa Rikoksesta ja rangaistuksesta aiheuttaa samanlaisen ongelman, ja kyseinen osa on tallennettu polkuun etc/rjr
+Ei tunnettuja ongelmia.
 
 ####Dokumentaatio
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)  

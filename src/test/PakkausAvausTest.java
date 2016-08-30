@@ -36,7 +36,7 @@ public class PakkausAvausTest {
   /**
    *  Testaa onko avattu tiedosto tasan sama kuin alkuperäinen.
    */
-  //@Test
+  @Test
   public void pakkausJaAvausToimii() throws IOException{
     Sanakirja sk = new Sanakirja();
   
@@ -80,9 +80,9 @@ public class PakkausAvausTest {
             while(true){
                 boolean pakkausSisaltaa = psk.sisaltaa(i);
                 boolean avausSisaltaa = ask.sisaltaa(i);
-                assertEquals("Toinen sanakirja sisältää koodin "+i+" mitä ei löydy toisesta", pakkausSisaltaa, avausSisaltaa);
                 
                 if(pakkausSisaltaa){
+                    assertEquals("Toinen sanakirja sisältää koodin "+i+" mitä ei löydy toisesta. Pakkaus: "+psk.hae(i)+", Avaus: "+ask.hae(i), pakkausSisaltaa, avausSisaltaa);
                     k = psk.hae(i);
                     assertEquals("Koodin "+i+" takaa löytyvät tavujonot olivat eri", k, ask.hae(i));
                     i++;

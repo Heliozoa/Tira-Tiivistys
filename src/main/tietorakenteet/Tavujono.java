@@ -90,6 +90,14 @@ public class Tavujono {
         return b;
     }
     
+    public byte eka(){
+        if(alku == tavut.length){
+            alku = 0;
+        }
+        
+        return tavut[alku];
+    }
+    
     /**
      *  Laskee jonon koon.
      */
