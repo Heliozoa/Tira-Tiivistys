@@ -8,7 +8,7 @@ Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku
 Testit: ant test
 
 ####Tunnetut ongelmat
-45MB raakavideotiedosto ei läpäise testejä.
+Ei tunnettuja ongelmia.
 
 ####Dokumentaatio
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)  
