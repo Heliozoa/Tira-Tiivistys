@@ -8,7 +8,7 @@ Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku
 Testit: ant test
 
 ####Tunnetut ongelmat
-Ei tunnettuja ongelmia.
+45MB raakavideotiedosto ei läpäise testejä.
 
 ####Dokumentaatio
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)  
@@ -21,3 +21,4 @@ Ei tunnettuja ongelmia.
 [Viikkoraportti 3](doc/Viikkoraportti 3.md)  
 [Viikkoraportti 4](doc/Viikkoraportti 4.md)  
 [Viikkoraportti 5](doc/Viikkoraportti 5.md)  
+[Viikkoraportti 6](doc/Viikkoraportti 6.md)  

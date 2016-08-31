@@ -18,7 +18,7 @@ public class Sanakirja {
         sanasto = new Hajautustaulu();
         koodit = new Taulukko<>();
         koodi = 0;
-        raja = 65536;
+        raja = 65535;
         for(int i = 0; i < 256; i++){
             byte b = (byte) i;
             Tavusolmu uusi = new Tavusolmu(b, koodi);
@@ -83,6 +83,10 @@ public class Sanakirja {
      */
     public boolean sisaltaa(int koodi){
         return koodit.hae(koodi) != null;
+    }
+    
+    public boolean taynna(){
+        return koodi == raja;
     }
     
     /**

@@ -10,30 +10,42 @@ import java.io.IOException;
 
 public class Main {
     static String polku;
+    //Ohjelma suoritetaan näin monta kertaa ja suoritusajoista lasketaan keskiarvo.
+    static int suorituskertoja = 10;
     
     /**
      *  Pakkaa ja avaa tiedoston ja ajastaa algoritmin.
      */
     public static void main(String[] args){
         //testi();
-        
-        long aika = System.nanoTime();
-        
-        if(args.length == 0 || args[0].contains("$")){
-            polku = TIEDOSTOPOLKU;
-        }else{
-            polku = args[0];
+        long pakkausAika = 0;
+        long avausAika = 0;
+        for(int i = 1; i <= suorituskertoja; i++){
+            System.out.println("Suorituskerta "+i);
+            long aika = System.nanoTime();
+            
+            if(args.length == 0 || args[0].contains("$")){
+                polku = TIEDOSTOPOLKU;
+            }else{
+                polku = args[0];
+            }
+            try {
+                pakkaus();
+                pakkausAika += System.nanoTime() - aika;
+                aika = System.nanoTime();
+                avaus();
+                avausAika += System.nanoTime() - aika;
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
-        try {
-            pakkaus();
-            System.out.println("Pakkaus: "+ ((System.nanoTime() - aika) / 1000000) +"ms");
-            long valiaika = System.nanoTime();
-            avaus();
-            System.out.println("Avaus: "+ ((System.nanoTime() - valiaika) / 1000000) +"ms");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        System.out.println("Yhteensä: "+ ((System.nanoTime() - aika) / 1000000) +"ms");
+        pakkausAika /= 1000000 * suorituskertoja;
+        avausAika /= 1000000 * suorituskertoja;
+        
+        System.out.println("Suorituskertoja: "+suorituskertoja+"\n"
+                            +"Pakkaus: "+pakkausAika+"ms\n"
+                            +"Avaus: "+avausAika+"ms\n"
+                            +"Yhteensä: "+(pakkausAika+avausAika)+"ms");
     }
     
     /**
