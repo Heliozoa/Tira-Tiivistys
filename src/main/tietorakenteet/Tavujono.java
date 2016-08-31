@@ -11,9 +11,9 @@ import java.lang.IndexOutOfBoundsException;
  */
 public class Tavujono {
     
-    byte[] tavut;
-    int alku;
-    int loppu;
+    private byte[] tavut;
+    private int alku;
+    private int loppu;
     private final int alkukoko = 16;
     
     public Tavujono() {
@@ -123,6 +123,13 @@ public class Tavujono {
         tavut = new byte[alkukoko];
         alku = 0;
         loppu = 0;
+    }
+    
+    /**
+     * Tyhjentää tämän jonon parametrina annettuun jonoon.
+     */
+    public void tyhjennaJonoon(Tavujono jono){
+        while(!tyhja()) jono.lisaa(poista());
     }
     
     /**

@@ -8,8 +8,8 @@ public class Sanakirja {
     
     private Hajautustaulu sanasto;
     private Taulukko<Tavusolmu> koodit;
-    int koodi;
-    int raja;
+    private int koodi;
+    private int raja;
     
     /**
      *  Alustaa sanakirjan ensimmäiset 255 paria. Raja on suurin luku, mitä kahteen tavuun voi koodata. Koska koodaus tapahtuu kahteen tavuun, rajan ylitys aiheuttaa ylivuodon ja sotkee asioita.

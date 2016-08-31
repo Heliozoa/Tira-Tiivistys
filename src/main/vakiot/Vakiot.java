@@ -6,4 +6,8 @@ public class Vakiot {
     public static final String TIEDOSTOPOLKU = "etc/poe";
     //Generoidaanko testeissä random tiedosto.
     public static final boolean GENEROI_RANDOM_TIEDOSTO = false;
+    //Ajetaanko ajastustestit.
+    public static final boolean AJASTA_ALGORITMIT = true;
+    //Monenko suorituskerran keskiarvot halutaan laskea, jos ajastustestit ajetaan.
+    public static final int AJASTUS_SUORITUSKERRAT = 10;
 }

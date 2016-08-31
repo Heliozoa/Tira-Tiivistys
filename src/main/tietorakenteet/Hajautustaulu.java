@@ -9,8 +9,8 @@ package tietorakenteet;
  *  @see    Tavusolmu
  */
 public class Hajautustaulu {
-    int alkioita;
-    Tavusolmu[] taulukko;
+    private int alkioita;
+    private Tavusolmu[] taulukko;
     
     /**
      *  Taulukon koko on aluksi 16.

@@ -1,6 +1,7 @@
 #Viikkoraportti 6
 Satunnaisia tavuja sisältävää tiedostoa pakatessa ilmeni bugi joka esiintyi ~10% syötteistä. Sain korjattua tarkastelemalla uudestaan avaus-algoritmin toteutusta.
 Tein pieniä muutoksia koodikatselmoinnin ehdotusten mukaisesti.
-Sanakirjan raja oli 1 liian suuri joka aiheutti nulleja avatuissa tiedostoissa.
+Sanakirjan raja oli 1 liian suuri joka aiheutti nulleja avatuissa tiedostoissa, pitkään säilynyt bugi joka aiheutti ongelmia pitkillä syötteillä korjautuikin helposti.
+Kävin ohjauksessa.
 
-Käytetty tuntimäärä: 4
+Käytetty tuntimäärä: 6
