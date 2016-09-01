@@ -1,11 +1,11 @@
 
 package lzw;
 
-import tietorakenteet.Tavujono;
-import tietorakenteet.Sanakirja;
-import tiedosto.Tiedosto;
-
 import java.io.IOException;
+
+import tiedosto.Tiedosto;
+import tietorakenteet.Sanakirja;
+import tietorakenteet.Tavujono;
 
 /**
  *  Hoitaa tiedon pakkaamisen. Vastaanottaa Tiedosto- ja Sanakirja-luokkien oliot joiden avulla pakkaus hoidetaan.
@@ -38,10 +38,14 @@ public class Pakkaaja {
      *  Koodaa Tiedoston t sisällön byte-tyypin taulukkoon, jonka se antaa tiedostolle kirjoitettavaksi muistiin.
      */
     public void pakkaa() throws IOException{
-        if(t.loppu()) return;
-        Tavujono tavut = new Tavujono();
-        koodaaJonoon(tavut);
-        Tiedosto.kirjoita(tavut, t.polku()+".tt");
+        try{
+            if(t.loppu()) return;
+            Tavujono tavut = new Tavujono();
+            koodaaJonoon(tavut);
+            Tiedosto.kirjoita(tavut, t.polku()+".tt");
+        } finally {
+            t.sulje();
+        }
     }
     
     /**

@@ -6,8 +6,8 @@ package tietorakenteet;
  */
 public class Taulukko<T> {
     
-    T[] taulukko;
-    int indeksi;
+    private T[] taulukko;
+    private int indeksi;
     
     /**
      *  Java ei tykkää luoda geneerisiä taulukoita, joten joudutaan käyttämään mystistä (T[])new Object[koko] pätkää.

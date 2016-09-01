@@ -49,26 +49,6 @@ public class Tiedosto {
         tiedosto.close();
     }
     
-    /**
-     *  Tulostaa tiedoston tavu kerrallaan.
-     */
-    public void dump() throws IOException {
-        while(!loppu()){
-            System.out.println(lue());
-        }
-    }
-    
-    /**
-     *  Tulostaa tiedoston kaksi tavua kerrallaan.
-     */
-    public void dump2() throws IOException {
-        while(!loppu()){
-            int eka = lue();
-            eka *= 256;
-            System.out.println(eka+lue());
-        }
-    }
-    
     public String polku(){
         return polku;
     }

@@ -17,7 +17,7 @@ Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman 
 |Kalevala¹|658,369 tavua|256,258 tavua|~39%|404ms|128ms|532ms|
 |Shakespeare²|5,589,889 tavua|2,270,626 tavua|~41%|3296ms|1039ms|4335ms|
 |Raakavideo³|11,406,644 tavua|6,501,418 tavua|~57%|6408ms|2691ms|9099ms|
-|Raakakuva?⁴|12,934,656|16,040,422 tavua|~124%|7286ms|6242ms|13528ms|
+|Raakakuva⁴|12,934,656 tavua|16,040,422 tavua|~124%|7286ms|6242ms|13528ms|
 |Poe⁵|7,298|5,258|~72%|6ms|4ms|10ms|
 
 ¹ http://www.gutenberg.org/cache/epub/7000/pg7000.txt  
