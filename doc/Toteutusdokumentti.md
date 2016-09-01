@@ -3,8 +3,34 @@ Ohjelman voi jakaa kolmeen osaan: pakkaus, avaus, ja sanakirja. Pakkaus ja avaus
 
 ###Aikavaativuus
 
-#####Lyhyt analyysi
-Pakkaaja käy tiedoston tavu kerrallaan läpi, ja avaaja pakatun tiedoston. Parhaimmillaan puhutaan siis aikavaativuudesta O(n) missä n on käsiteltävän tiedoston koko. Tavoitteena on  saada ohjelman muut osat nopeiksi jotta koko ohjelman aikavaativuudeksi tulisi O(n).
+#####Pakkaus
+Pakkaaja käy tiedoston tavu kerrallaan läpi. Tavuille suoritetaan operaatioita, jotka ovat enintään luokkaa O(n) missä n on pakattavan tiedoston koko. Pseudokooditasolla:
+
+```
+jono = uusi Tavujono
+lue tavu jonoon //O(1)
+while(tiedosto ei ole loppu)    //O(n) pakattavan tiedoston kokoon nähden.
+    lue tavu //O(1)
+    if(sanakirja sisältää jonon+tavun)  //O(n), sanakirjassa on tavuja enintään tiedoston koon verran.
+                                        //Hajautuksen ansiosta käytännössä haku on paljon nopeampi.
+        lisää tavu jonoon   //O(1)
+    else
+        koodi = hae sanakirjalta jonon koodi    //O(n) jonon pituuden suhteen. Jono on pisimmilläänkin pienempi kuin tiedosto itse, käytännössä aina huomattavasti pienempi.
+                                                //Sanakirja käy läpi yhtäaikaisesti jonoa ja omaa hajautustauluaan ja palauttaa jonon viimeistä tavua vastaavan solmun koodin.
+        lisää tavuihin koodi    //O(1)
+        lisää sanakirjaan jono+tavu //O(n) jonon pituuden suhteen. Sanakirja hakee samoin kuin yllä jonon viimeistä tavua vastaavan solmun ja lisää sille uutta tavua vastaavan solmun.
+        tyhjennä jono //O(1)
+        lisää tavu jonoon //(O)1
+
+jos viimeksi ennen while-loopin loppumista suoritettiin if-lauseen sisältö
+    koodi = hae sanakirjalta jonon koodi    //O(n) jonon pituuden suhteen, ks. sama yllä
+    lisää tavuihin koodi                    //O(1)
+muuten
+    tavu = poista tavu jonon lopusta    //O(1)
+    lisää tavu uuteen tavujonoon    //O(1)
+    hae sanakirjalta jonon koodi    //O(n) jonon pituuden suhteen, ks. sama yllä
+    hae sanakirjalta uuden jonon koodi  //O(1). Uusi jono sisältää vain yhden tavun, tällöin sen koodi saadaan haettua vakioajassa.
+```
 
 
 ###Tilavaativuus
