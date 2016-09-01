@@ -26,6 +26,7 @@ public class Tavujono {
      *  Lisää alkion jonon perälle.
      *
      *  @see    kasvataTarvittaessa
+     *  @param  b   Lisättävä tavu.
      */
     public void lisaa(byte b){
         kasvataTarvittaessa();
@@ -38,6 +39,8 @@ public class Tavujono {
     
     /**
      *  Lisää kokonaisluvun kaksi vähäisintä tavua jonoon.
+     *
+     *  @param  i   Kokonaisluku, jonka kaksi vähäisintä tavua lisätään jonoon.
      */
     public void lisaaInt(int i){
         lisaa((byte) ((i >> 8) & 0xFF));
@@ -70,7 +73,7 @@ public class Tavujono {
     /**
      *  Poistaa tavun lopusta.
      *
-     *  @see    
+     *  @see    kutistaTarvittaessa
      *  @return poistettu alkio
      */
     public byte poistaLopusta(){
@@ -90,6 +93,11 @@ public class Tavujono {
         return b;
     }
     
+    /**
+     *  Palauttaa jonon ensimmäisen tavun.
+     *
+     *  @return Jonon ensimmäinen tavu.
+     */
     public byte eka(){
         if(alku == tavut.length){
             alku = 0;
@@ -100,6 +108,8 @@ public class Tavujono {
     
     /**
      *  Laskee jonon koon.
+     *
+     *  @return Jonon koko.
      */
     public int koko(){
         if(loppu < alku){
@@ -111,6 +121,8 @@ public class Tavujono {
     
     /**
      *  Tarkistaa onko jono tyhjä.
+     *
+     *  @return Onko jono tyhjä.
      */
     public boolean tyhja(){
         return koko() == 0;
@@ -127,6 +139,8 @@ public class Tavujono {
     
     /**
      * Tyhjentää tämän jonon parametrina annettuun jonoon.
+     *
+     * @param   jono    Jono, johon tämä jono tyhjennetään.
      */
     public void tyhjennaJonoon(Tavujono jono){
         while(!tyhja()) jono.lisaa(poista());
@@ -134,6 +148,8 @@ public class Tavujono {
     
     /**
      *  Palauttaa jonon taulukkona.
+     *
+     *  @return  Tavujono tavutaulukkona.
      */
     public byte[] taulukoksi(){
         byte[] taulukko = new byte[koko()];
@@ -151,6 +167,8 @@ public class Tavujono {
     
     /**
      *  Palauttaa tavujonon jossa on alkiot päinvastaisessa järjestyksessä.
+     *
+     *  @return Tämä tavujono käännettynä.
      */
     public Tavujono kaanna(){
         byte[] taulukko = taulukoksi();
@@ -163,6 +181,8 @@ public class Tavujono {
     
     /**
      *  Luo kopion tavujonosta.
+     *
+     *  @return Kopio tavujonosta.
      */
     @Override
     public Tavujono clone(){
@@ -178,7 +198,6 @@ public class Tavujono {
      *  Tuplaa taulukon koon, jos se on täynnä.
      */
     private void kasvataTarvittaessa(){
-        int koko = koko();
         if(koko() == tavut.length - 1){
             vaihdaTaulukkoa(new byte[tavut.length * 2]);
         }
@@ -196,6 +215,8 @@ public class Tavujono {
     
     /**
      *  Vaihtaa taulukon uuteen. Kopioi ensin vanhan alkiot ja korjaa sitten osoittimet oikeiksi.
+     *
+     *  @param  taulukko    Taulukko, johon vaihdetaan.
      */
     private void vaihdaTaulukkoa(byte[] taulukko){
         int koko = koko();
@@ -215,7 +236,7 @@ public class Tavujono {
     }
     
     /**
-     *  Vain testejä varten
+     *  Vain testejä varten.
      */
     public int len(){
         return tavut.length;

@@ -11,8 +11,8 @@ import tietorakenteet.Tavujono;
 
 public class TavujonoTest {
     
-    final int pituusVakio = 10000;
-    byte[] tavut = new byte[pituusVakio];
+    private final int pituusVakio = 10000;
+    private byte[] tavut = new byte[pituusVakio];
     
     /**
      *  Alustaa tavut-taulukon satunnaisilla tavuilla.

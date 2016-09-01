@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class TavusolmuTest {
     
-    Random rand = new Random();
-    int raja = 1000;
+    private Random rand = new Random();
+    private int raja = 1000;
     
     /**
      *  Varmistaa, että equals-metodi toimii odotetusti.

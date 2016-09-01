@@ -24,6 +24,8 @@ public class Hajautustaulu {
      *  Luo parametreista tavusolmun ja lisää sen tauluun.
      *
      *  @see    lisaa(Tavusolmu)
+     *  @param  b   Lisättävä tavu.
+     *  @param  koodi   Lisättävä koodi.
      */
     public void lisaa(byte b, int koodi){
         Tavusolmu uusi = new Tavusolmu(b, koodi);
@@ -36,6 +38,7 @@ public class Hajautustaulu {
      *  
      *  @see uudelleenHajauta(int)
      *  @see Tavusolmu#lisaaYlivuotoon(Tavusolmu)
+     *  @param  solmu   Tavusolmu, joka lisätään.
      */
     public void lisaa(Tavusolmu solmu){
         if(alkioita > taulukko.length * 2){
@@ -54,6 +57,8 @@ public class Hajautustaulu {
     
     /**
      *  Uudelleenhajauttaa taulukon alkiot ja niiden ylivuotolistat halutun kokoiseen taulukkoon.
+     *
+     *  @param  uusiKoko    Taulukon uusi koko uudelleenhajautuksen jälkeen.
      */
     public void uudelleenHajauta(int uusiKoko){
         Tavusolmu[] temp = taulukko;
@@ -77,6 +82,7 @@ public class Hajautustaulu {
      *  Luo uuden tavusolmun ja hakee sen taulusta.
      *
      *  @see hae(Tavusolmu)
+     *  @param  b   Haettava tavu.
      */
     public Tavusolmu hae(byte b){
         return hae(new Tavusolmu(b));
@@ -85,7 +91,8 @@ public class Hajautustaulu {
     /**
      *  Hakee taulusta haettavaa vastaavan tavusolmun, jolla on sama arvo.
      *
-     *  @return Taulussa oleva vastaava tavusolmu. Null jos sellaista ei löydy
+     *  @param  haettava    Haettava tavusolmu.
+     *  @return Taulussa oleva vastaava tavusolmu. Null jos sellaista ei löydy.
      */
     public Tavusolmu hae(Tavusolmu haettava){
         int hash = hash(haettava);
@@ -100,6 +107,9 @@ public class Hajautustaulu {
     
     /**
      *  Hajautusarvo solmulle
+     *
+     *  @param  solmu   Solmu, jolle halutaan laskea hajautusarvo.
+     *  @return Solmun hajautusarvo.
      */
     public int hash(Tavusolmu solmu){
         return solmu.hashCode() % taulukko.length;

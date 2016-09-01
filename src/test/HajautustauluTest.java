@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class HajautustauluTest {
     
-    Random rand = new Random();
-    int raja = 1000;
+    private Random rand = new Random();
+    private int raja = 1000;
     
     /**
      *  Lisää solmuja ja hakee ne.
@@ -30,10 +30,16 @@ public class HajautustauluTest {
         }
     }
     
+    /**
+     *  Luo solmun satunnaisella tavulla ja koodilla.
+     */
     private Tavusolmu randomSolmu(){
         return new Tavusolmu(rand.nextInt(255), rand.nextInt());
     }
     
+    /**
+     *  @see    randomSolmu
+     */
     private Tavusolmu[] randomSolmut(){
         Tavusolmu[] solmut = new Tavusolmu[raja];
         for(int i = 0; i < raja; i++){

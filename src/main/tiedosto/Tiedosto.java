@@ -1,13 +1,16 @@
 
 package tiedosto;
 
+import static util.Asetukset.sallitaanYlikirjoitus;
+
 import tietorakenteet.Tavujono;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 
 /**
  *  Hoitaa itse tiedoston käsittelyn.
@@ -30,12 +33,16 @@ public class Tiedosto {
     
     /**
      *  Lukee tiedostosta seuraavan tavun.
+     *
+     *  @return Tiedoston seuraava tavu.
      */
     public int lue() throws IOException {
         return tiedosto.read();
     }
     
     /**
+     *  Tarkistaa, onko tiedosto luettu loppuun.
+     *
      *  @return Onko tiedosto luettu loppuun.
      */
     public boolean loppu() throws IOException{
@@ -56,14 +63,22 @@ public class Tiedosto {
     /**
      *  Kirjoittaa Tavujonossa olevat tavut tiedostoon.
      *
-     *  @params jono    Tavujono, jossa olevat tavut kirjoitetaan
-     *  @params polku   Tiedostopolku, jonne tavut kirjoitetaan
+     *  @param jono    Tavujono, jossa olevat tavut kirjoitetaan.
+     *  @param polku   Tiedostopolku, jonne tavut kirjoitetaan.
      */
     public static void kirjoita(Tavujono jono, String polku) throws IOException{
         kirjoita(jono.taulukoksi(), polku);
     }
     
+    /**
+     *  @see    kirjoita(Tavujono, String)
+     *  @param  tavut   Kirjoitettavat tavut.
+     *  @param  polku   Polku, jonne tavut kirjoitetaan.
+     */
     public static void kirjoita(byte[] tavut, String polku) throws IOException{
+        if(new File(polku).exists() && !sallitaanYlikirjoitus){
+            throw new FileAlreadyExistsException(polku);
+        }
         FileOutputStream fos = new FileOutputStream(polku);
         try {
             fos.write(tavut);

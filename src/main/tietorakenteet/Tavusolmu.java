@@ -33,16 +33,28 @@ public class Tavusolmu {
         this((byte) tavu, koodi, edellinen);
     }
     
+    /**
+     *  @param  tavu    Tavusolmun tavu.
+     */
     public Tavusolmu(byte tavu){
         this.tavu = tavu;
         solmut = new Hajautustaulu();
     }
     
+    /**
+     *  @param  tavu    Tavusolmun tavu.
+     *  @param  koodi   Tavusolmun koodi.
+     */
     public Tavusolmu(byte tavu, int koodi) {
         this(tavu);
         this.koodi = koodi;
     }
     
+    /**
+     *  @param  tavu    Tavusolmun tavu.
+     *  @param  koodi   Tavusolmun koodi.
+     *  @param  edellinen   Tavusolmua edeltävä solmu.
+     */
     public Tavusolmu(byte tavu, int koodi, Tavusolmu edellinen) {
         this(tavu);
         this.koodi = koodi;
@@ -51,6 +63,8 @@ public class Tavusolmu {
     
     /**
      *  Lisää ylivuotoketjuun uuden solmun. Jos ketjua ei ole, uusi solmu sijoitetaan ylivuoto-muuttujaan. Muuten solmu lähetetään ylivuotoketjua ylöspäin.
+     *
+     *  @param  solmu   Lisättävä solmu.
      */
     public void lisaaYlivuotoon(Tavusolmu solmu){
         if(ylivuoto == null){
@@ -69,6 +83,8 @@ public class Tavusolmu {
     
     /**
      *  Lisää solmun, johon tästä solmusta pääsee.
+     *
+     *  @param  solmu   Lisättävä solmu.
      */
     public void lisaaSolmu(Tavusolmu solmu){
         solmut.lisaa(solmu);
@@ -78,28 +94,43 @@ public class Tavusolmu {
      *  @see hae(Tavusolmu)
      */
     public Tavusolmu hae(byte b){
-        return solmut.hae(new Tavusolmu(b));
+        return hae(new Tavusolmu(b));
     }
     
     /**
      *  Hakee solmut-taulusta tietyn tavun.
+     *
+     *  @param  solmu   Haettava solmu.
+     *  @return Löytynyt tavusolmu.
      */
     public Tavusolmu hae(Tavusolmu solmu){
         return solmut.hae(solmu);
     }
     
+    /**
+     *  @return Tavusolmun tavu.
+     */
     public byte tavu(){
         return tavu;
     }
     
+    /**
+     *  @return Tavusolmun koodi.
+     */
     public int koodi(){
         return koodi;
     }
     
+    /**
+     *  @return Tavusolmun edellinen solmu.
+     */
     public Tavusolmu edellinen(){
         return edellinen;
     }
     
+    /**
+     *  @return Tavusolmun ylivuotoketju.
+     */
     public Tavusolmu ylivuoto(){
         return ylivuoto;
     }

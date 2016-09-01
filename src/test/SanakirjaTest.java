@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class SanakirjaTest {
     
-    Random random = new Random();
-    int raja = 1000;
+    private Random random = new Random();
+    private int raja = 1000;
     
     /**
      *  Sanakirjan testaaminen vaikutti vähän hankalalta. Tämä testi varmistaa vain, ettei sen peruskäyttö aiheuta virheitä.

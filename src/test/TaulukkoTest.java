@@ -7,7 +7,7 @@ import tietorakenteet.Taulukko;
 
 public class TaulukkoTest {
     
-    int raja = 10000;
+    private int raja = 10000;
     
     /**
      *  Lisääminen ja haku ei aiheuta ongelmia.

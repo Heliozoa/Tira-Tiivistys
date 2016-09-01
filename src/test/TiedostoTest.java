@@ -1,13 +1,13 @@
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import static vakiot.Vakiot.TIEDOSTOPOLKU;
+import static util.Vakiot.TIEDOSTOPOLKU;
 import tiedosto.Tiedosto;
 import java.io.IOException;
 
 public class TiedostoTest {
   
-  String polku = TIEDOSTOPOLKU;
+  private String polku = TIEDOSTOPOLKU;
   
   @Test
   public void lukukelpoinenTiedosto() throws IOException{  

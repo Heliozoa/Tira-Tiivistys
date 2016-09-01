@@ -1,16 +1,15 @@
 # Tira-Tiivistys
-Tiran harjoitustyö loppukesä 2016
+<body>
+Häviötön tiedon pakkaus- ja avaus-ohjelma.  
 
-####Suoritusohjeet
-Komennot suoritettava projektin juuressa, vaativat Apache Ant-kirjaston.  
-Kääntäminen: ant  
-Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku")  
-Testit: ant test
+Tira-Tiivistys tiivistää tiedostoja ja avaa ohjelmalla pakattuja tiedostoja ilman tiedon hävikkiä.Algoritmi on yksinkertaistettu versio Lempel-Ziv-Welch-algoritmista. Ohjelma toimii hyvin useimmilla tiedostoilla, mutta hyvin pienet, tai hyvin huonosti pakkautuvat tiedostot saattavat algoritmin toteutuksesta johtuen olla suurempia pakattuina kuin avattuina.
+</body>
 
 ####Tunnetut ongelmat
 Ei tunnettuja ongelmia.
 
 ####Dokumentaatio
+[Käyttöohjeet](doc/Käyttöohjeet.md)  
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)  
 [Testausdokumentti](doc/Testausdokumentti.md)  
 [Toteutusdokumentti](doc/Toteutusdokumentti.md)  
@@ -21,4 +20,4 @@ Ei tunnettuja ongelmia.
 [Viikkoraportti 3](doc/Viikkoraportti 3.md)  
 [Viikkoraportti 4](doc/Viikkoraportti 4.md)  
 [Viikkoraportti 5](doc/Viikkoraportti 5.md)  
-[Viikkoraportti 6](doc/Viikkoraportti 6.md)  
+[Viikkoraportti 6](doc/Viikkoraportti 6.md)

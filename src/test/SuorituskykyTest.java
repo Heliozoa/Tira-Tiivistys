@@ -1,11 +1,13 @@
 
-import static vakiot.Vakiot.AJASTA_ALGORITMIT;
-import static vakiot.Vakiot.AJASTUS_SUORITUSKERRAT;
-import static vakiot.Vakiot.TIEDOSTOPOLKU;
+import static util.Asetukset.sallitaanYlikirjoitus;
+import static util.Vakiot.AJASTA_ALGORITMIT;
+import static util.Vakiot.AJASTUS_SUORITUSKERRAT;
+import static util.Vakiot.TIEDOSTOPOLKU;
 
 import java.io.IOException;
 import static org.junit.Assume.assumeTrue;
 import org.junit.Test;
+import org.junit.Before;
 
 import main.Main;
 import lzw.Avaaja;
@@ -14,6 +16,12 @@ import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
 
 public class SuorituskykyTest {
+    
+    @Before
+    public void alustus(){
+        sallitaanYlikirjoitus = true;
+    }
+    
     
     /**
      *  Ajastaa algoritmin ja laskee suorituskertojen keskiarvon.
@@ -29,10 +37,10 @@ public class SuorituskykyTest {
         long aika;
         for(int i = 1; i <= suorituskertoja; i++){
             aika = System.nanoTime();
-            Main.pakkaa(polku);
+            Main.pakkaa(polku, polku+".pt");
             pakkausAika += System.nanoTime() - aika;
             aika = System.nanoTime();
-            Main.avaa(polku);
+            Main.avaa(polku+".pt", polku+".at");
             avausAika += System.nanoTime() - aika;
         }
         pakkausAika /= 1000000 * suorituskertoja;

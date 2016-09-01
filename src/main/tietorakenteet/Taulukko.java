@@ -5,7 +5,6 @@ package tietorakenteet;
  *  Yksinkertainen kasvava taulukko.
  */
 public class Taulukko<T> {
-    
     private T[] taulukko;
     private int indeksi;
     
@@ -19,6 +18,8 @@ public class Taulukko<T> {
     
     /**
      *  Lisää T-tyyppisen alkion ja kasvattaa tarvittaessa koon kaksinkertaiseksi.
+     *
+     *  @param  t   Lisättävä alkio.
      */
     public void lisaa(T t){
         taulukko[indeksi] = t;
@@ -30,6 +31,9 @@ public class Taulukko<T> {
     
     /**
      *  Hakee alkion joka on indeksissä i
+     *
+     *  @param  i   Indeksi, josta halutaan alkio.
+     *  @return T-tyyppinen olio.
      */
     public T hae(int i){
         return taulukko[i];

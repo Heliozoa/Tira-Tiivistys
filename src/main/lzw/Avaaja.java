@@ -1,11 +1,11 @@
 
 package lzw;
 
-import java.io.IOException;
-
 import tiedosto.Tiedosto;
 import tietorakenteet.Sanakirja;
 import tietorakenteet.Tavujono;
+
+import java.io.IOException;
 
 /**
  *  Avaa tiedoston, joka on pakattu Pakkaaja-luokalla.
@@ -29,24 +29,25 @@ public class Avaaja {
     private Sanakirja sk;
     
     /**
-     *  @params tiedosto    Pakattu tiedosto joka halutaan avata.
-     *  @params sanakirja   Sanakirja jota käytetään tiedon avaamiseen.
+     *  @param tiedosto    Pakattu tiedosto joka halutaan avata.
+     *  @param sanakirja   Sanakirja jota käytetään tiedon avaamiseen.
      */
     public Avaaja (Tiedosto tiedosto, Sanakirja sanakirja){
         t = tiedosto;
         sk = sanakirja;
     }
     
-    
     /**
      *  Avaa koodatun tiedoston muodostamalla sanakirjan samalla tavalla kuin koodatessa. Kirjoittaa tavut tiedostoon.
+     *
+     *  @param  kohde   Polku tiedostoon, jonne avattu tieto kirjoitetaan.
      */
-    public void avaa() throws IOException{
+    public void avaa(String kohde) throws IOException{
         try {
             if(t.loppu()) return;
             Tavujono tavut = new Tavujono();
             avaaKooditJonoon(tavut);
-            Tiedosto.kirjoita(tavut, t.polku()+"t");
+            Tiedosto.kirjoita(tavut, kohde);
         } finally {
             t.sulje();
         }
@@ -55,7 +56,7 @@ public class Avaaja {
     /**
      *  Lukee kaikki koodit tiedostosta, muuttaa ne oikeiksi tavujonoiksi ja lisää ne tavut-jonoon.
      *
-     *  @param  tavut   jono, johon tavut lisätään
+     *  @param  tavut   Jono, johon koodatut tavut lisätään.
      */
     private void avaaKooditJonoon(Tavujono tavut) throws IOException{
         int koodi = lueKoodi();
@@ -79,6 +80,8 @@ public class Avaaja {
     
     /**
      *  Lukee tiedostosta kaksi tavua ja muuttaa ne koodiksi.
+     *
+     *  @return Tavuista muodostettu koodi.
      */
     private int lueKoodi() throws IOException{
         int eka = t.lue();
