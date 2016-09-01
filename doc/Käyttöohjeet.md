@@ -18,7 +18,7 @@ Pakkaa ensimmäisenä parametrina annetun tiedoston. Jos toista parametria ei an
 -a &lt;pakattava tiedosto&gt; &lt;kohdetiedosto (vapaaehtoinen)&gt;  
 Avaa ensimmäisenä parametrina annetun tiedoston. Jos toista parametria ei anneta, avataan tiedosto kohteeseen "avattava tiedosto.at" Kohdetiedostoa ei saa olla jo olemassa.
 
-####Projektin kääntämis- ja suoritusohjeet
+###Projektin kääntämis- ja suoritusohjeet
 Komennot suoritettava projektin juuressa, vaativat Apache Ant-kirjaston.  
 Kääntäminen: ant  
 Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku")  

@@ -7,4 +7,4 @@ Siistin koodia, tein jar-tiedoston ja muutin main-metodin logiikkaa jar:ille sop
 Kirjoitin turhaa javadocia ja generoin sen.
 Kirjoitin helppokäyttöisen skriptin ohjelman käyttöä varten.
 
-Käytetty tuntimäärä: 10
+Käytetty tuntimäärä: 12
