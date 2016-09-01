@@ -9,7 +9,7 @@ Tira-Tiivistys tiivistää tiedostoja ja avaa ohjelmalla pakattuja tiedostoja il
 Ei tunnettuja ongelmia.
 
 ####Dokumentaatio
-[Javadoc](http://rawgit.com/Heliozoa/Tira-Tiivistys/master/doc/javadoc/index.html)
+[Javadoc](http://rawgit.com/Heliozoa/Tira-Tiivistys/master/doc/javadoc/index.html)  
 [Käyttöohjeet](doc/Käyttöohjeet.md)  
 [Määrittelydokumentti](doc/Määrittelydokumentti.md)  
 [Testausdokumentti](doc/Testausdokumentti.md)  
