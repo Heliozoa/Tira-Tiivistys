@@ -6,5 +6,6 @@ Kävin ohjauksessa.
 Siistin koodia, tein jar-tiedoston ja muutin main-metodin logiikkaa jar:ille sopivaksi.
 Kirjoitin turhaa javadocia ja generoin sen.
 Kirjoitin helppokäyttöisen skriptin ohjelman käyttöä varten.
+Kirjoitin lisää dokumentaatiota.
 
-Käytetty tuntimäärä: 12
+Käytetty tuntimäärä: 15
