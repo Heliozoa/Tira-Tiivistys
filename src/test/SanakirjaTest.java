@@ -2,16 +2,25 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import org.junit.Before;
 import org.junit.Test;
+
 import tietorakenteet.Sanakirja;
-import tietorakenteet.Tavujono;
 import tietorakenteet.Taulukko;
+import tietorakenteet.Tavujono;
+
 import java.util.Random;
 
 public class SanakirjaTest {
     
-    private Random random = new Random();
-    private int raja = 1000;
+    private Random random;
+    private int raja;
+    
+    @Before
+    public void alustus(){
+        random = new Random();
+        raja = 1000;
+    }
     
     /**
      *  Sanakirjan testaaminen vaikutti vähän hankalalta. Tämä testi varmistaa vain, ettei sen peruskäyttö aiheuta virheitä.
@@ -26,6 +35,30 @@ public class SanakirjaTest {
             jonot.lisaa(randomJono(1));
             sk.lisaa(jonot.hae(i), tavut[i]);
         }
+    }
+    
+    /**
+     *  Testaa lisätyn solmun hakua (haku- ja sisaltaa-metodeilla) sekä koodilla että jonolla.
+     */
+    @Test
+    public void lisattyLoytyySisaltaaJaHakuMetodeilla(){
+        Sanakirja sk = new Sanakirja();
+        Tavujono tj = new Tavujono();
+        tj.lisaa((byte) 111);
+        tj.lisaa((byte) 222);
+        
+        byte vika = tj.poistaLopusta();
+        assertFalse("Sanakirja on alustettu väärin, sillä jonon ei pitäisi vielä löytyä sieltä", sk.sisaltaa(tj, vika));
+        assertFalse("Sanakirja on alustettu väärin, sillä koodin ei pitäisi vielä löytyä sieltä", sk.sisaltaa(256));
+        
+        sk.lisaa(tj, vika);
+        
+        assertTrue("Jono on lisätty sanakirjaan, mutta se ei löydy sieltä", sk.sisaltaa(tj, vika));
+        assertTrue("Koodin pitäisi löytyä sanakirjasta, muttei löydy", sk.sisaltaa(256));
+        
+        tj.lisaa(vika);
+        assertEquals("Tavujonolla hakemalla löytyi väärä koodi", sk.hae(tj), 256);
+        assertEquals("Koodilla hakemalla löytyi väärä tavujono", sk.hae(256), tj);
     }
     
     private Tavujono randomJono(int pituus){

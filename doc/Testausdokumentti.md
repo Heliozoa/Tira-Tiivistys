@@ -1,6 +1,12 @@
 #Testausdokumentti
 
-Alustavissa testeissä käytän Gutenberg-projektista ilmaiseksi löytynyttä Kalevalaa. Tiedosto on projektissa mukana, joten sen pakkaamista on helppo kokeilla itse.
+Alustavissa testeissä käytin Gutenberg-projektista ilmaiseksi löytynyttä Kalevalaa. Kun algoritmi ei aluksi toiminut, testasin lähinnä manuaalisesti katsomalla avatun tiedoston tavuja. Tämänhetkiset testit ovat javan junit testejä. Ohjeet sekä junit-testien ja ohjelman ajamiseen löytyvät [käyttöohjeista](doc/Käyttöohjeet.md). Suorituskykytestausta varten tulee muuttaa util.Vakiot.java-tiedostossa oleva vakio AJASTA_ALGORITMIT = true.
+
+lzw-paketin luokkia on testattu PakkausAvausTestissä. Koska luokkien ainoa ulos tarjoama toiminta on tiedon avaus ja pakkaus, testejä on vain kaksi: toinen yksinkertaisesti varmistaa, että avattu tiedosto vastaa tavu tavulta alkuperäistä, ja toinen varmistaa, että algoritmit muodostavat sanakirjat tasan samalla tavalla. Sattumalta kyseessä ovat myös projektin hyödyllisimmät testit.
+
+Tiedosto-paketin ainoata luokkaa testataan TiedostoTestissä. Luokan ainoa testi varmistaa, että kun se kirjoittaa tavu-taulukon, lopputuloksena on halutunlainen tiedosto.
+
+Tietorakenteet-paketin luokilla on jokaisella oma testiluokkansa. Kaikki julkiset metodit pitäisi olla testattuina. Tietorakenteiden sisäistä toimintaa ei ole testattu, koska en keksinyt järkevää tapaa privaattien kenttien ja metodien testaamiseen, ja google-haun mukaan sitä ei kannatakaan tehdä.
 
 ###Testejä
 Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman useamman kerran tarkistaakseni, että ajat ovat suunnilleen oikein, mutten laskenut keskiarvoja.

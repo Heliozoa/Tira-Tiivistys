@@ -1,16 +1,25 @@
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import org.junit.Before;
 import org.junit.Test;
+
 import tietorakenteet.Tavusolmu;
+
 import java.util.Random;
 
 public class TavusolmuTest {
     
-    private Random rand = new Random();
-    private int raja = 1000;
+    private Random rand;
+    private int raja;
+    
+    @Before
+    public void alustus(){
+        rand = new Random();
+        raja = 1000;
+    }
     
     /**
      *  Varmistaa, että equals-metodi toimii odotetusti.
@@ -39,6 +48,9 @@ public class TavusolmuTest {
             assertEquals("Solmujen "+solmut[i]+" ja "+eka.ylivuoto()+" pitäisi olla samat", solmut[i], eka.ylivuoto());
             eka = eka.ylivuoto();
         }
+        
+        eka.poistaYlivuoto();
+        assertNull(eka.ylivuoto());
     }
     
     private Tavusolmu randomSolmu(){

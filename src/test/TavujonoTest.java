@@ -1,24 +1,27 @@
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
-import java.io.IOException;
-import java.util.Random;
+import org.junit.Test;
 
 import tietorakenteet.Tavujono;
 
+import java.io.IOException;
+import java.util.Random;
+
 public class TavujonoTest {
     
-    private final int pituusVakio = 10000;
-    private byte[] tavut = new byte[pituusVakio];
+    private int pituusVakio;
+    private byte[] tavut;
     
     /**
      *  Alustaa tavut-taulukon satunnaisilla tavuilla.
      */
     @Before
     public void alustus() {
+        pituusVakio = 10000;
+        tavut = new byte[pituusVakio];
         new Random().nextBytes(tavut);
     }
     
@@ -48,6 +51,7 @@ public class TavujonoTest {
     public void lisaysToimii(){
         Tavujono t = new Tavujono();
         
+        assertTyhja(t);
         for(int i = 0; i < tavut.length; i++){
             t.lisaa(tavut[i]);
         }
@@ -62,28 +66,13 @@ public class TavujonoTest {
     public void poistoToimii(){
         Tavujono t = taysiTavujono();
         
+        assertEpatyhja(t);
         for(int i = 0; i < tavut.length; i++){
             byte b = t.poista();
             assertEquals("Tavun olisi pitänyt olla "+tavut[i]+", mutta oli "+b, tavut[i], b);
         }
         
         assertTyhja(t);
-    }
-    
-    /**
-     *    Kun jonoon tehdään toistuvia poisto- ja lisäysoperaatioita, kiertääkö alku- ja loppu-arvot oikein taulukon ympäri eikä koko kasva.
-     */
-    @Test
-    public void kiertoToimii(){
-        Tavujono t = new Tavujono();
-        
-        for(int i = 0; i < tavut.length; i++){
-            t.lisaa(tavut[i]);
-            assertEpatyhja(t);
-            t.poista();
-            assertTyhja(t);
-            assertEquals("Taulukon koon ei pitäisi muuttua alkuarvosta 16, mutta se oli "+t.len(), t.len(), 16);
-        }
     }
     
     /**
@@ -160,6 +149,36 @@ public class TavujonoTest {
         }
     }
     
+    /**
+     *  Kaanna-metodi toimii.
+     */
+    @Test
+    public void kaannaToimii(){
+        Tavujono a = new Tavujono();
+        Tavujono b = new Tavujono();
+        for(int i = 0; i < tavut.length; i++){
+            a.lisaa(tavut[i]);
+            b.lisaa(tavut[tavut.length-1-i]);
+        }
+        b = b.kaanna();
+        assertEquals("Tavujonojen olisi pitänyt olla samat", a,b);
+    }
+    
+    /**
+     *  Equals-metodi toimii.
+     */
+    @Test
+    public void equalsToimii(){
+        Tavujono a = new Tavujono();
+        Tavujono b = new Tavujono();
+        for(int i = 0; i < tavut.length; i++){
+            a.lisaa(tavut[i]);
+            b.lisaa(tavut[i]);
+        }
+        
+        assertEquals("Tavujonojen olisi pitänyt olla samat", a,b);
+    }
+    
     
     /**
      *  Palauttaa uuden tavujonon, joka sisältää tavut-taulukon satunnaiset tavut.
@@ -181,4 +200,20 @@ public class TavujonoTest {
     private void assertEpatyhja(Tavujono t){
         assertFalse("Tavujonon ei pitäisi olla tyhjä, mutta se on.", t.tyhja());
     }
+    
+    /*  t.len() metodia ei enää ole, joten testiä ei voi käyttää
+     *    Kun jonoon tehdään toistuvia poisto- ja lisäysoperaatioita, kiertääkö alku- ja loppu-arvot oikein taulukon ympäri eikä koko kasva.
+     *
+    @Test
+    public void kiertoToimii(){
+        Tavujono t = new Tavujono();
+        
+        for(int i = 0; i < tavut.length; i++){
+            t.lisaa(tavut[i]);
+            assertEpatyhja(t);
+            t.poista();
+            assertTyhja(t);
+            assertEquals("Taulukon koon ei pitäisi muuttua alkuarvosta 16, mutta se oli "+t.len(), t.len(), 16);
+        }
+    }*/
 }

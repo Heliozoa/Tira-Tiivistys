@@ -236,12 +236,8 @@ public class Tavujono {
     }
     
     /**
-     *  Vain testejä varten.
+     *  Vertaa jonoja taulukkomuodossa ja varmistaa, että ne ovat samanlaiset.
      */
-    public int len(){
-        return tavut.length;
-    }
-    
     @Override
     public boolean equals(Object obj){
         if(!(obj instanceof Tavujono)) return false;

@@ -1,26 +1,25 @@
 
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 
 import static util.Asetukset.sallitaanYlikirjoitus;
 import static util.Vakiot.TIEDOSTOPOLKU;
 import static util.Vakiot.GENEROI_RANDOM_TIEDOSTO;
-import java.io.IOException;
-import java.util.Random;
-import tietorakenteet.Sanakirja;
-import tietorakenteet.Tavujono;
-import tiedosto.Tiedosto;
 import lzw.Avaaja;
 import lzw.Pakkaaja;
+import tiedosto.Tiedosto;
+import tietorakenteet.Sanakirja;
+import tietorakenteet.Tavujono;
+
+import java.io.IOException;
+import java.util.Random;
 
 public class PakkausAvausTest {
     
     private String polku = TIEDOSTOPOLKU;
-    private Random random = new Random();
     
     /**
      *  Täyttää tiedostopolun satunnaisilla tavuilla.
@@ -29,9 +28,10 @@ public class PakkausAvausTest {
     public void alustus() throws IOException{
         if(GENEROI_RANDOM_TIEDOSTO){
             byte[] tavut = new byte[1000000];
-            random.nextBytes(tavut);
+            new Random().nextBytes(tavut);
             Tiedosto.kirjoita(tavut, polku);
         }
+        polku = TIEDOSTOPOLKU;
         sallitaanYlikirjoitus = true;
     }
   

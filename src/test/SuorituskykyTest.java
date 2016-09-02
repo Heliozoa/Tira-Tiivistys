@@ -1,19 +1,20 @@
 
+import static org.junit.Assume.assumeTrue;
+import org.junit.Before;
+import org.junit.Test;
+
 import static util.Asetukset.sallitaanYlikirjoitus;
 import static util.Vakiot.AJASTA_ALGORITMIT;
 import static util.Vakiot.AJASTUS_SUORITUSKERRAT;
 import static util.Vakiot.TIEDOSTOPOLKU;
 
-import java.io.IOException;
-import static org.junit.Assume.assumeTrue;
-import org.junit.Test;
-import org.junit.Before;
-
 import main.Main;
 import lzw.Avaaja;
 import lzw.Pakkaaja;
-import tietorakenteet.Sanakirja;
 import tiedosto.Tiedosto;
+import tietorakenteet.Sanakirja;
+
+import java.io.IOException;
 
 public class SuorituskykyTest {
     

@@ -74,23 +74,6 @@ public class Sanakirja {
     }
     
     /**
-     *  Käy tavujonoa läpi tavu kerrallaan ja etenee sitä mukaan solmuja pitkin hajautustaulussa. Viimeisestä solmusta saadaan koko ketjun koodi ja sen sisältö.
-     *
-     *  @param  tavujono    Tavujono, jota vastaava viimeinen solmu haetaan.
-     *  @return Jonoa vastaavan ketjun viimeinen solmu.
-     */
-    private Tavusolmu haeViimeinenSolmu(Tavujono tavujono){
-        byte[] tavut = tavujono.taulukoksi();
-        Tavusolmu solmu = sanasto.hae(tavut[0]);
-        for(int i = 1; i < tavut.length; i++){
-            solmu = solmu.hae(tavut[i]);
-            if(solmu == null) return null;
-        }
-        
-        return solmu;
-    }
-    
-    /**
      *  Tarkistaa, löytyykö koodi sanakirjasta.
      *
      *  @param  koodi   Koodi jota halutaan etsiä.
@@ -98,15 +81,6 @@ public class Sanakirja {
      */
     public boolean sisaltaa(int koodi){
         return koodit.hae(koodi) != null;
-    }
-    
-    /**
-     *  Tarkistaa, onko sanakirja saavuttanut rajan.
-     *
-     *  @return Onko sanakirja täynnä.
-     */
-    public boolean taynna(){
-        return koodi == raja;
     }
     
     /**
@@ -121,6 +95,32 @@ public class Sanakirja {
         Tavusolmu solmu = haeViimeinenSolmu(tavujono);
         tavujono.poistaLopusta();
         return solmu != null;
+    }
+    
+    /**
+     *  Tarkistaa, onko sanakirja saavuttanut rajan.
+     *
+     *  @return Onko sanakirja täynnä.
+     */
+    public boolean taynna(){
+        return koodi == raja;
+    }
+    
+    /**
+     *  Käy tavujonoa läpi tavu kerrallaan ja etenee sitä mukaan solmuja pitkin hajautustaulussa. Viimeisestä solmusta saadaan koko ketjun koodi ja sen sisältö.
+     *
+     *  @param  tavujono    Tavujono, jota vastaava viimeinen solmu haetaan.
+     *  @return Jonoa vastaavan ketjun viimeinen solmu.
+     */
+    private Tavusolmu haeViimeinenSolmu(Tavujono tavujono){
+        byte[] tavut = tavujono.taulukoksi();
+        Tavusolmu solmu = sanasto.hae(tavut[0]);
+        for(int i = 1; i < tavut.length; i++){
+            solmu = solmu.hae(tavut[i]);
+            if(solmu == null) return null;
+        }
+        
+        return solmu;
     }
     
     @Override

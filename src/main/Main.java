@@ -1,11 +1,11 @@
 
 package main;
 
-import static util.Vakiot.TIEDOSTOPOLKU;
 import static util.Asetukset.sallitaanYlikirjoitus;
+import static util.Vakiot.TIEDOSTOPOLKU;
 
-import lzw.Pakkaaja;
 import lzw.Avaaja;
+import lzw.Pakkaaja;
 import tiedosto.Tiedosto;
 import tietorakenteet.Sanakirja;
 
@@ -30,7 +30,10 @@ public class Main {
             }else{
                 kohde = polku +".pt";
             }
+            long aika = System.nanoTime();
             pakkaa(polku, kohde);
+            long ajastus = (System.nanoTime() - aika) / 1000000;
+            System.out.println("Pakkaukseen kului "+ajastus+" millisekuntia");
             
         }else if(args[0].equals("-a")){
             if(args.length > 2){
@@ -38,7 +41,10 @@ public class Main {
             }else{
                 kohde = polku +".at";
             }
+            long aika = System.nanoTime();
             avaa(polku, kohde);
+            long ajastus = (System.nanoTime() - aika) / 1000000;
+            System.out.println("Avaamiseen kului "+ajastus+" millisekuntia");
             
         }else{
             tulostaOhjeet();

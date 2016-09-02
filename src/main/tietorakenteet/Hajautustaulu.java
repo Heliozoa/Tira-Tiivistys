@@ -56,29 +56,6 @@ public class Hajautustaulu {
     }
     
     /**
-     *  Uudelleenhajauttaa taulukon alkiot ja niiden ylivuotolistat halutun kokoiseen taulukkoon.
-     *
-     *  @param  uusiKoko    Taulukon uusi koko uudelleenhajautuksen jälkeen.
-     */
-    public void uudelleenHajauta(int uusiKoko){
-        Tavusolmu[] temp = taulukko;
-        taulukko = new Tavusolmu[uusiKoko];
-        for(int i = 0; i < temp.length; i++){
-            if(temp[i] != null){
-                Tavusolmu ylivuoto = temp[i].ylivuoto();
-                while(ylivuoto != null){
-                    lisaa(ylivuoto);
-                    Tavusolmu vanha = ylivuoto;
-                    ylivuoto = ylivuoto.ylivuoto();
-                    vanha.poistaYlivuoto();
-                }
-                temp[i].poistaYlivuoto();
-                lisaa(temp[i]);
-            }
-        }
-    }
-    
-    /**
      *  Luo uuden tavusolmun ja hakee sen taulusta.
      *
      *  @see hae(Tavusolmu)
@@ -106,12 +83,35 @@ public class Hajautustaulu {
     }
     
     /**
+     *  Uudelleenhajauttaa taulukon alkiot ja niiden ylivuotolistat halutun kokoiseen taulukkoon.
+     *
+     *  @param  uusiKoko    Taulukon uusi koko uudelleenhajautuksen jälkeen.
+     */
+    private void uudelleenHajauta(int uusiKoko){
+        Tavusolmu[] temp = taulukko;
+        taulukko = new Tavusolmu[uusiKoko];
+        for(int i = 0; i < temp.length; i++){
+            if(temp[i] != null){
+                Tavusolmu ylivuoto = temp[i].ylivuoto();
+                while(ylivuoto != null){
+                    lisaa(ylivuoto);
+                    Tavusolmu vanha = ylivuoto;
+                    ylivuoto = ylivuoto.ylivuoto();
+                    vanha.poistaYlivuoto();
+                }
+                temp[i].poistaYlivuoto();
+                lisaa(temp[i]);
+            }
+        }
+    }
+    
+    /**
      *  Hajautusarvo solmulle
      *
      *  @param  solmu   Solmu, jolle halutaan laskea hajautusarvo.
      *  @return Solmun hajautusarvo.
      */
-    public int hash(Tavusolmu solmu){
+    private int hash(Tavusolmu solmu){
         return solmu.hashCode() % taulukko.length;
     }
     

@@ -1,17 +1,24 @@
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Before;
 import org.junit.Test;
+
 import tietorakenteet.Hajautustaulu;
 import tietorakenteet.Tavusolmu;
+
 import java.util.Random;
 
 public class HajautustauluTest {
     
-    private Random rand = new Random();
-    private int raja = 1000;
+    private Random rand;
+    private int raja;
+    
+    @Before
+    public void alustus(){
+        rand = new Random();
+        raja = 1000;
+    }
     
     /**
      *  Lisää solmuja ja hakee ne.
