@@ -62,7 +62,7 @@ public class Avaaja {
         int koodi = lueKoodi();
         Tavujono edellinen = sk.hae(koodi);
         Tavujono jono = edellinen.clone();
-            jono.tyhjennaJonoon(tavut);
+        jono.tyhjennaJonoon(tavut);
         
         while(!t.loppu()){
             koodi = lueKoodi();

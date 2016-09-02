@@ -32,13 +32,32 @@ muuten
     hae sanakirjalta uuden jonon koodi  //O(1). Uusi jono sisältää vain yhden tavun, tällöin sen koodi saadaan haettua vakioajassa.
 ```
 
+####Avaus
+Avaaja toimii aikavaativuuden kannalta tasan samoin kuin pakkaaja. Huomionarvoista on, että avattava tiedosto on usein huomattavasti pakattavaa tiedostoa pienempi, jolloin "sama" tiedosto avautuu nopeammin kuin pakkautuu.
+```
+koodi = lue koodi   //O(1)
+edellinen = hae sanakirjasta koodilla   //O(n), missä n on haettavan tavujonon pituus
+jono = kopioi tavujono //O(n), missä n on tavujonon pituus
+tyhjennä tavujono toiseen jonoon    //O(n), missä n on tavujonon pituus
+
+while(tiedosto ei ole loppu)    //O(n) avattavan tiedoston koon suhteen
+    lue koodi   //O(1)
+    if(sanakirja ei sisällä koodia) //O(1)
+        lisää sanakirjaan edellinen tavujono+edellisen tavujonon ensimmäinen tavu   //O(n) jonon pituuden suhteen
+        jono = hae sanakirjasta koodilla    //O(n) haettavan jonon koon suhteen
+    else
+        jono = hae sanakirjasta koodilla    //O(n)
+        lisää sanakirjaan edellinen+jonon eka tavu  //O(n) jonon koon suhteen
+    edellinen = kopioi jono //O(n) jonon pituuden suhteen
+    tyhjennä jono tavuihin  //O(n) jonon pituuden suhteen
+    
+```
 
 ###Tilavaativuus
-Tiedosto kirjoitetaan tällä hetkellä "kerralla", eli muistissa on kaikki kirjoitettavan tiedoston tavut. Siis tilavaativuus on vähintäänkin O(n) missä n on pakatessa pakatun tiedoston koko ja avatessa avatun. Sanakirjaan talletetaan jokainen kohdattu tavujono, ja se "uudelleenkäyttää" solmuja. Esim. jonot {100,200,300}, {100,200,400}, ja {100,200,300,400} tarvitsevat 5 solmua. Pahimmassa tapauksessa tiedostossa solmuja ei päästä uudelleenkäyttämään paljoa, jolloin sanakirja kasvaa tiedoston mukana. 
+Tiedosto kirjoitetaan tällä hetkellä "kerralla", eli muistissa on kaikki kirjoitettavan tiedoston tavut. Siis tilavaativuus on vähintäänkin O(n) missä n on pakatessa pakatun tiedoston koko ja avatessa avatun. Sanakirjaan talletetaan jokainen kohdattu tavujono, ja se "uudelleenkäyttää" solmuja. Esim. jonot {100,200,300}, {100,200,400}, ja {100,200,300,400} tarvitsevat 5 solmua. Pahimmassa tapauksessa tiedostossa solmuja ei päästä uudelleenkäyttämään paljoa, jolloin sanakirja kasvaa tiedoston mukana, muttei koskaan sen yli. Taulukoita ja Tavujonoja käytetään vain tiedoston tavujen tallettamiseen, joten niidenkään sisältö ei voi ylittää tiedoston tavumäärää. Ohjelman tilavaativuus on siis O(n) missä n on käsiteltävän tiedoston koko.
 
-
-###Puutteet
-Pitkään toistuvat samat tavut aiheuttavat edelleen ongelmia. Ohjelma on tällä hetkellä hitaampi kuin Java-luokilla, vaikka Java-toteutus käytti paljon verrattain hitaita operaatioita, esim merkkijonojen käsittelyä.
+###Puutteet ja parannusehdotukset
+Tiedoston kirjoitus kannattaisi muuttaa niin, ettei sitä kirjoiteta kerralla vaan aina kun mahdollista. Tavujono-luokka sisältää paljon typerän näköisiä tarkistuksia, enkä ole sen laatuun kovin tyytyväinen.
 
 #####Lähteet
 Tietorakenteet ja algoritmit, kevät 2016 luentokalvot

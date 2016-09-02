@@ -1,12 +1,14 @@
 #Käyttöohjeet
 
 ###Projektin sh-skriptin käyttöohjeet
+Skripti "tira-tiivistys.sh" sijaitsee projektin juuresta. Se vaatii toimiakseen alla mainitun jar-tiedoston samaan hakemistoon.
 Käynnistä skripti kutsumalla sitä ja seuraa ohjeita:  
 ``shell
     bash tira-tiivistys.sh
 ``
 
 ###Projektin jar-tiedoston käyttöohjeet
+Jar-tiedosto "tira-tiivistys.jar" löytyy projektin juuresta.
 ```shell
     java -jar tira-tiivistys.jar [-parametrit]
 ```
@@ -25,3 +27,6 @@ Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku
 Testit: ant test
 
 Huomaa, että main-metodissa tulee tällöin olla test()-kutsu pois kommenteista.
+
+###Hyväksytyt syötteet
+Ohjelmalle voi antaa minkä tahansa tiedoston syötteenä.
