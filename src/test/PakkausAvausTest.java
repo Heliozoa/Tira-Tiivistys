@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static util.Asetukset.sallitaanYlikirjoitus;
-import static util.Vakiot.TIEDOSTOPOLKU;
-import static util.Vakiot.GENEROI_RANDOM_TIEDOSTO;
+import static util.Asetukset.TIEDOSTOPOLKU;
+import static util.Asetukset.GENEROI_RANDOM_TIEDOSTO;
 import lzw.Avaaja;
 import lzw.Pakkaaja;
 import tiedosto.Tiedosto;

@@ -2,7 +2,7 @@
 package main;
 
 import static util.Asetukset.sallitaanYlikirjoitus;
-import static util.Vakiot.TIEDOSTOPOLKU;
+import static util.Asetukset.TIEDOSTOPOLKU;
 
 import lzw.Avaaja;
 import lzw.Pakkaaja;

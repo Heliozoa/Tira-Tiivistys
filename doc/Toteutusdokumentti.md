@@ -54,10 +54,10 @@ while(tiedosto ei ole loppu)    //O(n) avattavan tiedoston koon suhteen
 ```
 
 ###Tilavaativuus
-Tiedosto kirjoitetaan tällä hetkellä "kerralla", eli muistissa on kaikki kirjoitettavan tiedoston tavut. Siis tilavaativuus on vähintäänkin O(n) missä n on pakatessa pakatun tiedoston koko ja avatessa avatun. Sanakirjaan talletetaan jokainen kohdattu tavujono, ja se "uudelleenkäyttää" solmuja. Esim. jonot {100,200,300}, {100,200,400}, ja {100,200,300,400} tarvitsevat 5 solmua. Pahimmassa tapauksessa tiedostossa solmuja ei päästä uudelleenkäyttämään paljoa, jolloin sanakirja kasvaa tiedoston mukana, muttei koskaan sen yli. Taulukoita ja Tavujonoja käytetään vain tiedoston tavujen tallettamiseen, joten niidenkään sisältö ei voi ylittää tiedoston tavumäärää. Ohjelman tilavaativuus on siis O(n) missä n on käsiteltävän tiedoston koko.
+Tiedosto kirjoitetaan tällä hetkellä "kerralla", eli muistissa on kaikki kirjoitettavan tiedoston tavut. Siis tilavaativuus on vähintäänkin O(n) missä n on pakatessa pakatun tiedoston koko ja avatessa avatun. Sanakirjaan talletetaan jokainen kohdattu tavujono, mutta se uudelleenkäyttää solmuja, ja todellisuudessa lisäys lisää aina vain yhden tavusolmun. Esim. jonot {100,200,300}, {100,200,400}, ja {100,200,300,400} tarvitsevat 5 solmua. Pahimmassa tapauksessa tiedostossa solmuja ei päästä uudelleenkäyttämään paljoa, jolloin sanakirja kasvaa tiedoston mukana, muttei koskaan sen yli. Myös Taulukoita ja Tavujonoja käytetään vain tiedoston tavujen tallettamiseen yksi kerrallaan, joten niidenkään sisältö ei voi ylittää tiedoston tavumäärää. Ohjelman tilavaativuus on siis O(n) missä n on käsiteltävän tiedoston koko.
 
 ###Puutteet ja parannusehdotukset
-Tiedoston kirjoitus kannattaisi muuttaa niin, ettei sitä kirjoiteta kerralla vaan aina kun mahdollista. Tavujono-luokka sisältää paljon typerän näköisiä tarkistuksia, enkä ole sen laatuun kovin tyytyväinen.
+Vaihteleva koodipituus on projektin suurin puute. Tiedoston kirjoitus kannattaisi muuttaa niin, ettei sitä kirjoiteta kerralla vaan aina kun mahdollista. Tavujono-luokka sisältää paljon typerän näköisiä tarkistuksia, enkä ole sen laatuun kovin tyytyväinen.
 
 #####Lähteet
 Tietorakenteet ja algoritmit, kevät 2016 luentokalvot

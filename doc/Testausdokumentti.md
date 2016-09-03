@@ -8,8 +8,8 @@ Tiedosto-paketin ainoata luokkaa testataan TiedostoTestissä. Luokan ainoa testi
 
 Tietorakenteet-paketin luokilla on jokaisella oma testiluokkansa. Kaikki julkiset metodit pitäisi olla testattuina. Tietorakenteiden sisäistä toimintaa ei ole testattu, koska en keksinyt järkevää tapaa privaattien kenttien ja metodien testaamiseen, ja google-haun mukaan sitä ei kannatakaan tehdä.
 
-###Testejä
-Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman useamman kerran tarkistaakseni, että ajat ovat suunnilleen oikein, mutten laskenut keskiarvoja.
+###Suorituskykytestit
+Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman useamman kerran tarkistaakseni, että ajat ovat suunnilleen oikein, mutten laskenut keskiarvoja. Ohjelma ajastaa pakkauksen ja avauksen, joten tiedostoja on helppo kokeilla myös manuaalisesti ilman yksikkötestejä.
 
 #####Java-toteutus vertailun vuoksi
 |Syöte|Alkuperäinen koko|Pakattu koko|Pakkaussuhde|Pakkaus|Avaus|Yhteensä|
@@ -24,10 +24,16 @@ Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman 
 |Shakespeare²|5,589,889 tavua|2,270,626 tavua|~41%|3296ms|1039ms|4335ms|
 |Raakavideo³|11,406,644 tavua|6,501,418 tavua|~57%|6408ms|2691ms|9099ms|
 |Raakakuva⁴|12,934,656 tavua|16,040,422 tavua|~124%|7286ms|6242ms|13528ms|
-|Poe⁵|7,298|5,258|~72%|6ms|4ms|10ms|
+|Poe⁵|7,298 tavua|5,258 tavua|~72%|6ms|4ms|10ms|
+|Wav-tiedosto⁶|5,612,112 tavua|6,193,712 tavua|~110%|3093ms|2396ms|5489ms|
+
+Ohjelma toimii selvästi parhaiten tekstitiedostoilla, joista löytyy helposti toistoa. Huomataan, että käsittelyyn kuluva aika näyttäisi olevan sekä pakkauksessa, että avauksessa lineaarisesti riippuvainen käsiteltävän tiedoston koosta:
+
+[graafi](doc/kuvat/chart.png "Yllä luetellut tiedostot kaaviossa")
 
 ¹ http://www.gutenberg.org/cache/epub/7000/pg7000.txt  
 ² http://www.gutenberg.org/cache/epub/100/pg100.txt  
 ³ https://media.xiph.org/video/derf/y4m/bowing_qcif.y4m  
 ⁴ https://www.rawsamples.ch/raws/sony/a700/RAW_SONY_A700.ARW  
-⁵ http://www.gutenberg.org/cache/epub/1065/pg1065.txt ilman Gutenberg-pätkiä  
+⁵ http://www.gutenberg.org/cache/epub/1065/pg1065.txt ilman Gutenberg-pätkiä
+⁶ "Happy 8bit Loop 01" by Tristan Lohengrin : http://tristanlohengrin.wix.com/studio

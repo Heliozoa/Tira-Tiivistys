@@ -23,10 +23,9 @@ Avaa ensimmäisenä parametrina annetun tiedoston. Jos toista parametria ei anne
 ###Projektin kääntämis- ja suoritusohjeet
 Komennot suoritettava projektin juuressa, vaativat Apache Ant-kirjaston.  
 Kääntäminen: ant  
-Suorittaminen: ant run (Voit kokeilla omalla tiedostolla parametrilla "-Dt polku")  
+Suorittaminen: ant run (Käyttää koodissa määriteltyä tiedostoa, huomaa, että main-metodissa tulee tällöin olla test()-kutsu pois kommenteista.)  
 Testit: ant test
-
-Huomaa, että main-metodissa tulee tällöin olla test()-kutsu pois kommenteista.
+Jar:in luonti: ant jar
 
 ###Hyväksytyt syötteet
-Ohjelmalle voi antaa minkä tahansa tiedoston syötteenä.
+Ohjelmalle voi antaa minkä tahansa tiedoston syötteenä. Avaus toimii luonnollisesti oikein vain, jos se on tiedosto joka on pakattu samalla ohjelmalla.

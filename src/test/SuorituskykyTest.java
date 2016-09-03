@@ -4,9 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static util.Asetukset.sallitaanYlikirjoitus;
-import static util.Vakiot.AJASTA_ALGORITMIT;
-import static util.Vakiot.AJASTUS_SUORITUSKERRAT;
-import static util.Vakiot.TIEDOSTOPOLKU;
+import static util.Asetukset.AJASTA_ALGORITMIT;
+import static util.Asetukset.AJASTUS_SUORITUSKERRAT;
+import static util.Asetukset.TIEDOSTOPOLKU;
 
 import main.Main;
 import lzw.Avaaja;
