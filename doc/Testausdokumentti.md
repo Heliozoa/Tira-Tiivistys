@@ -29,7 +29,7 @@ Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman 
 
 Ohjelma toimii selvästi parhaiten tekstitiedostoilla, joista löytyy helposti toistoa. Huomataan, että käsittelyyn kuluva aika näyttäisi olevan sekä pakkauksessa, että avauksessa lineaarisesti riippuvainen käsiteltävän tiedoston koosta:
 
-[graafi](kuvat/chart.png?raw=true "Yllä luetellut tiedostot kaaviossa")
+[graafi](https://raw.githubusercontent.com/Heliozoa/Tira-Tiivistys/master/doc/kuvat/chart.png "Yllä luetellut tiedostot kaaviossa")
 
 ¹ http://www.gutenberg.org/cache/epub/7000/pg7000.txt  
 ² http://www.gutenberg.org/cache/epub/100/pg100.txt  
