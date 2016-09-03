@@ -27,7 +27,7 @@ Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman 
 |Poe⁵|7,298 tavua|5,258 tavua|~72%|6ms|4ms|10ms|
 |Wav-tiedosto⁶|5,612,112 tavua|6,193,712 tavua|~110%|3093ms|2396ms|5489ms|
 
-Ohjelma toimii selvästi parhaiten tekstitiedostoilla, joista löytyy helposti toistoa. Huomataan, että käsittelyyn kuluva aika näyttäisi olevan sekä pakkauksessa, että avauksessa lineaarisesti riippuvainen käsiteltävän tiedoston koosta:
+Ohjelma toimii selvästi parhaiten tekstitiedostoilla, joista löytyy helposti toistoa. Kooltaan kasvavat tiedostot johtunevat niiden huonosta pakkautuvuudesta, jolloin kahten tavun koodipituus toimii huonosti. Huomataan, että käsittelyyn kuluva aika näyttäisi olevan sekä pakkauksessa, että avauksessa lineaarisesti riippuvainen käsiteltävän tiedoston koosta:
 
 ![graafi](kuvat/chart.png?raw=true "Yllä luetellut tiedostot kaaviossa")
 
