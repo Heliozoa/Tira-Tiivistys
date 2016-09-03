@@ -1,6 +1,6 @@
 #Testausdokumentti
 
-Alustavissa testeissä käytin Gutenberg-projektista ilmaiseksi löytynyttä Kalevalaa. Kun algoritmi ei aluksi toiminut, testasin lähinnä manuaalisesti katsomalla avatun tiedoston tavuja. Tämänhetkiset testit ovat javan junit testejä. Ohjeet sekä junit-testien ja ohjelman ajamiseen löytyvät [käyttöohjeista](doc/Käyttöohjeet.md). Suorituskykytestausta varten tulee muuttaa util.Vakiot.java-tiedostossa oleva vakio AJASTA_ALGORITMIT = true.
+Alustavissa testeissä käytin Gutenberg-projektista ilmaiseksi löytynyttä Kalevalaa. Kun algoritmi ei aluksi toiminut, testasin lähinnä manuaalisesti katsomalla avatun tiedoston tavuja. Tämänhetkiset testit ovat javan junit testejä. Ohjeet sekä junit-testien ja ohjelman ajamiseen löytyvät [käyttöohjeista](Käyttöohjeet.md). Suorituskykytestausta varten tulee muuttaa util.Asetukset-luokassa oleva vakio AJASTA_ALGORITMIT = true.
 
 lzw-paketin luokkia on testattu PakkausAvausTestissä. Koska luokkien ainoa ulos tarjoama toiminta on tiedon avaus ja pakkaus, testejä on vain kaksi: toinen yksinkertaisesti varmistaa, että avattu tiedosto vastaa tavu tavulta alkuperäistä, ja toinen varmistaa, että algoritmit muodostavat sanakirjat tasan samalla tavalla. Sattumalta kyseessä ovat myös projektin hyödyllisimmät testit.
 
@@ -29,7 +29,7 @@ Ajoitettu Javan System.nanoTime-metodilla. Java-toteutuksella suoritin ohjelman 
 
 Ohjelma toimii selvästi parhaiten tekstitiedostoilla, joista löytyy helposti toistoa. Huomataan, että käsittelyyn kuluva aika näyttäisi olevan sekä pakkauksessa, että avauksessa lineaarisesti riippuvainen käsiteltävän tiedoston koosta:
 
-[graafi](doc/kuvat/chart.png "Yllä luetellut tiedostot kaaviossa")
+[graafi](kuvat/chart.png "Yllä luetellut tiedostot kaaviossa")
 
 ¹ http://www.gutenberg.org/cache/epub/7000/pg7000.txt  
 ² http://www.gutenberg.org/cache/epub/100/pg100.txt  
