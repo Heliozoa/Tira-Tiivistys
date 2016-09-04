@@ -29,7 +29,6 @@ public class Sanakirja {
             koodit.lisaa(uusi);
             koodi++;
         }
-        koodi++;
     }
     
     /**
