@@ -1,7 +1,10 @@
 
 package util;
 
-public class Tavukasittelija {
+/**
+ *  Sisältää apuvälineitä bittien käsittelyyn.
+ */
+public class Bittikasittelija {
     
     /**
      *  Missä paikkaa on luvun korkein ykkösbitti, ts. kuinka monta bittiä luvun esittämiseen tarvitsee.
@@ -13,7 +16,7 @@ public class Tavukasittelija {
         int kohta = 0;
         while(k != 0){
             kohta++;
-            k = k >> 1;
+            k = k >>> 1;
         }
         return kohta;
     }

@@ -5,7 +5,7 @@ import tiedosto.Tiedosto;
 import tietorakenteet.Bittijono;
 import tietorakenteet.Sanakirja;
 import tietorakenteet.Tavujono;
-import util.Tavukasittelija;
+import util.Bittikasittelija;
 
 import java.io.IOException;
 
@@ -136,7 +136,7 @@ public class Pakkaaja {
      *  @param  bitit   Bittijono, johon koodia lisätään.
      */
     private void tarkistaKoodiPituus(long koodi, Bittijono bitit){
-        int koodinKoko = Tavukasittelija.bittikoko(koodi);
+        int koodinKoko = Bittikasittelija.bittikoko(koodi);
         while(koodinKoko > koodinPituus){
             bitit.lisaa(256, koodinPituus);
             koodinPituus++;

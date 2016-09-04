@@ -8,13 +8,14 @@ import lzw.Avaaja;
 import lzw.Pakkaaja;
 import tiedosto.Tiedosto;
 import tietorakenteet.Sanakirja;
-import util.Tavukasittelija;
+import util.Bittikasittelija;
 
 import java.io.IOException;
 
 public class Main {
     
     public static void main(String[] args){
+        //test();
         if(args.length > 3 || args.length < 2){
             tulostaOhjeet();
             throw new IllegalArgumentException("Väärä määrä parametreja.");
@@ -105,6 +106,14 @@ public class Main {
      *  Koodin manuaaliseen ajoon tarkoitettu metodi.
      */
     private static void test(){
+        long l = 0x1;
+        
+        int i = 1;
+        while(l != 0){
+            l = l << 0x1;
+            i++;
+            System.out.println(l);
+        }
         System.exit(0);
     }
 }
