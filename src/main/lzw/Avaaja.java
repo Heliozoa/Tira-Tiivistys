@@ -12,7 +12,7 @@ import java.io.IOException;
  *
  *  Toimintaperiaate lyhyesti:
  *      Avaajalla on aluksi samanlainen sanakirja kuin pakkaajalla, joka sisältää kaikki yhden pituiset tavujonot.
- *      Avaaja lukee tiedostosta kaksi tavua kerralla, sillä pakkaaja pakkaa tiedon kahden tavun pituisiin koodeihin.
+ *      Avaaja lukee aluksi 9-bittisiä koodeja. Pakkaaja merkitsee tiedostoon, kun koodin pituus muuttuu.
  *      Tavut käännetään koodiksi, ja avaaja hakee sanakirjalta koodia vastaavan tavujonon.
  *      Kun jono on haettu, avaaja lisää sanakirjaan edellisen haetun tavujonon johon on lisätty nykyisen tavujonon ensimmäinen tavu.
  *      Syy tähän on seuraavanlainen: Kun pakkaaja on kirjoittanut koodin, se on löytänyt uuden tavujonon,

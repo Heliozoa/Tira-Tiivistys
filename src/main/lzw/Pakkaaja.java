@@ -18,7 +18,7 @@ import java.io.IOException;
  *      Jos tavujono löytyy jo sanakirjasta, algoritmi ottaa jonoon mukaan seuraavan tavun.
  *      Jos tavujonoa ei löydy sanakirjasta, se lisätään sanakirjaan ja algoritmi kirjoittaa muistiin sanakirjan koodin,
  *      joka vastaa tavujonoa ilman uusinta tavua.
- *      Koodit tallennetaan kahden tavun pituisina. Tällöin pakattu tiedosto koostuu tavupareista, joista jokainen on koodi jota vastaa jokin tavujono.
+ *      Koodit tallennetaan aluksi 9-bitin pituisina. Koodin pituutta nostetaan tarvittaessa, ja muutos merkitään tiedostoon Avaajaa varten.
  *      Näin lopputuloksena on tiedosto, jossa esim 2 tavua pitkä koodi 897 voi merkitä 30 tavua pitkää tavujonoa.
  *      Avausalgoritmi osaa muodostaa samalla periaatteella sanakirjan lennosta avatessa, siis sanakirjaa ei tarvitse mitenkään
  *      tallentaa muistiin ja tuloksena on pakattu tiedosto jossa on vähemmän tavuja.
