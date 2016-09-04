@@ -7,7 +7,7 @@ package tietorakenteet;
  */
 public class Tavusolmu {
     private byte tavu;
-    private int koodi;
+    private long koodi;
     private Tavusolmu edellinen;
     private Tavusolmu ylivuoto;
     private Hajautustaulu solmut;
@@ -22,14 +22,14 @@ public class Tavusolmu {
     /**
      *  @see    Tavusolmu(byte, int)
      */
-    public Tavusolmu(int tavu, int koodi){
+    public Tavusolmu(int tavu, long koodi){
         this((byte) tavu, koodi);
     }
     
     /**
      *  @see    Tavusolmu(byte, int, Tavusolmu)
      */
-    public Tavusolmu(int tavu, int koodi, Tavusolmu edellinen){
+    public Tavusolmu(int tavu, long koodi, Tavusolmu edellinen){
         this((byte) tavu, koodi, edellinen);
     }
     
@@ -45,7 +45,7 @@ public class Tavusolmu {
      *  @param  tavu    Tavusolmun tavu.
      *  @param  koodi   Tavusolmun koodi.
      */
-    public Tavusolmu(byte tavu, int koodi) {
+    public Tavusolmu(byte tavu, long koodi) {
         this(tavu);
         this.koodi = koodi;
     }
@@ -55,7 +55,7 @@ public class Tavusolmu {
      *  @param  koodi   Tavusolmun koodi.
      *  @param  edellinen   Tavusolmua edeltävä solmu.
      */
-    public Tavusolmu(byte tavu, int koodi, Tavusolmu edellinen) {
+    public Tavusolmu(byte tavu, long koodi, Tavusolmu edellinen) {
         this(tavu);
         this.koodi = koodi;
         this.edellinen = edellinen;
@@ -117,7 +117,7 @@ public class Tavusolmu {
     /**
      *  @return Tavusolmun koodi.
      */
-    public int koodi(){
+    public long koodi(){
         return koodi;
     }
     

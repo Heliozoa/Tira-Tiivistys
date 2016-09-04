@@ -22,6 +22,10 @@ import java.io.IOException;
  *      Näin lopputuloksena on tiedosto, jossa esim 2 tavua pitkä koodi 897 voi merkitä 30 tavua pitkää tavujonoa.
  *      Avausalgoritmi osaa muodostaa samalla periaatteella sanakirjan lennosta avatessa, siis sanakirjaa ei tarvitse mitenkään
  *      tallentaa muistiin ja tuloksena on pakattu tiedosto jossa on vähemmän tavuja.
+ *
+ *      HUOM:
+ *          Koodi 256 on varattu kertomaan Avaajalle, että koodin pituutta on kasvatettu yhdellä.
+ *          Koodi 257 on varattu EOF-koodiksi, johon Avaaja lopettaa.
  */
 public class Pakkaaja {
     private Tiedosto t;
@@ -54,6 +58,16 @@ public class Pakkaaja {
         }
     }
     
+    /**
+     *  Pakkauslogiikka.
+     *  Logiikka tekee samanaikaisesti kahta asiaa:
+     *      Pitää yllä sanakirjaa ja seuraa jonojen toistoa tavujonon avulla.
+     *      Koodaa sanakirjan avulla bittijonoon pakattua tietoa.
+     *
+     *      @see Pakkaaja
+     *
+     *      @param  tavut   Tavujono, johon koodatut tavut lopuksi lisätään.
+     */
     private void koodaaBititJonoon(Tavujono tavut) throws IOException{
         Tavujono jono = new Tavujono();
         Bittijono bitit = new Bittijono();
@@ -67,14 +81,10 @@ public class Pakkaaja {
                 jono.lisaa(seuraava);
                 edellinenLoytyySanakirjasta = false;
             } else {
-                int koodi = sk.hae(jono);
-                int koodinKoko = Tavukasittelija.bittikoko(koodi);
-                while(koodinKoko > koodinPituus){
-                    bitit.lisaa(256, koodinPituus);
-                    koodinPituus++;
-                    System.out.println("Koodin pituus nyt "+koodinPituus);
-                }
-                bitit.lisaa(koodi, koodinPituus);
+                long koodi = sk.hae(jono);
+                
+                lisaaBittijonoon(koodi, bitit);
+                
                 sk.lisaa(jono, seuraava);
                 jono.tyhjenna();
                 jono.lisaa(seuraava);
@@ -82,73 +92,54 @@ public class Pakkaaja {
             }
         }
         
+        //Tiedoston lopun käsittely riippuu tilanteesta, johon tiedoston luku yllä loppui.
+        //Tilanteesta riippuen alla koodataan loputkin tavut.
         if(edellinenLoytyySanakirjasta){
-            int koodi = sk.hae(jono);
-            int koodinKoko = Tavukasittelija.bittikoko(koodi);
-            while(koodinKoko > koodinPituus){
-                bitit.lisaa(256, koodinPituus);
-                koodinPituus++;
-            }
-            bitit.lisaa(koodi, koodinPituus);
+            long koodi = sk.hae(jono);
+            lisaaBittijonoon(koodi, bitit);
         } else {
             byte vika = jono.poistaLopusta();
             Tavujono temp = new Tavujono();
             temp.lisaa(vika);
-            int koodi = sk.hae(jono);
-            int koodinKoko = Tavukasittelija.bittikoko(koodi);
-            while(koodinKoko > koodinPituus){
-                bitit.lisaa(256, koodinPituus);
-                koodinPituus++;
-            }
-            bitit.lisaa(koodi, koodinPituus);
+            
+            long koodi = sk.hae(jono);
+            lisaaBittijonoon(koodi, bitit);
+            
             koodi = sk.hae(temp);
-            koodinKoko = Tavukasittelija.bittikoko(koodi);
-            while(koodinKoko > koodinPituus){
-                bitit.lisaa(256, koodinPituus);
-                koodinPituus++;
-            }
-            bitit.lisaa(koodi, koodinPituus);
+            lisaaBittijonoon(koodi, bitit);
         }
         
+        //EOF-merkki
         bitit.lisaa(257, koodinPituus);
         
         while(!bitit.tyhja()){
             tavut.lisaa(bitit.poistaTavu());
         }
     }
+    
     /**
-     *  Koodaa Tiedoston t sisällön jonoon ja muodostaa samalla sanakirjan.
-     *  
-     *  @param  tavut   Jono johon tavut lisätään.
+     *  Lisää koodin bittijonoon. Tarkistaa samalla, tarvitseeko koodin pituutta lisätä.
+     *
+     *  @param  koodi   Koodi, jota lisätään.
+     *  @param  bitit    Bittijono, johon koodia lisätään.
      */
-    private void koodaaJonoon(Tavujono tavut) throws IOException{
-        Tavujono jono = new Tavujono();
-        jono.lisaa(lue());
-        byte seuraava;
-        
-        boolean edellinenLoytyySanakirjasta = false;
-        while(!t.loppu()){
-            seuraava = lue();
-            if(sk.sisaltaa(jono, seuraava)){
-                jono.lisaa(seuraava);
-                edellinenLoytyySanakirjasta = false;
-            } else {
-                tavut.lisaaInt(sk.hae(jono));
-                sk.lisaa(jono, seuraava);
-                jono.tyhjenna();
-                jono.lisaa(seuraava);
-                edellinenLoytyySanakirjasta = true;
-            }
-        }
-        
-        if(edellinenLoytyySanakirjasta){
-            tavut.lisaaInt(sk.hae(jono));
-        } else {
-            byte vika = jono.poistaLopusta();
-            Tavujono temp = new Tavujono();
-            temp.lisaa(vika);
-            tavut.lisaaInt(sk.hae(jono));
-            tavut.lisaaInt(sk.hae(temp));
+    private void lisaaBittijonoon(long koodi, Bittijono bitit){
+            tarkistaKoodiPituus(koodi, bitit);
+            bitit.lisaa(koodi, koodinPituus);
+    }
+    
+    /**
+     *  Tarkistaa, riittääkö nykyinen koodin pituus kirjoittamaan koodia.
+     *  Jos ei, pituutta kasvatetaan tarpeen mukaan.
+     *
+     *  @param  koodi   Koodi, jota ollaan lisäämässä
+     *  @param  bitit   Bittijono, johon koodia lisätään.
+     */
+    private void tarkistaKoodiPituus(long koodi, Bittijono bitit){
+        int koodinKoko = Tavukasittelija.bittikoko(koodi);
+        while(koodinKoko > koodinPituus){
+            bitit.lisaa(256, koodinPituus);
+            koodinPituus++;
         }
     }
     

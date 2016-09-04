@@ -6,14 +6,18 @@ import static util.Asetukset.KOODI_RAJA;
 /**
  *  Sanakirja, joka sisältää avain-arvopareissa koodeja ja tavujonoja.
  *  Hajautustaulu sisältää kaikki tallennetut tavujonot solmuketjuina. Solmuihin on myös tallennettu niihin liittyvä koodi.
- *  Esim. jonot ACC, ACCD ja ACCE olisi tallennettu jonoksi A-C-C, jossa viimeisestä C-solmusta pääsee sekä D- ja E-solmuihin. 
+ *  Esim. jonot ACC, ACCD ja ACCE olisi tallennettu jonoksi A-C-C, jossa viimeisestä C-solmusta pääsee sekä D- ja E-solmuihin.
+ *
+ *  HUOM: Koodit 256 ja 257 on varattu algoritmin käyttöön, jonka takia ne asetetaan sanakirjaan nulleiksi ja varsinainen koodaus alkaa 258:ta.
+ *  @see Pakkaaja
+ *  
  *  @see    Hajautustaulu
  */
 public class Sanakirja {
     private Hajautustaulu sanasto;
-    private Taulukko<Tavusolmu> koodit;
-    private int koodi;
-    private int raja;
+    private LongTaulukko<Tavusolmu> koodit;
+    private long koodi;
+    private long raja;
     
     /**
      *  Alustaa sanakirjan ensimmäiset 255 paria. Raja on suurin luku, mitä kahteen tavuun voi koodata.
@@ -21,7 +25,7 @@ public class Sanakirja {
      */
     public Sanakirja(){
         sanasto = new Hajautustaulu();
-        koodit = new Taulukko<>();
+        koodit = new LongTaulukko<>();
         koodi = 0;
         raja = KOODI_RAJA;
         for(int i = 0; i < 256; i++){
@@ -31,7 +35,7 @@ public class Sanakirja {
             koodit.lisaa(uusi);
             koodi++;
         }
-
+    
         koodit.lisaa(null);
         koodit.lisaa(null);
         koodi += 2;
@@ -59,7 +63,7 @@ public class Sanakirja {
      *  @param  koodi   Koodi jolla haetaan.
      *  @return Haettu tavujono.
      */
-    public Tavujono hae(int koodi){
+    public Tavujono hae(long koodi){
         Tavusolmu solmu = koodit.hae(koodi);
         Tavujono jono = new Tavujono();
         while(solmu != null){
@@ -75,7 +79,7 @@ public class Sanakirja {
      *  @param  tavujono    Tavujono jolla haetaan.
      *  @return  Haettu koodi.
      */
-    public int hae(Tavujono tavujono){
+    public long hae(Tavujono tavujono){
         Tavusolmu solmu = haeViimeinenSolmu(tavujono);
         return solmu.koodi();
     }
@@ -86,7 +90,7 @@ public class Sanakirja {
      *  @param  koodi   Koodi jota halutaan etsiä.
      *  @return Löytyykö koodi sanakirjasta.
      */
-    public boolean sisaltaa(int koodi){
+    public boolean sisaltaa(long koodi){
         return koodit.hae(koodi) != null;
     }
     

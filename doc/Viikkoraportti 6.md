@@ -7,5 +7,6 @@ Siistin koodia, tein jar-tiedoston ja muutin main-metodin logiikkaa jar:ille sop
 Kirjoitin turhaa javadocia ja generoin sen.
 Kirjoitin helppokäyttöisen skriptin ohjelman käyttöä varten.
 Kirjoitin lisää dokumentaatiota.
+Toteutin sittenkin vaihtelevan koodipituuden ja tuen Long.MAX_VALUE määrälle koodeja, joka paransi ohjelman pakkausta paljon.
 
-Käytetty tuntimäärä: 15
+Käytetty tuntimäärä: 20

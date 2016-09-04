@@ -4,6 +4,11 @@ package tietorakenteet;
 import java.util.NoSuchElementException;
 import java.lang.IndexOutOfBoundsException;
 
+/**
+ *  Bittijono sisältää boolean-taulukossa jonon bittejä, jossa true == 1 ja false == 0.
+ *  Jonoon lisätään eripituisia koodeja, jonka takia lisäys-metodi vastaanottaa longin ja tiedon siitä,
+ *  montako bittiä longista halutaan lisätä. (Muuten ei voi tietää, montako etunollaa on tarkoitus laskea mukaan)
+ */
 public class Bittijono {
     
     private boolean[] bitit;
@@ -24,7 +29,7 @@ public class Bittijono {
      *  @param  i   Luku jonka bittejä lisätään.
      *  @param  lkm Montako bittiä lisätään.
      */
-    public void lisaa(int k, int lkm){
+    public void lisaa(long k, int lkm){
         int osoitin = 0x1;
         osoitin = osoitin << lkm-1;
         for(int i = 0; i < lkm; i++){
@@ -37,6 +42,12 @@ public class Bittijono {
         }
     }
     
+    /**
+     *  Poistaa jonosta tavun, eli ensimmäiset 8 bittiä.
+     *  Jos jono on lyhyempi kuin 8 bittiä, loput biteistä (loppupäästä) merkataan nolliksi.
+     *
+     *  @return Jonosta poistetut bitit.
+     */
     public byte poistaTavu(){
         int tulos = 0x0;
         int osoitin = 0x1;
@@ -53,6 +64,9 @@ public class Bittijono {
         return (byte)tulos;
     }
     
+    /**
+     *  @return Onko jono tyhjä.
+     */
     public boolean tyhja(){
         return alku == loppu;
     }

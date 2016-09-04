@@ -54,8 +54,14 @@ public class Avaaja {
             t.sulje();
         }
     }
+    
+    /**
+     *  Avaus-logiikka.
+     *  
+     *  @see Avaaja
+     */
     private void avaaBititJonoon(Tavujono tavut) throws IOException{
-        int koodi = lueKoodi(koodiPituus);
+        long koodi = lueKoodi(koodiPituus);
         Tavujono edellinen = sk.hae(koodi);
         Tavujono jono = edellinen.clone();
         jono.tyhjennaJonoon(tavut);
@@ -81,41 +87,13 @@ public class Avaaja {
     }
     
     /**
-     *  Lukee kaikki koodit tiedostosta, muuttaa ne oikeiksi tavujonoiksi ja lisää ne tavut-jonoon.
+     *  Lukee tietyn määrän bittejä.
      *
-     *  @param  tavut   Jono, johon koodatut tavut lisätään.
+     *  @param  pituus  Montako bittiä luetaan, eli kuinka pitkä koodi halutaan lukea.
+     *  @return Luettu koodi.
      */
-    private void avaaKooditJonoon(Tavujono tavut) throws IOException{
-        int koodi = lueKoodi();
-        Tavujono edellinen = sk.hae(koodi);
-        Tavujono jono = edellinen.clone();
-        jono.tyhjennaJonoon(tavut);
-        
-        while(!t.loppu()){
-            koodi = lueKoodi();
-            if(!sk.sisaltaa(koodi)){
-                sk.lisaa(edellinen, edellinen.eka());
-                jono = sk.hae(koodi);
-            }else{
-                jono = sk.hae(koodi);
-                sk.lisaa(edellinen, jono.eka());
-            }
-            edellinen = jono.clone();
-            jono.tyhjennaJonoon(tavut);
-        }
-    }
-    private int lueKoodi(int pituus) throws IOException{
-        int koodi = t.lue(pituus);
-        return koodi;
-    }
-    
-    /**
-     *  Lukee tiedostosta kaksi tavua ja muuttaa ne koodiksi.
-     *
-     *  @return Tavuista muodostettu koodi.
-     */
-    private int lueKoodi() throws IOException{
-        int koodi = t.lue(16);
+    private long lueKoodi(int pituus) throws IOException{
+        long koodi = t.lue(pituus);
         return koodi;
     }
 }
