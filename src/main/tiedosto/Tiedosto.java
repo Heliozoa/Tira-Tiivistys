@@ -19,6 +19,9 @@ public class Tiedosto {
     private FileInputStream tiedosto;
     private String polku;
     
+    private int bufferi;
+    private int bufferiPituus;
+    
     /**
      *  @param polku    Polku, jossa käsiteltävä tiedosto on.
      */
@@ -29,6 +32,8 @@ public class Tiedosto {
             throw new FileNotFoundException("Lukukelpoista tiedostoa ei löytynyt kohteesta "+polku);
         }
         tiedosto = new FileInputStream(t);
+        bufferi = 0;
+        bufferiPituus = 0;
     }
     
     /**
@@ -37,7 +42,32 @@ public class Tiedosto {
      *  @return Tiedoston seuraava tavu.
      */
     public int lue() throws IOException {
-        return tiedosto.read();
+        return lue(8);
+    }
+    
+    /**
+     *  Lukee tiedostosta k bittiä.
+     *  Pitää muistissa bufferia, jolloin esim. 5 bittiä luettaessa 'ylimääräiset' 3 bittiä jää sinne muistiin, eikä katoa.
+     *
+     *  @return Tiedoston seuraavat k bittiä
+     */
+    public int lue(int k) throws IOException {
+        int tulos = 0x0;
+        int bufferinPaa = 0x1 << (bufferiPituus - 1);
+        for(int i = 0; i < k; i++){
+            if(bufferiPituus == 0){
+                bufferi = tiedosto.read();
+                bufferiPituus = 8;
+                bufferinPaa = 0x80;
+            }
+            int bufferinKorkein = bufferi & bufferinPaa;
+            int bufferiBitti = bufferinKorkein >> (bufferiPituus - 1);
+            tulos = tulos << 1;
+            tulos = tulos | bufferiBitti;
+            bufferinPaa = bufferinPaa >> 1;
+            bufferiPituus--;
+        }
+        return tulos;
     }
     
     /**

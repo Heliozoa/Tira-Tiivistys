@@ -49,16 +49,16 @@ public class SanakirjaTest {
         
         byte vika = tj.poistaLopusta();
         assertFalse("Sanakirja on alustettu väärin, sillä jonon ei pitäisi vielä löytyä sieltä", sk.sisaltaa(tj, vika));
-        assertFalse("Sanakirja on alustettu väärin, sillä koodin ei pitäisi vielä löytyä sieltä", sk.sisaltaa(256));
+        assertFalse("Sanakirja on alustettu väärin, sillä koodin ei pitäisi vielä löytyä sieltä", sk.sisaltaa(258));
         
         sk.lisaa(tj, vika);
         
         assertTrue("Jono on lisätty sanakirjaan, mutta se ei löydy sieltä", sk.sisaltaa(tj, vika));
-        assertTrue("Koodin pitäisi löytyä sanakirjasta, muttei löydy", sk.sisaltaa(256));
+        assertTrue("Koodin pitäisi löytyä sanakirjasta, muttei löydy", sk.sisaltaa(258));
         
         tj.lisaa(vika);
-        assertEquals("Tavujonolla hakemalla löytyi väärä koodi", sk.hae(tj), 256);
-        assertEquals("Koodilla hakemalla löytyi väärä tavujono", sk.hae(256), tj);
+        assertEquals("Tavujonolla hakemalla löytyi väärä koodi", 258, sk.hae(tj));
+        assertEquals("Koodilla hakemalla löytyi väärä tavujono", tj, sk.hae(258));
     }
     
     private Tavujono randomJono(int pituus){

@@ -2,8 +2,10 @@
 package lzw;
 
 import tiedosto.Tiedosto;
+import tietorakenteet.Bittijono;
 import tietorakenteet.Sanakirja;
 import tietorakenteet.Tavujono;
+import util.Tavukasittelija;
 
 import java.io.IOException;
 
@@ -24,6 +26,7 @@ import java.io.IOException;
 public class Pakkaaja {
     private Tiedosto t;
     private Sanakirja sk;
+    private int koodinPituus;
     
     /**
      *  @param tiedosto    Tiedostosta saadaan tieto joka halutaan pakata.
@@ -32,6 +35,7 @@ public class Pakkaaja {
     public Pakkaaja(Tiedosto tiedosto, Sanakirja sanakirja) {
         t = tiedosto;
         sk = sanakirja;
+        koodinPituus = 9;
     }
     
     /**
@@ -43,13 +47,75 @@ public class Pakkaaja {
         try{
             if(t.loppu()) return;
             Tavujono tavut = new Tavujono();
-            koodaaJonoon(tavut);
+            koodaaBititJonoon(tavut);
             Tiedosto.kirjoita(tavut, kohde);
         } finally {
             t.sulje();
         }
     }
     
+    private void koodaaBititJonoon(Tavujono tavut) throws IOException{
+        Tavujono jono = new Tavujono();
+        Bittijono bitit = new Bittijono();
+        jono.lisaa(lue());
+        byte seuraava;
+        
+        boolean edellinenLoytyySanakirjasta = false;
+        while(!t.loppu()){
+            seuraava = lue();
+            if(sk.sisaltaa(jono, seuraava)){
+                jono.lisaa(seuraava);
+                edellinenLoytyySanakirjasta = false;
+            } else {
+                int koodi = sk.hae(jono);
+                int koodinKoko = Tavukasittelija.bittikoko(koodi);
+                while(koodinKoko > koodinPituus){
+                    bitit.lisaa(256, koodinPituus);
+                    koodinPituus++;
+                    System.out.println("Koodin pituus nyt "+koodinPituus);
+                }
+                bitit.lisaa(koodi, koodinPituus);
+                sk.lisaa(jono, seuraava);
+                jono.tyhjenna();
+                jono.lisaa(seuraava);
+                edellinenLoytyySanakirjasta = true;
+            }
+        }
+        
+        if(edellinenLoytyySanakirjasta){
+            int koodi = sk.hae(jono);
+            int koodinKoko = Tavukasittelija.bittikoko(koodi);
+            while(koodinKoko > koodinPituus){
+                bitit.lisaa(256, koodinPituus);
+                koodinPituus++;
+            }
+            bitit.lisaa(koodi, koodinPituus);
+        } else {
+            byte vika = jono.poistaLopusta();
+            Tavujono temp = new Tavujono();
+            temp.lisaa(vika);
+            int koodi = sk.hae(jono);
+            int koodinKoko = Tavukasittelija.bittikoko(koodi);
+            while(koodinKoko > koodinPituus){
+                bitit.lisaa(256, koodinPituus);
+                koodinPituus++;
+            }
+            bitit.lisaa(koodi, koodinPituus);
+            koodi = sk.hae(temp);
+            koodinKoko = Tavukasittelija.bittikoko(koodi);
+            while(koodinKoko > koodinPituus){
+                bitit.lisaa(256, koodinPituus);
+                koodinPituus++;
+            }
+            bitit.lisaa(koodi, koodinPituus);
+        }
+        
+        bitit.lisaa(257, koodinPituus);
+        
+        while(!bitit.tyhja()){
+            tavut.lisaa(bitit.poistaTavu());
+        }
+    }
     /**
      *  Koodaa Tiedoston t sisällön jonoon ja muodostaa samalla sanakirjan.
      *  

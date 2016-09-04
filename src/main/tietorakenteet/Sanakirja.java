@@ -1,6 +1,8 @@
 
 package tietorakenteet;
 
+import static util.Asetukset.KOODI_RAJA;
+
 /**
  *  Sanakirja, joka sisältää avain-arvopareissa koodeja ja tavujonoja.
  *  Hajautustaulu sisältää kaikki tallennetut tavujonot solmuketjuina. Solmuihin on myös tallennettu niihin liittyvä koodi.
@@ -21,7 +23,7 @@ public class Sanakirja {
         sanasto = new Hajautustaulu();
         koodit = new Taulukko<>();
         koodi = 0;
-        raja = 65535;
+        raja = KOODI_RAJA;
         for(int i = 0; i < 256; i++){
             byte b = (byte) i;
             Tavusolmu uusi = new Tavusolmu(b, koodi);
@@ -29,7 +31,11 @@ public class Sanakirja {
             koodit.lisaa(uusi);
             koodi++;
         }
-        koodi++;
+
+        koodit.lisaa(null);
+        koodit.lisaa(null);
+        koodi += 2;
+        
     }
     
     /**

@@ -27,6 +27,7 @@ import java.io.IOException;
 public class Avaaja {
     private Tiedosto t;
     private Sanakirja sk;
+    private int koodiPituus;
     
     /**
      *  @param tiedosto    Pakattu tiedosto joka halutaan avata.
@@ -35,6 +36,7 @@ public class Avaaja {
     public Avaaja (Tiedosto tiedosto, Sanakirja sanakirja){
         t = tiedosto;
         sk = sanakirja;
+        koodiPituus = 9;
     }
     
     /**
@@ -46,10 +48,35 @@ public class Avaaja {
         try {
             if(t.loppu()) return;
             Tavujono tavut = new Tavujono();
-            avaaKooditJonoon(tavut);
+            avaaBititJonoon(tavut);
             Tiedosto.kirjoita(tavut, kohde);
         } finally {
             t.sulje();
+        }
+    }
+    private void avaaBititJonoon(Tavujono tavut) throws IOException{
+        int koodi = lueKoodi(koodiPituus);
+        Tavujono edellinen = sk.hae(koodi);
+        Tavujono jono = edellinen.clone();
+        jono.tyhjennaJonoon(tavut);
+        
+        while(!t.loppu()){
+            koodi = lueKoodi(koodiPituus);
+            if(koodi == 256){
+                koodiPituus++;
+                continue;
+            }else if(koodi == 257){
+                return;
+            }
+            if(!sk.sisaltaa(koodi)){
+                sk.lisaa(edellinen, edellinen.eka());
+                jono = sk.hae(koodi);
+            }else{
+                jono = sk.hae(koodi);
+                sk.lisaa(edellinen, jono.eka());
+            }
+            edellinen = jono.clone();
+            jono.tyhjennaJonoon(tavut);
         }
     }
     
@@ -77,6 +104,10 @@ public class Avaaja {
             jono.tyhjennaJonoon(tavut);
         }
     }
+    private int lueKoodi(int pituus) throws IOException{
+        int koodi = t.lue(pituus);
+        return koodi;
+    }
     
     /**
      *  Lukee tiedostosta kaksi tavua ja muuttaa ne koodiksi.
@@ -84,9 +115,7 @@ public class Avaaja {
      *  @return Tavuista muodostettu koodi.
      */
     private int lueKoodi() throws IOException{
-        int eka = t.lue();
-        eka *= 256;
-        int toka = t.lue();
-        return eka+toka;
+        int koodi = t.lue(16);
+        return koodi;
     }
 }
