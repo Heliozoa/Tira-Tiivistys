@@ -15,7 +15,6 @@ import java.io.IOException;
 public class Main {
     
     public static void main(String[] args){
-        test();
         if(args.length > 3 || args.length < 2){
             tulostaOhjeet();
             throw new IllegalArgumentException("Väärä määrä parametreja.");
@@ -106,16 +105,6 @@ public class Main {
      *  Koodin manuaaliseen ajoon tarkoitettu metodi.
      */
     private static void test(){
-        try{
-            pakkaa(TIEDOSTOPOLKU, TIEDOSTOPOLKU+".pt");
-            Tiedosto t2 = new Tiedosto("/home/sasami-san/Dev/github/Tira-Tiivistys/etc/poe.pt");
-            for(int i = 0; i < 16; i++){
-                System.out.println(t2.lue(9));
-            }
-        } catch (Exception e){
-            
-        } finally {
-            System.exit(0);
-        }
+        System.exit(0);
     }
 }

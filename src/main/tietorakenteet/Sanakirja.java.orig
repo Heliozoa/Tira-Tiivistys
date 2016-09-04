@@ -9,7 +9,7 @@ import static util.Asetukset.KOODI_RAJA;
  *  Esim. jonot ACC, ACCD ja ACCE olisi tallennettu jonoksi A-C-C, jossa viimeisestä C-solmusta pääsee sekä D- ja E-solmuihin.
  *
  *  HUOM: Koodit 256 ja 257 on varattu algoritmin käyttöön, jonka takia ne asetetaan sanakirjaan nulleiksi ja varsinainen koodaus alkaa 258:ta.
- *  @see    lzw.Pakkaaja
+ *  @see Pakkaaja
  *  
  *  @see    Hajautustaulu
  */
@@ -35,18 +35,20 @@ public class Sanakirja {
             koodit.lisaa(uusi);
             koodi++;
         }
+<<<<<<< HEAD
     
         koodit.lisaa(null);
         koodit.lisaa(null);
         koodi += 2;
         
+=======
+>>>>>>> 68b6966adbc0d2eaa1468950059608b0eb599c7b
     }
     
     /**
      *  Lisää tavu sanakirjaan jonon perään.
      *
      *  @param tavujono    Tavujono, jonka perään halutaan lisätä tavu. Oletus on, että tavujono löytyy jo sanakirjasta
-     *  @param  vika    Tavu, jota ollaan lisäämässä ketjun perään.
      */
     public void lisaa(Tavujono tavujono, byte vika){
         if(koodi <= raja){

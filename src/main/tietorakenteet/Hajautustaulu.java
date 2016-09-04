@@ -23,7 +23,7 @@ public class Hajautustaulu {
     /**
      *  Luo parametreista tavusolmun ja lisää sen tauluun.
      *
-     *  @see    lisaa(Tavusolmu)
+     *  @see    #lisaa(Tavusolmu)
      *  @param  b   Lisättävä tavu.
      *  @param  koodi   Lisättävä koodi.
      */
@@ -36,7 +36,7 @@ public class Hajautustaulu {
      *  Lisää tavusolmun tauluun. Kasvattaa taulukkoa tarvittaessa ja uudelleenhajauttaa alkiot.
      *  Jos huomataan yhteentörmäys, lisätään tavusolmu ylivuotolistaan
      *  
-     *  @see uudelleenHajauta(int)
+     *  @see #uudelleenHajauta(int)
      *  @see Tavusolmu#lisaaYlivuotoon(Tavusolmu)
      *  @param  solmu   Tavusolmu, joka lisätään.
      */
@@ -58,7 +58,7 @@ public class Hajautustaulu {
     /**
      *  Luo uuden tavusolmun ja hakee sen taulusta.
      *
-     *  @see hae(Tavusolmu)
+     *  @see #hae(Tavusolmu)
      *  @param  b   Haettava tavu.
      */
     public Tavusolmu hae(byte b){

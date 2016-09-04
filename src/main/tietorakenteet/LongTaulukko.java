@@ -18,7 +18,8 @@ public class LongTaulukko<T> {
     
     /**
      *  Lisää alkion taulukkoon.
-     *  
+     *
+     *  @param  t   Lisättävä alkio
      *  @throws IllegalStateException Jos ollaan taulukon nro. Integer.MAX_VALUE viimeisessä indeksissä, metodi heittää poikkeuksen.
      */
     public void lisaa(T t) throws IllegalStateException{

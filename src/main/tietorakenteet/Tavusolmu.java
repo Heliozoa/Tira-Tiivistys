@@ -13,21 +13,21 @@ public class Tavusolmu {
     private Hajautustaulu solmut;
     
     /**
-     *  @see    Tavusolmu(byte)
+     *  @see    #Tavusolmu(byte)
      */
     public Tavusolmu(int tavu){
         this((byte) tavu);
     }
     
     /**
-     *  @see    Tavusolmu(byte, int)
+     *  @see    #Tavusolmu(byte, long)
      */
     public Tavusolmu(int tavu, long koodi){
         this((byte) tavu, koodi);
     }
     
     /**
-     *  @see    Tavusolmu(byte, int, Tavusolmu)
+     *  @see    #Tavusolmu(byte, long, Tavusolmu)
      */
     public Tavusolmu(int tavu, long koodi, Tavusolmu edellinen){
         this((byte) tavu, koodi, edellinen);

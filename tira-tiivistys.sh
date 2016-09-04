@@ -18,10 +18,10 @@ select pa in "Pakata" "Avata"; do
             read -p "Minne haluat avata tiedoston? Tiedostoa ei saa olla jo valmiiksi olemassa. (Tyhjä: $t.at) " at
             if [ ! -z "$at" ]
                 then
-                    echo "Pakataan tiedosto $t tiedostoon $at"
+                    echo "Avataan tiedosto $t tiedostoon $at"
                     java -jar tira-tiivistys.jar -a "$t" "$at"
                 else
-                    echo "Pakataan tiedosto $t tiedostoon $t.at"
+                    echo "Avataan tiedosto $t tiedostoon $t.at"
                     java -jar tira-tiivistys.jar -a "$t"
             fi
             ;;

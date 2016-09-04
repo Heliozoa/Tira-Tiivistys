@@ -49,6 +49,7 @@ public class Tiedosto {
      *  Lukee tiedostosta k bittiä.
      *  Pitää muistissa bufferia, jolloin esim. 5 bittiä luettaessa 'ylimääräiset' 3 bittiä jää sinne muistiin, eikä katoa.
      *
+     *  @param  k   Luettavien bittien lukumäärä.
      *  @return Tiedoston seuraavat k bittiä
      */
     public int lue(int k) throws IOException {
@@ -101,7 +102,7 @@ public class Tiedosto {
     }
     
     /**
-     *  @see    kirjoita(Tavujono, String)
+     *  @see    #kirjoita(Tavujono, String)
      *  @param  tavut   Kirjoitettavat tavut.
      *  @param  polku   Polku, jonne tavut kirjoitetaan.
      */

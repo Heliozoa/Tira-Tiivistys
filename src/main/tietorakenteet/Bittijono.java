@@ -26,7 +26,7 @@ public class Bittijono {
      *  Lisää k:n lkm vähäisintä bittiä. 
      *
      *  @see    kasvata
-     *  @param  i   Luku jonka bittejä lisätään.
+     *  @param  k   Luku jonka bittejä lisätään.
      *  @param  lkm Montako bittiä lisätään.
      */
     public void lisaa(long k, int lkm){

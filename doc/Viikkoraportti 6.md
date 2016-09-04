@@ -1,12 +1,12 @@
 #Viikkoraportti 6
 Satunnaisia tavuja sisältävää tiedostoa pakatessa ilmeni bugi joka esiintyi ~10% syötteistä. Sain korjattua tarkastelemalla uudestaan avaus-algoritmin toteutusta.
-Tein pieniä muutoksia koodikatselmoinnin ehdotusten mukaisesti.
+Tein pieniä muutoksia koodikatselmoinnin ehdotusten mukaisesti.  
 Sanakirjan raja oli 1 liian suuri joka aiheutti nulleja avatuissa tiedostoissa, pitkään säilynyt bugi joka aiheutti ongelmia pitkillä syötteillä korjautuikin helposti.
-Kävin ohjauksessa.
-Siistin koodia, tein jar-tiedoston ja muutin main-metodin logiikkaa jar:ille sopivaksi.
-Kirjoitin turhaa javadocia ja generoin sen.
-Kirjoitin helppokäyttöisen skriptin ohjelman käyttöä varten.
-Kirjoitin lisää dokumentaatiota.
-Toteutin sittenkin vaihtelevan koodipituuden ja tuen Long.MAX_VALUE määrälle koodeja, joka paransi ohjelman pakkausta paljon.
+Kävin ohjauksessa.  
+Siistin koodia, tein jar-tiedoston ja muutin main-metodin logiikkaa jar:ille sopivaksi.  
+Kirjoitin turhaa javadocia ja generoin sen.  
+Kirjoitin helppokäyttöisen skriptin ohjelman käyttöä varten.  
+Kirjoitin lisää dokumentaatiota.  
+Toteutin sittenkin vaihtelevan koodipituuden ja tuen Long.MAX_VALUE määrälle koodeja, joka paransi ohjelman pakkausta paljon.  
 
-Käytetty tuntimäärä: 20
+Käytetty tuntimäärä: 20  
