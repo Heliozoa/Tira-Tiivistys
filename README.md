@@ -2,7 +2,7 @@
 <body>
 Häviötön tiedon pakkaus- ja avaus-ohjelma.  
 
-Tira-Tiivistys tiivistää tiedostoja ja avaa ohjelmalla pakattuja tiedostoja ilman tiedon hävikkiä.Algoritmi on yksinkertaistettu versio Lempel-Ziv-Welch-algoritmista. Ohjelma toimii hyvin useimmilla tiedostoilla, mutta hyvin pienet, tai hyvin huonosti pakkautuvat tiedostot saattavat algoritmin toteutuksesta johtuen olla suurempia pakattuina kuin avattuina.
+Tira-Tiivistys tiivistää tiedostoja ja avaa ohjelmalla pakattuja tiedostoja ilman tiedon hävikkiä. Algoritmi on yksinkertaistettu versio Lempel-Ziv-Welch-algoritmista. Ohjelma toimii hyvin useimmilla tiedostoilla, mutta hyvin pienet, tai hyvin huonosti pakkautuvat tiedostot saattavat algoritmin toteutuksesta johtuen olla suurempia pakattuina kuin avattuina.
 </body>
 
 ####Tunnetut ongelmat
