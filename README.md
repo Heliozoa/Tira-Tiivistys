@@ -16,9 +16,9 @@ Ei tunnettuja ongelmia.
 [Toteutusdokumentti](doc/Toteutusdokumentti.md)  
 
 #### Viikkoraportit
-[Viikkoraportti 1](doc/Viikkoraportti 1.md)  
-[Viikkoraportti 2](doc/Viikkoraportti 2.md)  
-[Viikkoraportti 3](doc/Viikkoraportti 3.md)  
-[Viikkoraportti 4](doc/Viikkoraportti 4.md)  
-[Viikkoraportti 5](doc/Viikkoraportti 5.md)  
-[Viikkoraportti 6](doc/Viikkoraportti 6.md)
+[Viikkoraportti 1](doc/Viikkoraportti%201.md)  
+[Viikkoraportti 2](doc/Viikkoraportti%202.md)  
+[Viikkoraportti 3](doc/Viikkoraportti%203.md)  
+[Viikkoraportti 4](doc/Viikkoraportti%204.md)  
+[Viikkoraportti 5](doc/Viikkoraportti%205.md)  
+[Viikkoraportti 6](doc/Viikkoraportti%206.md)  
